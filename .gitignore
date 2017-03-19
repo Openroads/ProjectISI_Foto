@@ -2,13 +2,13 @@
 
 log/
 
-#target/
+target/
 
 
 # Eclipse
 
 .classpath
 
-#.project
+.project
 
 .settings/
