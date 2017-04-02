@@ -27,28 +27,34 @@ public class ClientDAOMock implements ClientDAO {
 	}
 	
 	@Override
-	public void saveOrUpdate(IClient client) {
+	public int saveOrUpdate(IClient client) {
 		for(int i =0; i< this.clients.size();i++)
 		{
 			if(this.clients.get(i).getId() == client.getId() )
 			{
 				this.clients.remove(i);
-				break;				
+				this.clients.add((Client) client);
+				return	client.getId();			
 			}
 		}
+		int lastId = this.clients.get(this.clients.size()-1).getId();
+		client.setId(lastId+1);
 		this.clients.add((Client) client);
+		return client.getId();
 		
 	}
 
 	@Override
-	public void delete(int clientId) {
+	public boolean delete(int clientId) {
 		for (Client c : this.clients)
 		{
 			if(c.getId() == clientId)
 			{
 				this.clients.remove(c);
+				return true;
 			}
 		}
+		return false;
 	}
 
 	@Override
