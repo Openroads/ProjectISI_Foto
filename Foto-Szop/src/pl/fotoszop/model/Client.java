@@ -12,10 +12,14 @@ public class Client implements IClient{
 	private String phoneNumber;
 	private String email;
 	
+	public Client()
+	{
+		
+	}
 	
 	public Client(int id, String name, String surname, String address, String identityNumber, String phoneNumber,
 			String email) {
-		super();
+
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
