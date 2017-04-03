@@ -17,7 +17,7 @@ use foto_szop;
 -- Table structure  CLIENT --
 
 CREATE TABLE client (
-	id_client int(4) PRIMARY KEY,
+	id_client int(4) PRIMARY KEY AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
 	surname varchar(255) NOT NULL,
 	address varchar(255) NOT NULL,
@@ -135,4 +135,17 @@ CREATE TABLE firm(
 	phone_nr varchar(15) NOT NULL,
 	email varchar(255) NOT NULL
 );
+
+
+
+INSERT INTO client	(name, surname, address, personal_id, phone_nr, email) VALUES
+("Ryszard", "Nowak", "Nowy Sącz, ul.Rynek 10",'67010289087',"788998098","rysiek@zklanu.pl"),
+("Roman","Klusek","Kraków, ul. Smolki 7/11",'87081101234',"665776887","roman@witam.pl"),
+("Janusz", "Tratrz", "Warszawa, ul. Plażowa 1",'66010102341',"712933143","janósz@t.pl"),
+("Geralt", "Riv", "Ciemnogród, ul.Temerska 33",'41041299009',null. "geralt.z.rivii@kaermohren.pl"),
+("Bronisława", "Kmiecik", "Sandomierz", '77020309021',"912033855","bronka@kmiecik.pl"),
+
+
+
+
 
