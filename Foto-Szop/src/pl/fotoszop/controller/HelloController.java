@@ -31,15 +31,6 @@ public class HelloController{
 		return model;
 	}
 	
-	@RequestMapping("/zaloguj.html")
-	public ModelAndView zaloguj(){
-		
-		ModelAndView model = new ModelAndView("Zaloguj");
-		model.addObject("msg","Zaloguj!");
-		
-		return model;
-	}
-	
 	@RequestMapping("/kontakt.html")
 	public ModelAndView kontakt(){
 		
