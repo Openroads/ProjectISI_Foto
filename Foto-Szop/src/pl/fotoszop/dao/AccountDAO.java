@@ -7,6 +7,10 @@ import pl.fotoszop.modelinterfaces.IClient;
 
 public interface AccountDAO {
 
+	/**
+	 * 
+	 * @param account
+	 */
 	public void saveOrUpdate(IAccount account);
 	public void delete(int accountId);
 	public IClient getClientById(int accountId);
