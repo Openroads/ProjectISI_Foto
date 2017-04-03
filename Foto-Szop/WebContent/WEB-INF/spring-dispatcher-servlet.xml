@@ -20,5 +20,18 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	</property>
 </bean>
 
+ <!-- declare beans -->
+ <bean id="clientDAODbImpl" class="pl.fotoszop.DAODbImpl.ClientDAODbImpl">
+ 	<property name="dataSource" ref="dataSource"/>
+ </bean>
+
+<!-- declare datasource bean -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+     <property name="url" value="jdbc:mysql://sql.roar95.nazwa.pl:3306/roar95_1"/>
+     <property name="username" value="roar95_1"/>
+     <property name="password" value="fotoSzop17"/>
+</bean>
+
 
 </beans>
