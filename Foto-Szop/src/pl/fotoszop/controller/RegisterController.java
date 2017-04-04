@@ -25,11 +25,11 @@ public class RegisterController {
 	@RequestMapping("/addClient")
 	public ModelAndView processForm(@ModelAttribute Form form){
 		
-		ClientDAO database = clientDatabaseDAO;
+		ClientDAO database = new ClientDAODbImpl();
 		boolean flag = checkDatabase(form,database);
 		if(!flag){
 			
-			Client newClient = new Client(3,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
+			Client newClient = new Client(2,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
 			database.saveOrUpdate(newClient);
 			ModelAndView model = new ModelAndView("success");
 			model.addObject("client",newClient);
