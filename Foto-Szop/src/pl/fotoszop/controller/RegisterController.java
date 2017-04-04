@@ -13,6 +13,7 @@ import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller
@@ -24,11 +25,11 @@ public class RegisterController {
 	@RequestMapping("/addClient")
 	public ModelAndView processForm(@ModelAttribute Form form){
 		
-		ClientDAOMock database = new ClientDAOMock();
+		ClientDAO database = clientDatabaseDAO;
 		boolean flag = checkDatabase(form,database);
 		if(!flag){
 			
-			Client newClient = new Client(1,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
+			Client newClient = new Client(3,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
 			database.saveOrUpdate(newClient);
 			ModelAndView model = new ModelAndView("success");
 			model.addObject("client",newClient);
@@ -49,7 +50,7 @@ public class RegisterController {
 		return model;
 	}
 	
-	public boolean checkDatabase(Form form, ClientDAOMock database){
+	public boolean checkDatabase(Form form, ClientDAO database){
 		
 		
 		Collection<IClient> clients = new ArrayList<>();
