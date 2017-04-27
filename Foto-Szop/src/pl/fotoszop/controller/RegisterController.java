@@ -44,10 +44,10 @@ public class RegisterController {
 		
 	}
 	
-	@RequestMapping("/rejestracja.html")
+	@RequestMapping("/register")
 	public ModelAndView getForm(){
 		
-		ModelAndView model = new ModelAndView("Register");
+		ModelAndView model = new ModelAndView("register");
 		model.addObject("form", new Form());
 		return model;
 	}

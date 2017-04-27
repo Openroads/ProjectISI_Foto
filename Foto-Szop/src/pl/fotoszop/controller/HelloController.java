@@ -18,46 +18,17 @@ import pl.fotoszop.modelinterfaces.IClient;
 @Controller
 public class HelloController{
 	
-	@Autowired
-	private ClientDAODbImpl clientDatabaseDAO;
+//	@Autowired
+//	private ClientDAODbImpl clientDatabaseDAO;
 	
-	@RequestMapping("/main.html")
+	@RequestMapping("/index")
 	public ModelAndView helloworld(){
 
-		System.out.println(clientDatabaseDAO.getClientById(1).getEmail());
-		ModelAndView model = new ModelAndView("HelloPage");
+		ModelAndView model = new ModelAndView("index");
 		model.addObject("msg","Hello guest!");
 		
 		return model;
 	}
-	
-	@RequestMapping("/kontakt.html")
-	public ModelAndView kontakt(){
-		
-		ModelAndView model = new ModelAndView("/Kontakt");
-		model.addObject("msg","Kontakt!");
-		
-		return model;
-	}
-
-	@RequestMapping("/cennik.html")
-	public ModelAndView cennik(){
-		
-		ModelAndView model = new ModelAndView("/Cennik");
-		model.addObject("msg","Cennik!");
-		
-		return model;
-	}
-	
-	@RequestMapping("/about.html")
-	public ModelAndView about(){
-		
-		ModelAndView model = new ModelAndView("/About");
-		model.addObject("msg","O nas!");
-		
-		return model;
-	}
-	
 	
 	
 	

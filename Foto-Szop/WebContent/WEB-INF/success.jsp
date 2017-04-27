@@ -1,67 +1,54 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop</title>
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
+<title>Foto-Szop | Sukces</title>
+<link rel="icon" href="<c:url value="resources/index/favicon.png"/>">
+<link rel="shortcut icon" href="<c:url value="favicon.ico"/>">
 
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
 
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-<link href="css/responsive.css" rel="stylesheet" type="text/css">
-<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/index/css/bootstrap.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/index/css/style.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/index/css/font-awesome.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/index/css/responsive.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/index/css/animate.css"/>" rel="stylesheet">
 
-<!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
-
-<script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/jquery.isotope.js"></script>
-<script type="text/javascript" src="js/wow.js"></script>
-<script type="text/javascript" src="js/classie.js"></script>
+<script src="<c:url value="/resources/index/js/jquery.1.8.3.min.js"/>"></script>
+<script src="<c:url value="/resources/index/js/bootstrap.js"/>"></script>
+<script src="<c:url value="/resources/index/js/jquery-scrolltofixed.js"/>"></script>
+<script src="<c:url value="/resources/index/js/jquery.easing.1.3.js"/>"></script>
+<script src="<c:url value="/resources/index/js/jquery.isotope.js"/>"></script>
+<script src="<c:url value="/resources/index/js/wow.js"/>"></script>
+<script src="<c:url value="/resources/index/js/classie.js"/>"></script>
 
 
 <!--[if lt IE 9]>
-    <script src="js/respond-1.1.0.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/html5element.js"></script>
+    <script src="<c:url value="/resources/index/js/respond-1.1.0.min.js"/>"></script>
+    <script src="<c:url value="/resources/index/js/html5shiv.js"/>"></script>
+    <script src="<c:url value="/resources/index/js/html5element.js"/>"></script>
 <![endif]-->
 
 
 </head>
 <body>
-<div style="overflow:hidden;">
-<header class="header" id="header"><!--header-start-->
-	<div class="container">
-    	<figure class="logo animated fadeInDown delay-07s">
-        	<a href="#"><img src="img/logo.png" alt=""></a>	
-        </figure>	
-        <h1 class="animated fadeInDown delay-07s">Witamy w Foto-Szopie</h1>
-        <ul class="we-create animated fadeInUp delay-1s">
-        	<li>Z NAMI ZDJĘCIA SĄ PIĘKNIEJSZE</li>
-        </ul>
-            <a class="link animated fadeInUp delay-1s" href="#test">Zaczynamy</a>
-    </div>
-</div>
+<header><!--header-start-->
 </header><!--header-end-->
 
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        	<li><a href="#header">Strona Główna</a></li>
-            <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li>
-			<li><a href="#rejestracja">Rejestracja</a></li>
-			<li><a href="#zaloguj">Zaloguj</a></li>
+        	<li><a href="${contextPath}/index">Powrót</a></li>
+            <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
             <li><a href="#kontakt">Kontakt</a></li>			
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
@@ -71,143 +58,11 @@
 
 
 <section class="main-section" id="oferta"><!--main-section-start-->
-	<div class="container">
-    	<h2>Oferta</h2>
-    	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
-        <div class="row">
-        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-            	<div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-paw"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>OBRÓBKA &amp; WYWOŁANIE</h3>
-                        <p>Nasza drukarnia dużej rozdzielczości sprosta każdemu wymaganiu klienta.</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-gear"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>SESJA ZDJĘCIOWA</h3>
-                        <p>Oddajemy do Państwa dyspocyzji najlepszych fotografów.</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-apple"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>SZYBKA DOSTAWA</h3>
-                        <p>Najszybsza paczka którą dostarczyliśmy przebyła swoją drogę w mniej niż godzinę!</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-medkit"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>WSPARCIE GRAFICZNE</h3>
-                        <p>Do państwa dyspozycji oddajemy także najlepszej klasy grafików, którzy nie pozwolą aby Państwa zdjęciom stała się krzywda.</p>
-                    </div>
-                </div>
-            </div>
-            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-            	<img src="img/camera.png" alt="Obiektyw">
-            </figure>
-        
-        </div>
-	</div>
+ <h2>Dziekujemy za rejestracje, ${client.getName()}</h2>
 </section><!--main-section-end-->
 
 
 
-
-
-
-<section class="main-section paddind" id="portfolio"><!--main-section-start-->
-	<div class="container">
-    	<h2>Portfolio</h2>
-    	<h6>Najnowsze zdjęcia obrobione i wywołane w naszym zakładzie.</h6>
-      <div class="portfolioFilter">  
-        <ul class="Portfolio-nav wow fadeIn delay-02s">
-        	<li><a href="#" data-filter="*" class="current" >All</a></li>
-            <li><a href="#" data-filter=".branding" >RAW</a></li>
-            <li><a href="#" data-filter=".webdesign" >Obróbka</a></li>
-            <li><a href="#" data-filter=".printdesign" >Sesja zdjęciowa</a></li>
-            <li><a href="#" data-filter=".photography" >Reklama</a></li>
-        </ul>
-       </div> 
-        
-	</div>
-    <div class="portfolioContainer wow fadeInUp delay-04s">
-            	<div class=" Portfolio-box printdesign">
-                	<a href="#"><img src="img/Portfolio-pic1.jpg" alt=""></a>	
-                	<h3>Foto Album</h3>
-                    <p>Print Design</p>
-                </div>
-                <div class="Portfolio-box webdesign">
-                	<a href="#"><img src="img/Portfolio-pic2.jpg" alt=""></a>	
-                	<h3>Nike</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box branding">
-                	<a href="#"><img src="img/Portfolio-pic3.jpg" alt=""></a>	
-                	<h3>Advertisment</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box photography" >
-                	<a href="#"><img src="img/Portfolio-pic4.jpg" alt=""></a>	
-                	<h3>Vinyl Record</h3>
-                    <p>Photography</p>
-                </div>
-                <div class=" Portfolio-box branding">
-                	<a href="#"><img src="img/Portfolio-pic5.jpg" alt=""></a>	
-                	<h3>West Coast</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box photography">
-                	<a href="#"><img src="img/Portfolio-pic6.jpg" alt=""></a>	
-                	<h3>Voyage</h3>
-                    <p>Photography</p>
-                </div>
-    </div>
-</section><!--main-section-end-->
-
-
-<section class="main-section client-part" id="rejestracja"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-user"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Dołącz do nas i ciesz się nieziemską jakością!</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="#test">Zarejestruj się</a>
-    </div>
-</section><!--main-section client-part-end-->
-<div class="c-logo-part"><!--c-logo-part-start-->
-	<div class="container" >
-    	<ul>
-        	<li><a href="#"><img src="img/c-liogo1.png" alt=""></a></li>
-            <li><a href="#"><img src="img/c-liogo2.png" alt=""></a></li>
-            <li><a href="#"><img src="img/c-liogo3.png" alt=""></a></li>
-            <li><a href="#"><img src="img/c-liogo4.png" alt=""></a></li>
-            <li><a href="#"><img src="img/c-liogo5.png" alt=""></a></li>
-    	</ul>
-	</div>
-</div><!--c-logo-part-end-->
-<section class="main-section team" id="zaloguj"><!--main-section team-start-->
-	<div class="container">
-<div class="form"style="width: 100%; text-align: center;">
-                	<input style="width: 100%; text-align: center;" class="input-text" type="text" name="" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input style="width: 100%; text-align: center;"class="input-text" type="password" name="" value="Hasło *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input class="input-btn" type="submit" value="Zaloguj">
-                </div>	
-
-    </div>
-</section><!--main-section team-end-->
 
 
 
@@ -224,7 +79,7 @@
             <div class="team-leader-box">
                 <div class="team-leader wow fadeInDown delay-03s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="img/team-leader-pic1.jpg" alt="">
+                    <img src="<c:url value="/resources/img/team-leader-pic1.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -239,7 +94,7 @@
             <div class="team-leader-box">
                 <div class="team-leader  wow fadeInDown delay-06s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="img/team-leader-pic2.jpg" alt="">
+                    <img src="<c:url value="/resources/img/team-leader-pic2.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -254,7 +109,7 @@
             <div class="team-leader-box">
                 <div class="team-leader wow fadeInDown delay-09s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="img/team-leader-pic3.jpg" alt="">
+                    <img src="<c:url value="/resources/img/team-leader-pic3.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -269,7 +124,7 @@
 			<div class="team-leader-box">
                 <div class="team-leader wow fadeInDown delay-09s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="img/team-leader-pic4.jpg" alt="">
+                    <img src="<c:url value="/resources/img/team-leader-pic4.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -284,7 +139,7 @@
 			<div class="team-leader-box">
                 <div class="team-leader wow fadeInDown delay-09s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-					<img src="img/team-leader-pic6.jpg" alt="">
+					<img src="<c:url value="/resources/img/team-leader-pic6.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -299,7 +154,7 @@
 			<div class="team-leader-box">
                 <div class="team-leader wow fadeInDown delay-09s"> 
                     <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="img/team-leader-pic5.jpg" alt="">
+                    <img src="<c:url value="/resources/img/team-leader-pic5.jpg"/>">
                     <ul>
                         <li><a href="#" class="fa-twitter"></a></li>
                         <li><a href="#" class="fa-facebook"></a></li>
@@ -353,7 +208,7 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
+        <div class="footer-logo"><a href="#"><img src="<c:url value="/resources/img/footer-logo.png"/>"></a></div>
         <span class="copyright">Copyright © 2017 | <a href="#">Foto-szop</a></span>
     </div>
 </footer>
