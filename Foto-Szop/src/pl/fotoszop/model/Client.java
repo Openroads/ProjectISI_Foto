@@ -28,6 +28,22 @@ public class Client implements IClient{
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 	}
+	
+	/**
+	 * Constructor which mights be use to create a Client instance from instance of Form
+	 * @param form - object that is created from input in html
+	 */
+	public Client(Form form){
+	
+		this.id = form.getId();
+		this.name = form.getName();
+		this.surname = form.getSurname();
+		this.address = form.getAddress();
+		this.identityNumber = form.getIdentityNumber();
+		this.phoneNumber = form.getPhoneNumber();
+		this.email = form.getEmail();
+	}
+	
 	public int getId() {
 		return id;
 	}

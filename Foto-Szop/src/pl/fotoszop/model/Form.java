@@ -1,7 +1,14 @@
 package pl.fotoszop.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.modelinterfaces.IClient;
+
 public class Form {
 
+	private int id;
 	private String name;
 	private String surname;
 	private String address;
@@ -12,6 +19,13 @@ public class Form {
 	private String password2;
 	
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -59,6 +73,30 @@ public class Form {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	/** 
+	 *Method to check if it is possible to create new Client and add it to database (check whether such Client exists in storage)
+	 *@param - storage where we want to add a Client
+	 *@return true - if such Client already exists in database, false - if such Client doesn't exist in database
+	  */
+	public boolean checkToRegister(ClientDAO database){
+		
+		Collection<IClient> clients = new ArrayList<>();
+		clients = database.getAllContacts();
+		boolean isTaken = false;
+		
+		id=0;
+		
+		for(IClient object: clients)
+		{
+			if(object.getEmail().equals(this.getEmail())) 
+				isTaken = true;
+			if(object.getId()>id) id = object.getId();
+		}
+		
+		id++;
+		return isTaken;
 	}
 	
 	
