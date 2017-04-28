@@ -186,7 +186,7 @@
             	<p class="client-part-haead wow fadeInDown delay-05">Dołącz do nas i ciesz się nieziemską jakością!</p>
             </div>
         </div>
-    	  <a class="link animated fadeInUp delay-1s" href="#test">Zarejestruj się</a>
+    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/register">Zarejestruj się</a>
     </div>
 </section><!--main-section client-part-end-->
 <div class="c-logo-part"><!--c-logo-part-start-->

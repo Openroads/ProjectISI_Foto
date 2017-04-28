@@ -69,16 +69,35 @@
                     </div>
                 	<div class="service-list-col2">
                         <form:form method="post"  modelAttribute="form"  action="addClient">
-		Imię: <form:input path="name" required="required"></form:input><br/>
-		Nazwisko: <form:input path="surname" required="required"></form:input><br/>
-		Adres: <form:input path="address" required="required"/><br/>
-		PESEL: <form:input  path="identityNumber" pattern="[0-9]{11}" required="required"/><br/>
-		E-mail:<form:input type="email" path="email" required="required"/><br/>
-		Hasło: <form:input type="password" path="password" required="required"/><br/>
-		Powtorz hasło: <form:input type="password" path="password2" required="required"/><br/>
-		Podaj telefon: <form:input  path="phoneNumber" required="required"/><br/>
+		<table>
+		<tr>
+		<td>Imię: <form:input path="name" required="required"></form:input><br/></td>
+		<td>Nazwisko: <form:input path="surname" required="required"></form:input><br/></td>
+		</tr>
 		
 		
+		<tr>
+		<td>Adres: <form:input path="address" required="required"/><br/></td>
+		</tr>
+		
+		<tr>
+		<td>PESEL: <form:input  path="identityNumber" pattern="[0-9]{11}" required="required"/><br/></td>
+		</tr>
+		
+		<tr>
+		<td>E-mail:<form:input type="email" path="email" required="required"/><br/></td>
+		</tr>
+		
+		<tr>
+		<td>Hasło: <form:input type="password" path="password" required="required"/><br/></td>
+		<td>Powtorz hasło: <form:input type="password" path="password2" required="required"/><br/></td>
+		</tr>
+		
+		<tr>
+		<td>Podaj telefon: <form:input  path="phoneNumber" required="required"/><br/></td>
+		</tr>
+		
+		</table>
 		
 		<input type="submit" value="Rejestruj">
 	</form:form>
