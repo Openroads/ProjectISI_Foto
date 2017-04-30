@@ -19,7 +19,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 <bean id="viewResolver"
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix">
-		<value>/WEB-INF/</value>
+		<value>/WEB-INF/pages/</value>
 	</property>
 	<property name="suffix">
 		<value>.jsp</value>
@@ -39,10 +39,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
      <property name="password" value="fotoSzop17"/>
 </bean>
 
- <mvc:resources mapping="/resources/**" location="/resources/index/"
-	cache-period="31556926"/>
-	
-	<mvc:annotation-driven />
-
-
+ <mvc:resources mapping="/resources/**" location="/resources/index/"/>
+ <mvc:resources mapping="/css/**" location="/resources/css/" /> 
+ <mvc:default-servlet-handler/>
+ <mvc:annotation-driven/>
 </beans>

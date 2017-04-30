@@ -2,68 +2,75 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
+<spring:url value="resources/css/style.css" var="style"/>
+<spring:url value="resources/css/font-awesome.css" var="font"/>
+<spring:url value="resources/css/responsive.css" var="responsive"/>
+<spring:url value="resources/css/animate.css" var="animate"/>
+
+<spring:url value="resources/js/jquery.1.8.3.min.js" var="jquery"/>
+<spring:url value="resources/js/bootstrap.js" var="boot"/>
+<spring:url value="resources/js/jquery-scrolltofixed.js" var="scroll"/>
+<spring:url value="resources/js/jquery.easing.1.3.js" var="easing"/>
+<spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
+<spring:url value="resources/js/wow.js" var="wow"/>
+<spring:url value="resources/js/classie.js" var="classie"/>
+
+<spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
+<spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
+<spring:url value="resources/index/js/html5element.js" var="html5element"/>
+
+<spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
+<spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop</title>
+<title>Foto-Szop | Rejestracja</title>
 <link rel="icon" href="<c:url value="resources/index/favicon.png"/>">
 <link rel="shortcut icon" href="<c:url value="favicon.ico"/>">
 
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
+<link href="${font1}" rel="stylesheet">
+<link href="${font2}" rel="stylesheet">
 
-<link href="<c:url value="/resources/index/css/bootstrap.css"/>" rel="stylesheet">
-<link href="<c:url value="/resources/index/css/style.css"/>" rel="stylesheet">
-<link href="<c:url value="/resources/index/css/font-awesome.css"/>" rel="stylesheet">
-<link href="<c:url value="/resources/index/css/responsive.css"/>" rel="stylesheet">
-<link href="<c:url value="/resources/index/css/animate.css"/>" rel="stylesheet">
+<link href="${bootstrap}" rel="stylesheet"/>
+<link href="${style}" rel="stylesheet"/>
+<link href="${font}" rel="stylesheet"/>
+<link href="${responsive}" rel="stylesheet"/>
+<link href="${animate}" rel="stylesheet"/>
 
-<script src="<c:url value="/resources/index/js/jquery.1.8.3.min.js"/>"></script>
-<script src="<c:url value="/resources/index/js/bootstrap.js"/>"></script>
-<script src="<c:url value="/resources/index/js/jquery-scrolltofixed.js"/>"></script>
-<script src="<c:url value="/resources/index/js/jquery.easing.1.3.js"/>"></script>
-<script src="<c:url value="/resources/index/js/jquery.isotope.js"/>"></script>
-<script src="<c:url value="/resources/index/js/wow.js"/>"></script>
-<script src="<c:url value="/resources/index/js/classie.js"/>"></script>
-
+<script src="${jquery}"></script>
+<script src="${boot}"></script>
+<script src="${scroll}"></script>
+<script src="${easing}"></script>
+<script src="${isotope}"></script>
+<script src="${wow}"></script>
+<script src="${classie}"></script>
 
 <!--[if lt IE 9]>
-    <script src="<c:url value="/resources/index/js/respond-1.1.0.min.js"/>"></script>
-    <script src="<c:url value="/resources/index/js/html5shiv.js"/>"></script>
-    <script src="<c:url value="/resources/index/js/html5element.js"/>"></script>
+    <script src="${respond}"></script>
+    <script src="${html5shiv}"></script>
+    <script src="${html5element}></script>
 <![endif]-->
 
 
 </head>
 <body>
-<div style="overflow:hidden;">
-<header class="header" id="header"><!--header-start-->
-	<div class="container">
-    	<figure class="logo animated fadeInDown delay-07s">
-        	<a href="#"><img src="<c:url value="/resources/img/logo.png"/>"></a>	
-        </figure>	
-        <h1 class="animated fadeInDown delay-07s">Witamy w Foto-Szopie</h1>
-        <ul class="we-create animated fadeInUp delay-1s">
-        	<li>Z NAMI ZDJĘCIA SĄ PIĘKNIEJSZE</li>
-        </ul>
-            <a class="link animated fadeInUp delay-1s" href="#test">Zaczynamy</a>
-    </div>
-</div>
+<header><!--header-start-->
 </header><!--header-end-->
 
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        	<li><a href="#header">Strona Główna</a></li>
-            <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+        	<li><a href="${contextPath}/index">Powrót</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="${contextPath}/register">Rejestracja</a></li>
-			<li><a href="#zaloguj">Zaloguj</a></li>
             <li><a href="#kontakt">Kontakt</a></li>			
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
@@ -74,44 +81,55 @@
 
 <section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
-    	<h2>Oferta</h2>
-    	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
+    	<h2>Rejestracja</h2>
+    	<h6>Dołącz do nas juz dziś!</h6>
         <div class="row">
         	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
             	<div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-paw"></i>
+                    	<i class="fa-user"></i>
                     </div>
                 	<div class="service-list-col2">
-                        <h3>OBRÓBKA &amp; WYWOŁANIE</h3>
-                        <p>Nasza drukarnia dużej rozdzielczości sprosta każdemu wymaganiu klienta.</p>
+                	 <div class="form">
+                        <form:form method="post"  modelAttribute="form"  action="addClient">	
+							Imię: <form:input class="input-text" path="name" required="required"></form:input><br/>
+							Nazwisko: <form:input class="input-text" path="surname" required="required"></form:input><br/>		
+							Adres: <form:input class="input-text" path="address" required="required"/><br/>
+							PESEL: <form:input class="input-text"  path="identityNumber" pattern="[0-9]{11}" required="required"/><br/>
+							E-mail:<form:input class="input-text" type="email" path="email" required="required"/><br/>
+							Hasło: <form:input class="input-text" type="password" path="password" required="required"/><br/>
+	                     	Powtorz hasło: <form:input class="input-text"  type="password" path="password2" required="required"/><br/>
+                            Podaj telefon: <form:input class="input-text" path="phoneNumber" required="required"/><br/>
+                     	<input type="submit" class="input-btn" value="Rejestruj">            	
+				</form:form>
+                    </div>
                     </div>
                 </div>
                 <div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-gear"></i>
+                    	<i class="fa-file"></i>
                     </div>
                 	<div class="service-list-col2">
-                        <h3>SESJA ZDJĘCIOWA</h3>
-                        <p>Oddajemy do Państwa dyspocyzji najlepszych fotografów.</p>
+                        <h3>REGULAMIN</h3>
+                        <p>Czytaj></p>
                     </div>
                 </div>
                 <div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-apple"></i>
+                    	<i class="fa-star"></i>
                     </div>
                 	<div class="service-list-col2">
-                        <h3>SZYBKA DOSTAWA</h3>
-                        <p>Najszybsza paczka którą dostarczyliśmy przebyła swoją drogę w mniej niż godzinę!</p>
+                        <h3>REKLAMA</h3>
+                        <p>Czytaj></p>
                     </div>
                 </div>
                 <div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-medkit"></i>
+                    	<i class="fa-envelope"></i>
                     </div>
                 	<div class="service-list-col2">
-                        <h3>WSPARCIE GRAFICZNE</h3>
-                        <p>Do państwa dyspozycji oddajemy także najlepszej klasy grafików, którzy nie pozwolą aby Państwa zdjęciom stała się krzywda.</p>
+                        <h3>RABATY</h3>
+                        <p>Czytaj></p>
                     </div>
                 </div>
             </div>
@@ -125,91 +143,6 @@
 
 
 
-
-
-
-<section class="main-section paddind" id="portfolio"><!--main-section-start-->
-	<div class="container">
-    	<h2>Portfolio</h2>
-    	<h6>Najnowsze zdjęcia obrobione i wywołane w naszym zakładzie.</h6>
-      <div class="portfolioFilter">  
-        <ul class="Portfolio-nav wow fadeIn delay-02s">
-        	<li><a href="#" data-filter="*" class="current" >All</a></li>
-            <li><a href="#" data-filter=".branding" >RAW</a></li>
-            <li><a href="#" data-filter=".webdesign" >Obróbka</a></li>
-            <li><a href="#" data-filter=".printdesign" >Sesja zdjęciowa</a></li>
-            <li><a href="#" data-filter=".photography" >Reklama</a></li>
-        </ul>
-       </div> 
-        
-	</div>
-    <div class="portfolioContainer wow fadeInUp delay-04s">
-            	<div class=" Portfolio-box printdesign">
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic1.jpg"/>"></a>	
-                	<h3>Foto Album</h3>
-                    <p>Print Design</p>
-                </div>
-                <div class="Portfolio-box webdesign">
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic2.jpg"/>"></a>	
-                	<h3>Nike</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box branding">
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic3.jpg"/>"></a>	
-                	<h3>Advertisment</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box photography" >
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic4.jpg"/>"></a>	
-                	<h3>Vinyl Record</h3>
-                    <p>Photography</p>
-                </div>
-                <div class=" Portfolio-box branding">
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic5.jpg"/>"></a>	
-                	<h3>West Coast</h3>
-                    <p>Branding</p>
-                </div>
-                <div class=" Portfolio-box photography">
-                	<a href="#"><img src="<c:url value="/resources/img/Portfolio-pic6.jpg"/>"></a>	
-                	<h3>Voyage</h3>
-                    <p>Photography</p>
-                </div>
-    </div>
-</section><!--main-section-end-->
-
-
-<section class="main-section client-part" id="rejestracja"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-user"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Dołącz do nas i ciesz się nieziemską jakością!</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/register">Zarejestruj się</a>
-    </div>
-</section><!--main-section client-part-end-->
-<div class="c-logo-part"><!--c-logo-part-start-->
-	<div class="container" >
-    	<ul>
-        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
-    	</ul>
-	</div>
-</div><!--c-logo-part-end-->
-<section class="main-section team" id="zaloguj"><!--main-section team-start-->
-	<div class="container">
-<div class="form"style="width: 100%; text-align: center;">
-                	<input style="width: 100%; text-align: center;" class="input-text" type="text" name="" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input style="width: 100%; text-align: center;"class="input-text" type="password" name="" value="Hasło *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input class="input-btn" type="submit" value="Zaloguj">
-                </div>	
-
-    </div>
-</section><!--main-section team-end-->
 
 
 
