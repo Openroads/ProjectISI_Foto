@@ -18,6 +18,7 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
+<spring:url value="resources/js/validation.js" var="validation"/>
 
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
@@ -26,6 +27,8 @@
 <spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
 <spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
 
+<spring:url value="resources/favicon.png" var="favicon"/>
+
 <!doctype html>
 <html>
 <head>
@@ -33,8 +36,7 @@
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
 <title>Foto-Szop | Rejestracja</title>
-<link rel="icon" href="<c:url value="resources/index/favicon.png"/>">
-<link rel="shortcut icon" href="<c:url value="favicon.ico"/>">
+<link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
 <link href="${font2}" rel="stylesheet">
@@ -52,6 +54,7 @@
 <script src="${isotope}"></script>
 <script src="${wow}"></script>
 <script src="${classie}"></script>
+<script src="${validation}"></script>
 
 <!--[if lt IE 9]>
     <script src="${respond}"></script>
@@ -91,16 +94,29 @@
                     </div>
                 	<div class="service-list-col2">
                 	 <div class="form">
-                        <form:form method="post"  modelAttribute="form"  action="addClient">	
-							Imię: <form:input class="input-text" path="name" required="required"></form:input><br/>
-							Nazwisko: <form:input class="input-text" path="surname" required="required"></form:input><br/>		
-							Adres: <form:input class="input-text" path="address" required="required"/><br/>
-							PESEL: <form:input class="input-text"  path="identityNumber" pattern="[0-9]{11}" required="required"/><br/>
-							E-mail:<form:input class="input-text" type="email" path="email" required="required"/><br/>
-							Hasło: <form:input class="input-text" type="password" path="password" required="required"/><br/>
-	                     	Powtorz hasło: <form:input class="input-text"  type="password" path="password2" required="required"/><br/>
-                            Podaj telefon: <form:input class="input-text" path="phoneNumber" required="required"/><br/>
-                     	<input type="submit" class="input-btn" value="Rejestruj">            	
+                        <form:form method="post"  modelAttribute="form" id="register-form"  action="addClient">	
+							Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
+							<div id="iname"></div><br>
+							Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
+							<div id="isurname"></div><br>
+							Adres: <form:input class="input-text" path="address" id="address-form" />
+							<div id="iaddress"></div><br>
+							PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
+							<div id="iidentity-number"></div><br>
+							E-mail:<form:input class="input-text" type="email" path="email" id="email" />
+							<div id="iemail"></div><br>
+							Hasło: <form:input class="input-text" type="password" path="password" id="password" />
+	                     	<div id="ipassword"></div><br>
+	                     	Powtorz hasło: <form:input class="input-text"  type="password" id="password2" path="password2" />
+                            <div id="ipassword2"></div><br>
+                                Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
+                                <div id="iphone"></div><br>
+                                <div style="text-align:center;">
+                     		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
+                     		<label><input type="checkbox" class="input-text"  value="adv" id="adv"/>Chcę otrzymywać reklamy.</label>
+                     		<label><input type="checkbox" class="input-text"  value="promo" id="promo"/>Chcę otrzymywać rabaty.</label>
+                     		<input type="submit" id="submit" class="input-btn" value="Rejestruj">         
+               			       </div>
 				</form:form>
                     </div>
                     </div>
@@ -111,7 +127,7 @@
                     </div>
                 	<div class="service-list-col2">
                         <h3>REGULAMIN</h3>
-                        <p>Czytaj></p>
+                        <p><a style="color: green;" href="#">Czytaj></a></p>
                     </div>
                 </div>
                 <div class="service-list">
@@ -120,7 +136,7 @@
                     </div>
                 	<div class="service-list-col2">
                         <h3>REKLAMA</h3>
-                        <p>Czytaj></p>
+                        <p><a style="color: green;" href="#">Czytaj></a></p>
                     </div>
                 </div>
                 <div class="service-list">
@@ -129,7 +145,7 @@
                     </div>
                 	<div class="service-list-col2">
                         <h3>RABATY</h3>
-                        <p>Czytaj></p>
+                        <p><a style="color: green;" href="#">Czytaj></a></p>
                     </div>
                 </div>
             </div>

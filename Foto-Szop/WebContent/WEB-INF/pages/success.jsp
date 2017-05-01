@@ -25,6 +25,8 @@
 <spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
 <spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
 
+<spring:url value="resources/favicon.png" var="favicon"/>
+
 <!doctype html>
 <html>
 <head>
@@ -32,8 +34,7 @@
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
 <title>Foto-Szop | Sukces</title>
-<link rel="icon" href="<c:url value="resources/index/favicon.png"/>">
-<link rel="shortcut icon" href="<c:url value="favicon.ico"/>">
+<link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
 <link href="${font2}" rel="stylesheet">

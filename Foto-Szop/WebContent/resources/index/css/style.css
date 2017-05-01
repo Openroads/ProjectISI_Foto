@@ -865,3 +865,17 @@ border: 2px solid #fff;
 
 
 
+
+.error {
+	color: #b41414 !important;
+	margin-left:20px;
+}
+
+.ok {
+	color: green;
+	margin-left:20px;
+}
+
+
+
+
