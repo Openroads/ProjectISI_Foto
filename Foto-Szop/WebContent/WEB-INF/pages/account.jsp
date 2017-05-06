@@ -27,14 +27,14 @@
 
 <spring:url value="resources/favicon.png" var="favicon"/>
 
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
-<meta http-equiv="refresh" content="10;url=account" />
 
-<title>Foto-Szop | Sukces</title>
+<title>Foto-Szop | Konto</title>
 <link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
@@ -63,16 +63,15 @@
 
 </head>
 <body>
-<header><!--header-start-->
-</header><!--header-end-->
-
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        	<li><a href="${contextPath}/index">Powrót</a></li>
+            <li><a href="#oferta">Oferta</a></li>
+            <li><a href="#zamówienia">Zamówienia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-            <li><a href="#kontakt">Kontakt</a></li>			
+			<li><a href="#edytuj">Edytuj Konto</a></li>	
+			<li><a href="${contextPath}/index">Wyloguj</a></li>	
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
     </div>
@@ -80,20 +79,110 @@
 
 
 
-<section class="main-section client-part" style="color=#fff;" id="sukces"><!--main-section client-part-start-->
+<section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-check"></i></b>
+    	<h2>Oferta</h2>
+    	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
+        <div class="row">
+        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
+            	<div class="service-list">
+                	<div class="service-list-col1">
+                    	<i class="fa-flag"></i>
+                    </div>
+                	<div class="service-list-col2">
+                        <a href=""><h3>OBRÓBKA &amp; WYWOŁANIE</h3></a>
+                        <p>Nasza drukarnia dużej rozdzielczości sprosta każdemu wymaganiu klienta.</p>
+                    </div>
+                </div>
+                <div class="service-list">
+                	<div class="service-list-col1">
+                    	<i class="fa-camera"></i>
+                    </div>
+                	<div class="service-list-col2">
+                        <a href=""><h3>SESJA ZDJĘCIOWA</h3></a>
+                        <p>Oddajemy do Państwa dyspocyzji najlepszych fotografów.</p>
+                    </div>
+                </div>
+                <div class="service-list">
+                	<div class="service-list-col1">
+                    	<i class="fa-forward"></i>
+                    </div>
+                	<div class="service-list-col2">
+                        <a href=""><h3>SZYBKA DOSTAWA</h3></a>
+                        <p>Najszybsza paczka którą dostarczyliśmy przebyła swoją drogę w mniej niż godzinę!</p>
+                    </div>
+                </div>
+                <div class="service-list">
+                	<div class="service-list-col1">
+                    	<i class="fa-eye"></i>
+                    </div>
+                	<div class="service-list-col2">
+                       <a href=""><h3>WSPARCIE GRAFICZNE</h3></a>
+                        <p>Do państwa dyspozycji oddajemy także najlepszej klasy grafików, którzy nie pozwolą aby Państwa zdjęciom stała się krzywda.</p>
+                    </div>
+                </div>
+            </div>
+            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
+            	<img src="<c:url value="/resources/img/camera.png"/>">
+            </figure>
+        
+        </div>
+	</div>
+</section><!--main-section-end-->
+
+
+
+
+
+
+<section class="main-section client-part" id="zamowienia"><!--main-section client-part-start-->
+	<div class="container">
+		<b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
     	<div class="row">
         	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Dziekujemy za rejestracje, ${client.getName()}<br>
-            	Za 10 sekund przeglądarka przekieruje Cię na stronę Twojego konta.</p>
-            	<p><progress value="0" max="10" id="progressBar"></progress></p>
+            	<p class="client-part-haead wow fadeInDown delay-05">Twoja historia zamówień</p>
             </div>
         </div>
-    	  
+    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Zamówienia</a>
     </div>
 </section><!--main-section client-part-end-->
 
+<div class="c-logo-part"><!--c-logo-part-start-->
+	<div class="container" >
+    	<ul>
+        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
+    	</ul>
+	</div>
+</div><!--c-logo-part-end-->
+<section class="main-section client-part" id="edytuj"><!--main-section client-part-start-->
+	<div class="container">
+		<b class="user wow fadeInDown delay-03"><i class="fa-user"></i></b>
+    	<div class="row">
+        	<div class="col-lg-12">
+            	<p class="client-part-haead wow fadeInDown delay-05">W każdej chwili możesz zmienić swoje dane!</p>
+            </div>
+        </div>
+    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Edytuj Konto</a>
+    </div>
+</section><!--main-section client-part-end-->
+
+
+
+<div class="c-logo-part"><!--c-logo-part-start-->
+	<div class="container" >
+    	<ul>
+        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
+    	</ul>
+	</div>
+</div><!--c-logo-part-end-->
 
 
 
@@ -333,17 +422,6 @@ $(window).load(function(){
     });
   
 });
-
-</script>
-
-<script>
-
-var timeleft = 10;
-var downloadTimer = setInterval(function(){
-  document.getElementById("progressBar").value = 10 - --timeleft;
-  if(timeleft <= 0)
-    clearInterval(downloadTimer);
-},1000);
 
 </script>
 </body>
