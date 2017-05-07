@@ -1,10 +1,11 @@
 package pl.fotoszop.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dto.LoginFormDTO;
-
+import pl.fotoszop.modelinterfaces.IAccount;
+import pl.fotoszop.modelinterfaces.IClient;
 
 @Controller
 public class HelloController{
 	
-//	@Autowired
-//	private ClientDAODbImpl clientDatabaseDAO;
+	@Autowired
+	private ClientDAODbImpl clientDatabaseDAO;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView showIndex(){
@@ -43,7 +47,11 @@ public class HelloController{
 		{
 			String login = form.getLogin();
 			String password = form.getPassword();
+			//TODO NIE ZNAJDUJE PLIKU XML
+			//ApplicationContext context = new ClassPathXmlApplicationContext("spring-dispatcher-servlet.xml");
 			
+			//AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAODbImpl");
+			System.out.println(clientDatabaseDAO);
 			model = new ModelAndView("index");
 			System.out.println("no errors");
 			System.out.println(form.getPassword());

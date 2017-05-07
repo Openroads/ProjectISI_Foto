@@ -1,5 +1,7 @@
 package pl.fotoszop.modelinterfaces;
 
+import java.sql.Date;
+
 public interface IAccount {
 	
 	public int getAccountId();
@@ -8,7 +10,7 @@ public interface IAccount {
 	public void setLogin(String login);
 	public String getPassword();
 	public void setPassword(String password);
-	public String getCreationDate();
-	public void setCreationDate(String creationDate);
+	public Date getCreationDate();
+	public void setCreationDate(Date creationDate);
 
 }
