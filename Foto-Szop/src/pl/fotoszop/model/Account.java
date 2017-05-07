@@ -5,11 +5,32 @@ import java.sql.Date;
 
 import pl.fotoszop.modelinterfaces.IAccount;
 
+
 public class Account implements IAccount{
 	private int accountId;
 	private String login;
 	private String password;
 	private Date creationDate;
+	private int clientId;
+	
+	public Account(){
+		
+	}
+	
+	public Account (Form form){
+		accountId = form.getId();
+		login = form.getEmail();
+		password = form.getPassword();
+		creationDate = new Date(45000);
+		clientId = form.getId();
+	}
+	
+	public int getClientId(){
+		return clientId;
+	}
+	public void setClientId(int id){
+		clientId = id;
+	}
 	
 	public int getAccountId() {
 		return accountId;

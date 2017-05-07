@@ -11,8 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
+import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
@@ -21,18 +24,23 @@ public class RegisterController {
 	
 	@Autowired
 	private ClientDAODbImpl clientDatabaseDAO;
+	@Autowired
+	private AccountDAODbImpl aclientDatabaseDAO;
 	
 	@RequestMapping("/addClient")
 	public ModelAndView processForm(@ModelAttribute Form form){
 		
-		ClientDAO database = new ClientDAOMock();
-		boolean flag = form.checkToRegister(database);
+		//ClientDAO database = new ClientDAODbImpl();
+		//AccountDAO databaseAccount = new AccountDAODbImpl();
+		boolean flag = form.checkToRegister(clientDatabaseDAO);
 		//boolean flag = checkDatabase(form,database);
 		if(!flag){
 			
 			//Client newClient = new Client(1,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
 			Client newClient = new Client(form);
-			database.saveOrUpdate(newClient);
+			Account newAccount = new Account(form);
+			clientDatabaseDAO.saveOrUpdate(newClient);
+			aclientDatabaseDAO.saveOrUpdate(newAccount);
 			ModelAndView model = new ModelAndView("success");
 			model.addObject("client",newClient);
 			return model;

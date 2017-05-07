@@ -13,5 +13,6 @@ public interface AccountDAO {
 	 */
 
 	public IAccount getAccountByLogin(String login);
+	public int saveOrUpdate(IAccount account);
 	
 }

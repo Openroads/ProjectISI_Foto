@@ -12,5 +12,7 @@ public interface IAccount {
 	public void setPassword(String password);
 	public Date getCreationDate();
 	public void setCreationDate(Date creationDate);
+	public int getClientId();
+	public void setClientId(int id);
 
 }
