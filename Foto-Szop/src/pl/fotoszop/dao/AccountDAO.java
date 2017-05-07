@@ -11,10 +11,7 @@ public interface AccountDAO {
 	 * 
 	 * @param account
 	 */
-	public void saveOrUpdate(IAccount account);
-	public void delete(int accountId);
-	public IClient getClientById(int accountId);
-	public Collection<IAccount> getAllAccounts();
-		
+
+	public IAccount getAccountByLogin(String login);
 	
 }

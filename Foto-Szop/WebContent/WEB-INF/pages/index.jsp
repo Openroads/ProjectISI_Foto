@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
 <spring:url value="resources/css/font-awesome.css" var="font"/>
@@ -226,12 +226,28 @@
 </div><!--c-logo-part-end-->
 <section class="main-section team" id="zaloguj"><!--main-section team-start-->
 	<div class="container">
-<div class="form"style="width: 100%; text-align: center;">
-                	<input style="width: 100%; text-align: center;" class="input-text" type="text" name="" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input style="width: 100%; text-align: center;"class="input-text" type="password" name="" value="Hasło *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+			
+			<div class="form"style="width: 100%; text-align: center;">
+					<form:form action="index" modelAttribute="loginForm" method="post">
+                	<c:if test="${pageContext.request.method=='GET'}">
+                		<form:input path ="login" 	 id = "login" type = "email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"></form:input>
+                    	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    </c:if>
+                    
+                    <c:if test="${pageContext.request.method=='POST'}">
+                    	
+                    	<form:input path ="login" 	 id = "login"  type ="email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    	<form:errors path="login" 	 cssStyle="color: #ff0000;" />
+                    	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    	<span style= "color: #ff0000;" > Password <form:errors path="password"  /> </span><br/>
+                   		
+                   	</c:if>
+                   	
                     <input class="input-btn" type="submit" value="Zaloguj">
-                </div>	
-
+                    
+                    </form:form>
+           </div>	
+				
     </div>
 </section><!--main-section team-end-->
 

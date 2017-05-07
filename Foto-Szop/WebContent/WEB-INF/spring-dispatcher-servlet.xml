@@ -13,6 +13,8 @@ xsi:schemaLocation="
 
 <context:component-scan base-package="pl.fotoszop.controller"/>
 
+<mvc:annotation-driven />
+
 <bean id="viewResolver"
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix">

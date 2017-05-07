@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.model.Client;
@@ -16,6 +18,7 @@ import pl.fotoszop.modelinterfaces.IClient;
  * @author dariusz
  *
  */
+@Repository
 public class ClientDAODbImpl implements ClientDAO{
 	private JdbcTemplate jdbcTemplate;
 	
