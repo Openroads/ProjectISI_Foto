@@ -1,7 +1,11 @@
 package pl.fotoszop.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.modelinterfaces.IClient;
@@ -97,6 +101,28 @@ public class Form {
 		
 		id++;
 		return isTaken;
+	}
+	
+	/**
+	 * Method to check if user gave password and password 2 properly
+	 * @return true - if passwords given in form are the same,  false - if they are not the same
+	 */
+	public boolean checkPasswords(){
+		
+		if(password.equals(password2))
+			return true;
+		
+		return false;
+		
+	}
+	
+	/**
+	 * Method to change plaintext password to hash
+	 */
+	public void doHash(){
+		
+		password = HashGenerator.doHash(password);
+		password2 = HashGenerator.doHash(password2);
 	}
 	
 	

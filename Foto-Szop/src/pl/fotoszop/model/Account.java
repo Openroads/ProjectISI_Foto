@@ -2,6 +2,7 @@ package pl.fotoszop.model;
 
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import pl.fotoszop.modelinterfaces.IAccount;
 
@@ -21,7 +22,7 @@ public class Account implements IAccount{
 		accountId = form.getId();
 		login = form.getEmail();
 		password = form.getPassword();
-		creationDate = new Date(45000);
+		creationDate = Date.valueOf(LocalDate.now());
 		clientId = form.getId();
 	}
 	
