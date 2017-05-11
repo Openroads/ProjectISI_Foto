@@ -33,7 +33,6 @@ xsi:schemaLocation="
 <!-- declare datasource bean -->
  <import resource = "Spring-DataSource.xml"/>
  
-
  <mvc:resources mapping="/resources/**" location="/resources/index/"/>
  <mvc:resources mapping="/css/**" location="/resources/css/" /> 
  <mvc:default-servlet-handler/>
