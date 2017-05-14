@@ -228,7 +228,7 @@
 	<div class="container">
 			
 			<div class="form"style="width: 100%; text-align: center;">
-					<form:form action="index" modelAttribute="loginForm" method="post">
+					<form:form action="login" modelAttribute="loginForm" method="post">
                 	<c:if test="${pageContext.request.method=='GET'}">
                 		<form:input path ="login" 	 id = "login" type = "email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"></form:input>
                     	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
