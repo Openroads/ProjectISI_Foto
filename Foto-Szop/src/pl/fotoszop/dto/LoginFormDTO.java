@@ -12,7 +12,7 @@ public class LoginFormDTO {
 	@Email
 	private String login;
 	
-	@NotEmpty
+	@NotEmpty(message = "Password cannot be empty.")
 	private String password;
 
 	public String getLogin() {

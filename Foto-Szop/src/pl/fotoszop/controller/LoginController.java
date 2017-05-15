@@ -46,17 +46,23 @@ public class LoginController {
 	
 			form.doHash();
 			
+			//redirectAttributes.addAttribute("loginForm", form);
+			
 			int r = form.checkToLogin(aclientDatabaseDAO);
 			
 			if(r == 0){
 				System.out.println("B�edne has�o");
+				form.setPassword("");
 				model = new ModelAndView("/index");
 				result.rejectValue("password", "errCodePassword","Podane hasło jest nie prawidłowe");
+				
 				model.addObject("loginForm",form);
+				
 			} else if(r == -1){
 				System.out.println("B�edny mail");
 				model = new ModelAndView("/index");
-				result.rejectValue("login", "errorCodeLogin","Konto o podanym email nie istnieje");
+				result.rejectValue("login", "errorCodeLogin","Konto o podanym email nie istnieje.");
+				form.setPassword(null);
 				model.addObject("loginForm",form);
 			}else if(r == 1){
 				IAccount account = form.getAccount(aclientDatabaseDAO);
