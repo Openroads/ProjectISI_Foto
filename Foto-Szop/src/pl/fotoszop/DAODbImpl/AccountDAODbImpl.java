@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import pl.fotoszop.dao.AccountDAO;
+import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.model.Account;
+import pl.fotoszop.model.HashGenerator;
 import pl.fotoszop.modelinterfaces.IAccount;
 
 public class AccountDAODbImpl implements AccountDAO{
@@ -124,6 +126,36 @@ public class AccountDAODbImpl implements AccountDAO{
 			}
 		}
 		
+		return null;
+	}
+	
+	/**
+	 * Method to check if data from login form is correct
+	 * @param database - storage which contains accounts info
+	 * @return int result - 1 when succes, -1 when login doesnt exist, 0 when password is incorrect or another failure
+	 */
+	
+	public int checkToLogin(LoginFormDTO form){
+		
+		IAccount account = null;
+		account = this.getAccountByLogin(form.getLogin());
+		if(account==null)
+			return -1;
+		else 
+		{
+			if(account.getPassword().equals(HashGenerator.doHash(form.getPassword())))
+				return 1;
+		}
+		
+		return 0;
+	}
+	
+	public IAccount getAccount(LoginFormDTO form){
+		
+		if(this.checkToLogin(form)==1){
+			IAccount account = this.getAccountByLogin(form.getLogin());
+			return account;
+		}
 		return null;
 	}
 

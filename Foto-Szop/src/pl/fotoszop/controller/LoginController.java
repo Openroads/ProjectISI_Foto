@@ -42,16 +42,11 @@ public class LoginController {
 		}
 		else
 		{
-			String login = form.getLogin();
-			String password = form.getPassword();
-			
 			System.out.println("no errors");
 			System.out.println(form.getPassword());
-			form.doHash();
+				//redirectAttributes.addAttribute("loginForm", form);
 			
-			//redirectAttributes.addAttribute("loginForm", form);
-			
-			int r = form.checkToLogin(aclientDatabaseDAO);
+			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");
 				form.setPassword("");
@@ -67,7 +62,7 @@ public class LoginController {
 				form.setPassword(null);
 				model.addObject("loginForm",form);
 			}else if(r == 1){
-				IAccount account = form.getAccount(aclientDatabaseDAO);
+				IAccount account = aclientDatabaseDAO.getAccount(form);
 				model = new ModelAndView("account");
 				model.addObject("account",account);
 			}
