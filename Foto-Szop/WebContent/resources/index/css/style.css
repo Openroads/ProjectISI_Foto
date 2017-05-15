@@ -876,6 +876,10 @@ border: 2px solid #fff;
 	margin-left:20px;
 }
 
+.caption{
+word-wrap: break-word;
+}
+
 
 
 

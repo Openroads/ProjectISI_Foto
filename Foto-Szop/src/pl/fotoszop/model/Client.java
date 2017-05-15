@@ -44,6 +44,12 @@ public class Client implements IClient{
 		this.email = form.getEmail();
 	}
 	
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", surname=" + surname + ", address=" + address
+				+ ", identityNumber=" + identityNumber + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
+	}
+
 	public int getId() {
 		return id;
 	}

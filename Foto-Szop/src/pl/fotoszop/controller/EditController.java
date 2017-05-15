@@ -11,9 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
+import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Client;
-import pl.fotoszop.model.EditForm;
+import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.dao.AccountDAO;
+import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller
@@ -21,19 +24,26 @@ public class EditController {
 	
 	@Autowired
 	private ClientDAODbImpl clientDatabaseDAO;
+	@Autowired
+	private AccountDAODbImpl aclientDatabaseDAO;
 	
 	@RequestMapping("/editClient")
-	public ModelAndView processForm(@ModelAttribute EditForm editForm){
+	public ModelAndView processForm(@ModelAttribute Form form){
 		
-		ClientDAOMock database = new ClientDAOMock();
-		boolean flag = checkDatabase(editForm,database);
-		if(flag){
+		//ClientDAO database = new ClientDAODbImpl();
+		//AccountDAO databaseAccount = new AccountDAODbImpl();
+		form.doHash();
+		boolean flag = form.checkToRegister(clientDatabaseDAO);
+		boolean flag2 = form.checkPasswords();
+		//boolean flag = checkDatabase(form,database);
+		if((!flag)&&flag2){
 			
-			// Need to create session data to take ID and check if this client exist and if he can maintain edit on his account.
-			 Client editedClient = new Client(1,editForm.getName(),editForm.getSurname(),editForm.getAddress(),editForm.getIdentityNumber(),editForm.getPhoneNumber(),"email from session");
-			database.saveOrUpdate(editedClient);
+			Client newClient = new Client(form);
+			Account newAccount = new Account(form);
+			clientDatabaseDAO.saveOrUpdate(newClient);
+			aclientDatabaseDAO.saveOrUpdate(newAccount);
 			ModelAndView model = new ModelAndView("success");
-			model.addObject("client",editedClient);
+			model.addObject("client",newClient);
 			return model;
 		}
 		else{
@@ -43,24 +53,13 @@ public class EditController {
 		
 	}
 	
-	@RequestMapping("/edycja.html")
+	@RequestMapping("/edit")
 	public ModelAndView getForm(){
 		
-		ModelAndView model = new ModelAndView("Edit");
-		model.addObject("editForm", new EditForm());
+		ModelAndView model = new ModelAndView("edit");
+		model.addObject("form", new Form());
 		return model;
 	}
-	
-	public boolean checkDatabase(EditForm editForm, ClientDAOMock database){
-		Collection<IClient> clients = new ArrayList<>();
-		clients = database.getAllContacts();
-		
-		for(IClient object: clients)
-		{
-		//	if(object.getEmail().equals(editForm.getEmail()))  // Session need to appear here
-				return true;
-		}
-		return false;	
-	}		
 }
+	
 	

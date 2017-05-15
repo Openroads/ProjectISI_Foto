@@ -103,6 +103,7 @@ public class AccountDAODbImpl implements AccountDAO{
 				account.setLogin(rs.getString("login"));
 				account.setPassword(rs.getString("password"));
 				account.setCreationDate(rs.getDate("date_of_creation"));
+				account.setClientId(rs.getInt("id_client"));
 			}
 			statement.close();
 			rs.close();

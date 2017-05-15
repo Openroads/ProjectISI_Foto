@@ -8,6 +8,11 @@ import pl.fotoszop.modelinterfaces.IAccount;
 
 
 public class Account implements IAccount{
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", login=" + login + ", password=" + password + ", creationDate="
+				+ creationDate + ", clientId=" + clientId + "]";
+	}
 	private int accountId;
 	private String login;
 	private String password;
