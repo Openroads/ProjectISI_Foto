@@ -35,7 +35,7 @@ public class LoginController {
 		
 		if(result.hasErrors())
 		{
-			model = new ModelAndView("index");
+			model = new ModelAndView("redirect:/index#zalogujhandler");
 			model.addObject("loginForm",form);
 		}
 		else
@@ -49,12 +49,12 @@ public class LoginController {
 			
 			int r = form.checkToLogin(aclientDatabaseDAO);
 			if(r == 0){
-				System.out.println("B³edne has³o");
-				model = new ModelAndView("index");
+				System.out.println("Bï¿½edne hasï¿½o");
+				model = new ModelAndView("redirect:/index#zalogujhandler");
 				model.addObject("loginForm",new LoginFormDTO());
 			} else if(r == -1){
-				System.out.println("B³edny mail");
-				model = new ModelAndView("index");
+				System.out.println("Bï¿½edny mail");
+				model = new ModelAndView("redirect:/index#zalogujhandler");
 				model.addObject("loginForm",new LoginFormDTO());
 			}else if(r == 1){
 				IAccount account = form.getAccount(aclientDatabaseDAO);

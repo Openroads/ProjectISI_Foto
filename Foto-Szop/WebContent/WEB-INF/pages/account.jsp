@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
 <spring:url value="resources/css/font-awesome.css" var="font"/>
@@ -79,10 +80,12 @@
 
 
 
+
 <section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
     	<h2>Oferta</h2>
     	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
+    	<p class="client-part-haead wow fadeInDown delay-05" style="color : black;">Witamy, ${account.getLogin()}<br></p>
         <div class="row">
         	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
             	<div class="service-list">
@@ -172,7 +175,7 @@
 
 
 
-<div class="c-logo-part"><!--c-logo-part-start-->
+<div class="c-logo-part" ><!--c-logo-part-start-->
 	<div class="container" >
     	<ul>
         	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>

@@ -202,19 +202,19 @@
 </section><!--main-section-end-->
 
 
-<section class="main-section client-part" id="rejestracja"><!--main-section client-part-start-->
+<section class="main-section client-part" id="rejestracja" ><!--main-section client-part-start-->
 	<div class="container">
 		<b class="user wow fadeInDown delay-03"><i class="fa-user"></i></b>
     	<div class="row">
         	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Dołącz do nas i ciesz się nieziemską jakością!</p>
+            	<p class="client-part-haead wow fadeInDown delay-05" id="zalogujhandler" >Dołącz do nas i ciesz się nieziemską jakością!</p>
             </div>
         </div>
     	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/register">Zarejestruj się</a>
     </div>
 </section><!--main-section client-part-end-->
 <div class="c-logo-part"><!--c-logo-part-start-->
-	<div class="container" >
+	<div class="container"  >
     	<ul>
         	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
             <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
