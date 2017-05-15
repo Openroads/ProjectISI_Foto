@@ -18,10 +18,9 @@ import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IAccount;
-import pl.fotoszop.modelinterfaces.IClient;
 
 @Controller
-@SessionAttributes({"account","client"})
+@SessionAttributes("account")
 public class LoginController {
 	
 	@Autowired
@@ -43,13 +42,16 @@ public class LoginController {
 		}
 		else
 		{
-	
+			String login = form.getLogin();
+			String password = form.getPassword();
+			
+			System.out.println("no errors");
+			System.out.println(form.getPassword());
 			form.doHash();
 			
 			//redirectAttributes.addAttribute("loginForm", form);
 			
 			int r = form.checkToLogin(aclientDatabaseDAO);
-			
 			if(r == 0){
 				System.out.println("B�edne has�o");
 				form.setPassword("");
@@ -66,12 +68,8 @@ public class LoginController {
 				model.addObject("loginForm",form);
 			}else if(r == 1){
 				IAccount account = form.getAccount(aclientDatabaseDAO);
-				System.out.println(account.toString());
-				IClient client = clientDatabaseDAO.getClientById(account.getClientId());
-				System.out.println(client.toString());
 				model = new ModelAndView("account");
 				model.addObject("account",account);
-				model.addObject("client",client);
 			}
 			  
 		}
