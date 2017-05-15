@@ -234,11 +234,13 @@
                     	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
                     </c:if>
                     
-                    <c:if test="${pageContext.request.method=='POST'}">
+                    
                     	
-                    	<form:input path ="login" 	 id = "login"  type ="email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    
+                    <c:if test="${pageContext.request.method=='POST'}">
+                    	<form:input path ="login" 	value="${loginForm.login}" id = "login"  type ="email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
                     	<form:errors path="login" 	 cssStyle="color: #ff0000;" />
-                    	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    	<form:input path ="password" value="" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
                     	<span style= "color: #ff0000;" > Password <form:errors path="password"  /> </span><br/>
                    		
                    	</c:if>
