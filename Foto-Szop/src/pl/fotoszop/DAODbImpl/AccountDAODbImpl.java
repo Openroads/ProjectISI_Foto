@@ -24,6 +24,9 @@ public class AccountDAODbImpl implements AccountDAO{
 	private static final String SQL_GET_ACCOUNT_BY_LOGIN = "SELECT * from account where login = ? ";
 	
 	private DataSource dataSource;
+	
+	private boolean loginCheckingStatus = false;
+	private IAccount account;
 
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -137,14 +140,17 @@ public class AccountDAODbImpl implements AccountDAO{
 	
 	public int checkToLogin(LoginFormDTO form){
 		
-		IAccount account = null;
-		account = this.getAccountByLogin(form.getLogin());
-		if(account==null)
+		IAccount acc = this.getAccountByLogin(form.getLogin());
+		
+		if(acc==null)
 			return -1;
 		else 
 		{
-			if(account.getPassword().equals(HashGenerator.doHash(form.getPassword())))
+			if(acc.getPassword().equals(HashGenerator.doHash(form.getPassword())))
+			{
+				this.account = acc;
 				return 1;
+			}
 		}
 		
 		return 0;
@@ -152,11 +158,8 @@ public class AccountDAODbImpl implements AccountDAO{
 	
 	public IAccount getAccount(LoginFormDTO form){
 		
-		if(this.checkToLogin(form)==1){
-			IAccount account = this.getAccountByLogin(form.getLogin());
-			return account;
-		}
-		return null;
+		return this.account;
+		
 	}
 
 }
