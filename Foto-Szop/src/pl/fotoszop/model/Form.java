@@ -21,9 +21,16 @@ public class Form {
 	private String email;
 	private String password;
 	private String password2;
+	private int success = 0;
 	
 	
 	
+	public int getSuccess() {
+		return success;
+	}
+	public void setSuccess(int success) {
+		this.success = success;
+	}
 	public int getId() {
 		return id;
 	}

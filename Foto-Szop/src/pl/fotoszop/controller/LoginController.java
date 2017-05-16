@@ -48,17 +48,23 @@ public class LoginController {
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");
+				Form failed = new Form();
 				form.setPassword("");
+				failed.setSuccess(1);
 				model = new ModelAndView("/index");
 				result.rejectValue("password", "errCodePassword","Podane hasło jest nie prawidłowe");
 				
+				model.addObject("failed", failed);
 				model.addObject("loginForm",form);
 				
 			} else if(r == -1){
 				System.out.println("B�edny mail");
 				model = new ModelAndView("/index");
+				Form failed = new Form();
+				failed.setSuccess(1);
 				result.rejectValue("login", "errorCodeLogin","Konto o podanym E-mail nie istnieje.");
 				form.setPassword(null);
+				model.addObject("failed", failed);
 				model.addObject("loginForm",form);
 			}else if(r == 1){
 				IAccount account = aclientDatabaseDAO.getAccount(form);
