@@ -43,9 +43,6 @@ public class LoginController {
 		}
 		else
 		{
-			System.out.println("no errors");
-			System.out.println(form.getPassword());
-				//redirectAttributes.addAttribute("loginForm", form);
 			form.doHash();
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
@@ -67,6 +64,7 @@ public class LoginController {
 				IClient client = clientDatabaseDAO.getClientById(account.getClientId());
 				model = new ModelAndView("account");
 				model.addObject("account",account);
+				model.addObject("client", client);
 			}
 			  
 		}
