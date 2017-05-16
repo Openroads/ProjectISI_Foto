@@ -74,6 +74,7 @@
         	<li>Z NAMI ZDJĘCIA SĄ PIĘKNIEJSZE</li>
         </ul>
             <a class="link animated fadeInUp delay-1s" href="#test">Zaczynamy</a>
+            
     </div>
 </div>
 </header><!--header-end-->
@@ -94,7 +95,42 @@
     </div>
 </nav><!--main-nav-end-->
 
+<section class="main-section team" id="zaloguj"><!--main-section team-start-->
+	<div class="container">
+			  	 
+			<div class="form"style="width: 100%; text-align: center;">
+					<form:form action="login" modelAttribute="loginForm" method="post">
+                	<c:if test="${pageContext.request.method=='GET'}">
+                	<h3 class="wow fadeInDown delay-03s"  	">Zaloguj</h3>
+                		<form:input path ="login" 	 id = "login" type = "email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text" placeholder="E-mail" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"></form:input>
+                    	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text" placeholder="Hasło"></form:input>
+                    </c:if>
+                    
+                    
+                    	
+                    
+                    <c:if test="${pageContext.request.method=='POST'}">
+                    	<form:input path ="login" 	 id = "login"  type ="email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    	<form:errors path="login" 	 cssStyle="color: #ff0000;"/>
+                    	 <spring:bind path="login">
+                    		<c:if test="${status.error}">
+                    		         <br/>Nie masz jeszcze konta ?
+                    				<a href="${contextPath}/register">Zarejestruj się</a>
+                    		</c:if>
 
+                    	</spring:bind>
+                    	<form:input path ="password"  id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
+                    	<span style= "color: #ff0000;" ><form:errors path="password"  /> </span><br/>
+                   		
+                   	</c:if>
+                   	
+                    <input class="input-btn" type="submit" value="Zaloguj">
+                    
+                    </form:form>
+           </div>	
+				
+    </div>
+</section><!--main-section team-end-->
 
 <section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
@@ -224,41 +260,7 @@
     	</ul>
 	</div>
 </div><!--c-logo-part-end-->
-<section class="main-section team" id="zaloguj"><!--main-section team-start-->
-	<div class="container">
-			
-			<div class="form"style="width: 100%; text-align: center;">
-					<form:form action="login" modelAttribute="loginForm" method="post">
-                	<c:if test="${pageContext.request.method=='GET'}">
-                		<form:input path ="login" 	 id = "login" type = "email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text" value="Email *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"></form:input>
-                    	<form:input path ="password" id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
-                    </c:if>
-                    
-                    
-                    	
-                    
-                    <c:if test="${pageContext.request.method=='POST'}">
-                    	<form:input path ="login" 	 id = "login"  type ="email"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
-                    	<form:errors path="login" 	 cssStyle="color: #ff0000;"/>
-                    	 <spring:bind path="login">
-                    		<c:if test="${status.error}">
-                    		         <br/>Nie masz jeszcze konta ?
-                    				<a href="${contextPath}/register">Zarejestruj się</a>
-                    		</c:if>
 
-                    	</spring:bind>
-                    	<form:input path ="password"  id ="pwd"     type="password"	cssStyle="width: 100%; text-align: center;" cssClass="input-text"></form:input>
-                    	<span style= "color: #ff0000;" ><form:errors path="password"  /> </span><br/>
-                   		
-                   	</c:if>
-                   	
-                    <input class="input-btn" type="submit" value="Zaloguj">
-                    
-                    </form:form>
-           </div>	
-				
-    </div>
-</section><!--main-section team-end-->
 
 
 
@@ -409,7 +411,7 @@
     </div>
 </footer>
 
-
+<input type="hidden" id="redirectZaloguj" value='${form.getPassword()}'/>
 <script type="text/javascript">
     $(document).ready(function(e) {
         $('#test').scrollToFixed();
@@ -499,6 +501,15 @@ $(window).load(function(){
   
 });
 
+</script>
+<script>
+//$(document).ready(function(){
+//	var value = document.getElementById("redirectZaloguj");
+//	if(value.nodeValue==null)
+//		{
+//		document.getElementById('zaloguj').scrollIntoView();
+//		}
+//});
 </script>
 </body>
 </html>

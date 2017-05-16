@@ -28,6 +28,7 @@ public class LoginController {
 	private ClientDAODbImpl clientDatabaseDAO;
 	@Autowired
 	private AccountDAODbImpl aclientDatabaseDAO;
+
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView getAccess(@ModelAttribute("loginForm")@Valid LoginFormDTO form, BindingResult result){
@@ -56,7 +57,7 @@ public class LoginController {
 			} else if(r == -1){
 				System.out.println("B�edny mail");
 				model = new ModelAndView("/index");
-				result.rejectValue("login", "errorCodeLogin","Konto o podanym email nie istnieje.");
+				result.rejectValue("login", "errorCodeLogin","Konto o podanym E-mail nie istnieje.");
 				form.setPassword(null);
 				model.addObject("loginForm",form);
 			}else if(r == 1){

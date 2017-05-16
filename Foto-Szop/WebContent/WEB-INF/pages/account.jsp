@@ -69,7 +69,7 @@
 	<div class="container">
         <ul class="main-nav">
             <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#zamówienia">Zamówienia</a></li>
+            <li><a href="#zamowienia">Zamówienia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 			<li><a href="#edytuj">Edytuj Konto</a></li>	
 			<li><a href="${contextPath}/index">Wyloguj</a></li>	

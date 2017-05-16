@@ -34,6 +34,7 @@ public class HelloController{
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("loginForm",new LoginFormDTO());
 		
+		
 		return model;
 	}
 	
