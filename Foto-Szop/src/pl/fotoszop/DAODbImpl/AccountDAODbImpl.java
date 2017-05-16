@@ -24,8 +24,7 @@ public class AccountDAODbImpl implements AccountDAO{
 	private static final String SQL_GET_ACCOUNT_BY_LOGIN = "SELECT * from account where login = ? ";
 	
 	private DataSource dataSource;
-	
-	private boolean loginCheckingStatus = false;
+
 	private IAccount account;
 
 	public void setDataSource(DataSource dataSource) {
@@ -134,7 +133,7 @@ public class AccountDAODbImpl implements AccountDAO{
 	
 	/**
 	 * Method to check if data from login form is correct
-	 * @param database - storage which contains accounts info
+	 * @param form - Form with login data from the view.
 	 * @return int result - 1 when succes, -1 when login doesnt exist, 0 when password is incorrect or another failure
 	 */
 	
@@ -146,7 +145,7 @@ public class AccountDAODbImpl implements AccountDAO{
 			return -1;
 		else 
 		{
-			if(acc.getPassword().equals(HashGenerator.doHash(form.getPassword())))
+			if(acc.getPassword().equals(form.getPassword()))
 			{
 				this.account = acc;
 				return 1;
@@ -156,10 +155,28 @@ public class AccountDAODbImpl implements AccountDAO{
 		return 0;
 	}
 	
+	/**
+	 * Method to get the account data for client. Return account object only if checkToLogin method return 1. 
+	 * @param form - Form with login data from the view.
+	 * @return IAccount object if checkToLogin method for passed form return 1. 
+	 */
+	
 	public IAccount getAccount(LoginFormDTO form){
 		
-		return this.account;
-		
+		if(this.account != null )
+		{
+			if(this.account.getLogin().equals(form.getLogin()) && this.account.getPassword().equals(form.getPassword()))
+			{	
+				return this.account;
+			}else
+			{
+				return null;
+			}
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }

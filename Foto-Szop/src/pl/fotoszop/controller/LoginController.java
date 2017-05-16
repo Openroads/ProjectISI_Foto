@@ -45,7 +45,7 @@ public class LoginController {
 			System.out.println("no errors");
 			System.out.println(form.getPassword());
 				//redirectAttributes.addAttribute("loginForm", form);
-			
+			form.doHash();
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");
