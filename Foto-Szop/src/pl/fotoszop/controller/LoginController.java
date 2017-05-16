@@ -18,9 +18,10 @@ import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IAccount;
+import pl.fotoszop.modelinterfaces.IClient;
 
 @Controller
-@SessionAttributes("account")
+@SessionAttributes({"account", "client"})
 public class LoginController {
 	
 	@Autowired
@@ -63,6 +64,7 @@ public class LoginController {
 				model.addObject("loginForm",form);
 			}else if(r == 1){
 				IAccount account = aclientDatabaseDAO.getAccount(form);
+				IClient client = clientDatabaseDAO.getClientById(account.getClientId());
 				model = new ModelAndView("account");
 				model.addObject("account",account);
 			}
