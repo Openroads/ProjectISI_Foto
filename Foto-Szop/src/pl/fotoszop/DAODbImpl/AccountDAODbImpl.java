@@ -163,6 +163,7 @@ public class AccountDAODbImpl implements AccountDAO{
 	
 	public IAccount getAccount(LoginFormDTO form){
 		
+		//User has called the checkToLogin method already
 		if(this.account != null )
 		{
 			if(this.account.getLogin().equals(form.getLogin()) && this.account.getPassword().equals(form.getPassword()))
@@ -170,13 +171,16 @@ public class AccountDAODbImpl implements AccountDAO{
 				return this.account;
 			}else
 			{
-				return null;
+				this.account = null;
 			}
 		}
 		else
 		{
-			return null;
+			if(this.checkToLogin(form) == 1)
+				this.account = this.getAccountByLogin(form.getLogin());
 		}
+		
+		return this.account;
 	}
 
 }
