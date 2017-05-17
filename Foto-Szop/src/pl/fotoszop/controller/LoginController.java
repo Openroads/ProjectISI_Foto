@@ -1,5 +1,6 @@
 package pl.fotoszop.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,16 @@ public class LoginController {
 	private AccountDAODbImpl aclientDatabaseDAO;
 
 	
+	
+	@RequestMapping(value ="/logout")
+	public ModelAndView logOut(HttpSession session){
+		ModelAndView model = null;
+		session.invalidate();
+		model = new ModelAndView("/index");
+		return model;
+	}
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView getAccess(@ModelAttribute("loginForm")@Valid LoginFormDTO form, BindingResult result){
 		
@@ -48,9 +59,8 @@ public class LoginController {
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");
-				Form failed = new Form();
 				form.setPassword("");
-				failed.setSuccess(1);
+				int failed = 1;
 				model = new ModelAndView("/index");
 				result.rejectValue("password", "errCodePassword","Podane hasło jest nie prawidłowe");
 				
@@ -60,8 +70,7 @@ public class LoginController {
 			} else if(r == -1){
 				System.out.println("B�edny mail");
 				model = new ModelAndView("/index");
-				Form failed = new Form();
-				failed.setSuccess(1);
+				int failed = 1;
 				result.rejectValue("login", "errorCodeLogin","Konto o podanym E-mail nie istnieje.");
 				form.setPassword(null);
 				model.addObject("failed", failed);

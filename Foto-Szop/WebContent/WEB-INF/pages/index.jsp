@@ -63,6 +63,8 @@
 
 </head>
 <body>
+
+  <c:if test="${pageContext.request.method=='GET'}">
 <header class="header" id="header"><!--header-start-->
  <div style="overflow:hidden;">
 	<div class="container">
@@ -78,7 +80,7 @@
     </div>
 </div>
 </header><!--header-end-->
-
+</c:if>
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
@@ -418,7 +420,7 @@
     </div>
 </footer>
 
-<input type="hidden" id="redirectZaloguj" value="${failed.getSuccess()}"/>
+<input type="hidden" id="redirectZaloguj" value="${failed}"/>
 <script type="text/javascript">
     $(document).ready(function(e) {
         $('#test').scrollToFixed();
@@ -446,7 +448,7 @@
 <script type="text/javascript">
 	$(window).load(function(){
 		
-		$('.main-nav li a').bind('click',function(event){
+		$('.main-nav li a ').bind('click',function(event){
 			var $anchor = $(this);
 			
 			$('html, body').stop().animate({
@@ -514,7 +516,10 @@ $(document).ready(function(){
 	var value = document.getElementById("redirectZaloguj");
 	if(value.getAttribute("value")==1)
 		{
-		document.getElementById('zalogujHandler').scrollIntoView();
+		//document.getElementById('zalogujHandler').scrollIntoView();
+		$('html, body').stop().animate({
+			scrollTop: $("#zalogujHandler").offset().top - 102
+		}, 1500,'easeInOutExpo');
 		}
 });
 </script>

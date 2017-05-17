@@ -72,7 +72,7 @@
             <li><a href="#zamowienia">Zamówienia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 			<li><a href="#edytuj">Edytuj Konto</a></li>	
-			<li><a href="${contextPath}/index">Wyloguj</a></li>	
+			<li><a href="logout">Wyloguj</a></li>	
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
     </div>
