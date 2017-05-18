@@ -78,29 +78,7 @@ public class Form {
 		this.email = email;
 	}
 	
-	/** 
-	 *Method to check if it is possible to create new Client and add it to database (check whether such Client exists in storage)
-	 *@param - storage where we want to add a Client
-	 *@return true - if such Client already exists in database, false - if such Client doesn't exist in database
-	  */
-	public boolean checkToRegister(ClientDAO database){
-		
-		Collection<IClient> clients = new ArrayList<>();
-		clients = database.getAllContacts();
-		boolean isTaken = false;
-		
-		id=0;
-		
-		for(IClient object: clients)
-		{
-			if(object.getEmail().equals(this.getEmail())) 
-				isTaken = true;
-			if(object.getId()>id) id = object.getId();
-		}
-		
-		id++;
-		return isTaken;
-	}
+	
 	
 	/**
 	 * Method to check if user gave password and password 2 properly

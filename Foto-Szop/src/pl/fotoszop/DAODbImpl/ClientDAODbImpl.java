@@ -1,6 +1,7 @@
 package pl.fotoszop.DAODbImpl;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
 /**
  * 
@@ -58,5 +60,31 @@ public class ClientDAODbImpl implements ClientDAO{
 		Collection<Client> clientL =  this.jdbcTemplate.query(sqlQuery, new ClientMapper());
 		return clientL.stream().map(x->(IClient) x).collect(Collectors.toList());
 	}
+	
+	/** 
+	 *Method to check if it is possible to create new Client and add it to database (check whether such Client exists in storage)
+	 *@param - registration form
+	 *@return true - if such Client already exists in database, false - if such Client doesn't exist in database
+	  */
+	public boolean checkToRegister(Form form){
+		
+		Collection<IClient> clients = new ArrayList<>();
+		clients = getAllContacts();
+		boolean isTaken = false;
+		
+		int id=0;
+		
+		for(IClient object: clients)
+		{
+			if(object.getEmail().equals(form.getEmail())) 
+				isTaken = true;
+			if(object.getId()>form.getId()) id = object.getId();
+		}
+		
+		id++;
+		form.setId(id);
+		return isTaken;
+	}
+	
 
 }

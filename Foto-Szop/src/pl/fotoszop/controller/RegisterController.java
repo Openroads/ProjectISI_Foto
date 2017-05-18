@@ -33,7 +33,8 @@ public class RegisterController {
 		//ClientDAO database = new ClientDAODbImpl();
 		//AccountDAO databaseAccount = new AccountDAODbImpl();
 		form.doHash();
-		boolean flag = form.checkToRegister(clientDatabaseDAO);
+		//boolean flag = form.checkToRegister(clientDatabaseDAO);
+		boolean flag = clientDatabaseDAO.checkToRegister(form);
 		boolean flag2 = form.checkPasswords();
 		//boolean flag = checkDatabase(form,database);
 		if((!flag)&&flag2){
