@@ -3,10 +3,15 @@ package pl.fotoszop.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.model.Form;
@@ -20,6 +25,7 @@ import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller
+@SessionAttributes("client")
 public class RegisterController {
 	
 	@Autowired
@@ -27,16 +33,24 @@ public class RegisterController {
 	@Autowired
 	private AccountDAODbImpl aclientDatabaseDAO;
 	
-	@RequestMapping("/addClient")
-	public ModelAndView processForm(@ModelAttribute Form form){
+	@RequestMapping(value="/addClient", method = RequestMethod.POST)
+	public ModelAndView processForm(@ModelAttribute("form")@Valid Form form, BindingResult result){
 		
-		//ClientDAO database = new ClientDAODbImpl();
-		//AccountDAO databaseAccount = new AccountDAODbImpl();
+		ModelAndView model = null;
+		
+		if(result.hasErrors()){
+			
+			model=new ModelAndView("register");
+			model.addObject("form",  form);
+			return model;
+		}
+		else{
+			
 		form.doHash();
-		//boolean flag = form.checkToRegister(clientDatabaseDAO);
+		
 		boolean flag = clientDatabaseDAO.checkToRegister(form);
 		boolean flag2 = form.checkPasswords();
-		//boolean flag = checkDatabase(form,database);
+		
 		if((!flag)&&flag2){
 			
 			//Client newClient = new Client(1,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
@@ -44,15 +58,18 @@ public class RegisterController {
 			Account newAccount = new Account(form);
 			clientDatabaseDAO.saveOrUpdate(newClient);
 			aclientDatabaseDAO.saveOrUpdate(newAccount);
-			ModelAndView model = new ModelAndView("success");
+			
+			model = new ModelAndView("success");
 			model.addObject("client",newClient);
 			return model;
 		}
 		else{
-			ModelAndView model = new ModelAndView("Fail");
+			
+			model = new ModelAndView("register");
+			model.addObject("form",new Form());
 			return model;
 		}
-		
+		}
 	}
 	
 	@RequestMapping("/register")

@@ -7,19 +7,38 @@ import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.modelinterfaces.IClient;
 
 public class Form {
 
 	private int id;
+	@NotEmpty
+	@Size(min=2, max=20)
 	private String name;
+	@NotEmpty
+	@Size(min=2, max=20)
 	private String surname;
+	@NotEmpty
+	@Size(min=6)
 	private String address;
+	@NotEmpty
+	@Size(min=11, max=11)
 	private String identityNumber;
+	@NotEmpty
+	@Size(min=9, max=9)
 	private String phoneNumber;
+	@NotEmpty
+	@Email
 	private String email;
+	@NotEmpty
 	private String password;
+	@NotEmpty
 	private String password2;
 	
 	
