@@ -17,6 +17,10 @@ import pl.fotoszop.modelinterfaces.IClient;
 
 public class Form {
 
+	
+	
+	// REGISTER //
+	
 	private int id;
 	@NotEmpty
 	@Size(min=2, max=20)
@@ -42,6 +46,42 @@ public class Form {
 	private String password2;
 	
 	
+	// ORDER SESSION //
+	
+	@NotEmpty
+	@Size(min=4, max=256)
+	private String subject;
+	@NotEmpty
+	@Size(min=4, max=256)
+	private String sessionAddress;
+	@NotEmpty
+	@Size(min=4, max=256)
+	private String sessionPlace;
+	
+	
+	
+	
+	
+	
+	
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getSessionAddress() {
+		return sessionAddress;
+	}
+	public void setSessionAddress(String sessionAddress) {
+		this.sessionAddress = sessionAddress;
+	}
+	public String getSessionPlace() {
+		return sessionPlace;
+	}
+	public void setSessionPlace(String sessionPlace) {
+		this.sessionPlace = sessionPlace;
+	}
 	public int getId() {
 		return id;
 	}

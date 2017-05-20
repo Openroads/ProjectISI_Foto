@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
@@ -18,6 +18,7 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
+<spring:url value="resources/js/validation.js" var="validation"/>
 
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
@@ -28,14 +29,13 @@
 
 <spring:url value="resources/favicon.png" var="favicon"/>
 
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop | Konto</title>
+<title>Foto-Szop | Sesja</title>
 <link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
@@ -54,6 +54,7 @@
 <script src="${isotope}"></script>
 <script src="${wow}"></script>
 <script src="${classie}"></script>
+<script src="${validation}"></script>
 
 <!--[if lt IE 9]>
     <script src="${respond}"></script>
@@ -64,15 +65,16 @@
 
 </head>
 <body>
+<header><!--header-start-->
+</header><!--header-end-->
+
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-            <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#zamowienia">Zamówienia</a></li>
+        	<li><a href="${contextPath}/account">Powrót</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="#edytuj">Edytuj Konto</a></li>	
-			<li><a href="logout">Wyloguj</a></li>	
+            <li><a href="#kontakt">Kontakt</a></li>			
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
     </div>
@@ -80,140 +82,78 @@
 
 
 
-
-<section class="main-section" id="konto"><!--main-section-start-->
+<section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
-    	<h2>Twoje konto</h2>
-    	<h6>Tutaj znajdziesz informacje o swoim koncie</h6>
+    	<h2>Sesja</h2>
+    	<h6>Wypełnij formularz zgłoszeniowy</h6>
         <div class="row">
-        	   <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-        	   <br>
-        	   <br>
-        	   <br>
-            	<img src="<c:url value="/resources/img/photographer.png"/>">
-            </figure>
         	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
             	<div class="service-list">
                 	<div class="service-list-col1">
                     	<i class="fa-user"></i>
                     </div>
                 	<div class="service-list-col2">
-                	
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${client.getName()}</p>
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${client.getSurname()}</p>
-                        
+                	 <div class="form">
+                        <form:form method="post"  modelAttribute="form" id="session-form"  action="orderSession">	
+							Tematyka: <form:input class="input-text" path="subject" id="subject-form" ></form:input>
+							<div id="isubject"></div><br>
+							Adres miejsca: <form:input class="input-text" path="sessionAddress" id="address-form" ></form:input>		
+							<div id="iaddress"></div><br>
+							Miejsce: <form:input class="input-text" path="sessionPlace" id="place-form" />
+							<div id="iplace"></div><br>
+							<div style="text-align:center;">
+                     		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label><br><br><br>
+                     		
+                     				<button type="button" class="btn btn-success"><</button><button type="button" class="btn btn-success">></button>  
+                     				
+                     				
+                     		<!--   w zależności od tego kiedy będzie wolny termin
+                     		 tam będzie zmieniał typ z hidden na checkbox, wtedy
+                     		  checkbox będzie wysyłał zaznaczone elementy do kontrolera,
+                     		  kontrolki w lewo i w prawo będą poruszały się po przesłanej liście terminów zmieniając p element na kolejny przedział
+                     		  tygodnia. 
+                     		  -->	
+                     				
+                     				
+                     				<p id="kalendarz">2017-05-22/28</p>
+							<table class="table table-hover table-hovered table-inverse">
+							<thead>
+							<tr>
+							<th>Pon</th>
+							<th>Wt</th>
+							<th>Sr</th>
+							<th>Czw</th>
+							<th>Pt</th>
+							<th>Sob</th>
+							<th>Nd</th>
+							</tr>
+							<thead>
+							<tbody>
+							<td id="monday"><input type="checkbox"/></td>
+							<td id="tuesday"><input type="hidden"/></td>
+							<td id="wednesday"><input type="checkbox"/></td>
+							<td id="thursday"><input type="checkbox"/></td>
+							<td id="friday"><input type="hidden"/></td>
+							<td id="saturday"><input type="hidden"/></td>
+							<td id="sunday"><input type="checkbox"/></td>
+							</tbody>
+							</table>    
+					
+					
+					
+                     		<input type="submit" id="submit" class="input-btn" value="Umów">     
+               			       </div>
+				</form:form>
+                    </div>
                     </div>
                 </div>
                 <div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-home"></i>
+                    	<i class="fa-file"></i>
                     </div>
                 	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${client.getAddress()}</p>
-                   
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-info"></i>
-                    </div>
-                	<div class="service-list-col2">
-                	
-                     <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${client.getIdentityNumber()}</p>
-                 
-                    </div>
-                </div>
-                
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-phone"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${client.getPhoneNumber()}</p>
-                   
-                    </div>
-                </div>
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-envelope"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${client.getEmail()}</p>
-                   
-                    </div>
-                </div>
-                
-                
-            </div>
-         
-        
-        </div>
-	</div>
-</section><!--main-section-end-->
-
-</br>
-
-<section class="main-section client-part" id="edytuj"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-user"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">W każdej chwili możesz zmienić swoje dane!</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Edytuj Konto</a>
-    </div>
-</section><!--main-section client-part-end-->
-</br>
-
-
-<section class="main-section" id="oferta"><!--main-section-start-->
-	<div class="container">
-    	<h2>Oferta</h2>
-    	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
-    	<p class="client-part-haead wow fadeInDown delay-05" style="color : black;">Witamy, ${client.getName()}</p>
-    	<p class="client-part-haead wow fadeInUp delay-05" style="color : black;">Co dziś zamówisz?<br></p>
-        <div class="row">
-        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-            	<div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-flag"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <a href=""><h3>OBRÓBKA &amp; WYWOŁANIE</h3></a>
-                        <p>Nasza drukarnia dużej rozdzielczości sprosta każdemu wymaganiu klienta.</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-camera"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <a href="${contextPath}/session"><h3>SESJA ZDJĘCIOWA</h3></a>
-                        <p>Oddajemy do Państwa dyspocyzji najlepszych fotografów.</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-forward"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <a href=""><h3>SZYBKA DOSTAWA</h3></a>
-                        <p>Najszybsza paczka którą dostarczyliśmy przebyła swoją drogę w mniej niż godzinę!</p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-eye"></i>
-                    </div>
-                	<div class="service-list-col2">
-                       <a href=""><h3>WSPARCIE GRAFICZNE</h3></a>
-                        <p>Do państwa dyspozycji oddajemy także najlepszej klasy grafików, którzy nie pozwolą aby Państwa zdjęciom stała się krzywda.</p>
+                        <h3>REGULAMIN</h3>
+                        <p><a style="color: green;" href="#">Czytaj></a></p>
                     </div>
                 </div>
             </div>
@@ -227,35 +167,6 @@
 
 
 
-
-
-
-<section class="main-section client-part" id="zamowienia"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Twoja historia zamówień</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Zamówienia</a>
-    </div>
-</section><!--main-section client-part-end-->
-<br>
-
-
-
-<div class="c-logo-part" ><!--c-logo-part-start-->
-	<div class="container" >
-    	<ul>
-        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
-    	</ul>
-	</div>
-</div><!--c-logo-part-end-->
 
 
 
