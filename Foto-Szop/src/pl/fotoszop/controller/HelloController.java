@@ -1,6 +1,7 @@
 package pl.fotoszop.controller;
 
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class HelloController{
 	
 	@RequestMapping(value ={ "/index","/"}, method = RequestMethod.GET)
 	public ModelAndView showIndex(){
-
+		
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("loginForm",new LoginFormDTO());
 		

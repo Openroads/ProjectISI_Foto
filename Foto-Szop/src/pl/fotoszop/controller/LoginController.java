@@ -35,7 +35,9 @@ public class LoginController {
 	@RequestMapping(value ="/logout")
 	public ModelAndView logOut(HttpSession session){
 		ModelAndView model = null;
+		
 		session.invalidate();
+		
 		model = new ModelAndView("/index");
 		return model;
 	}

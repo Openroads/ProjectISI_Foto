@@ -3,6 +3,7 @@ package pl.fotoszop.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller
-@SessionAttributes("client")
+@SessionAttributes({"client","account"})
 public class RegisterController {
 	
 	@Autowired
@@ -61,6 +62,7 @@ public class RegisterController {
 			
 			model = new ModelAndView("success");
 			model.addObject("client",newClient);
+			model.addObject("account",newAccount);
 			return model;
 		}
 		else{
@@ -73,10 +75,15 @@ public class RegisterController {
 	}
 	
 	@RequestMapping("/register")
-	public ModelAndView getForm(){
+	public ModelAndView getForm(HttpSession session){
 		
-		ModelAndView model = new ModelAndView("register");
-		model.addObject("form", new Form());
+			ModelAndView model;
+		
+			if(session.getAttribute("account")!=null) session.invalidate();
+		
+			model = new ModelAndView("register");
+			model.addObject("form", new Form());
+		
 		return model;
 	}
 	
