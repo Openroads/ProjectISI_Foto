@@ -18,6 +18,7 @@ public class Account implements IAccount{
 	private String password;
 	private Date creationDate;
 	private int clientId;
+	private long employeeId;
 	
 	public Account(){
 		
@@ -61,6 +62,13 @@ public class Account implements IAccount{
 	}
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+	public long getEmployeeId() {
+		return this.employeeId;
+	}
+	public void setEmployeeId(long eId) {
+		this.employeeId = eId;
+		
 	}
 
 	

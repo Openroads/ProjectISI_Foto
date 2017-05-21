@@ -14,5 +14,7 @@ public interface IAccount {
 	public void setCreationDate(Date creationDate);
 	public int getClientId();
 	public void setClientId(int id);
+	public long getEmployeeId();
+	public void setEmployeeId(long eId);
 
 }
