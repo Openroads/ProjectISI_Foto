@@ -90,7 +90,7 @@
         	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
             	<div class="service-list">
                 	<div class="service-list-col1">
-                    	<i class="fa-user"></i>
+                    	<i class="fa-camera"></i>
                     </div>
                 	<div class="service-list-col2">
                 	 <div class="form">
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-            	<img src="<c:url value="/resources/img/camera.png"/>">
+            	<img src="<c:url value="/resources/img/Portfolio-pic-7.jpg"/>">
             </figure>
         
         </div>

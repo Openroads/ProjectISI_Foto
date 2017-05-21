@@ -59,11 +59,24 @@ public class Form {
 	private String sessionPlace;
 	
 	
+	// ORDER PHOTOS //
+	
+	@NotEmpty
+	@Size(min=4, max=256)
+	private String orderAddress;
 	
 	
 	
 	
 	
+	
+	
+	public String getOrderAddress() {
+		return orderAddress;
+	}
+	public void setOrderAddress(String orderAddress) {
+		this.orderAddress = orderAddress;
+	}
 	public String getSubject() {
 		return subject;
 	}
