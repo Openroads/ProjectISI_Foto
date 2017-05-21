@@ -5,11 +5,14 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.EmployeeDAO;
 import pl.fotoszop.model.Employee;
 import pl.fotoszop.modelinterfaces.IEmployee;
 
+
+@Repository
 public class EmployeeDAODbImpl implements EmployeeDAO {
 	private JdbcTemplate jdbcTemplate;
 	

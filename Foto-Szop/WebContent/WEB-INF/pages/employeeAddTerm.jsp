@@ -35,6 +35,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  </script>
+
+
 <title>Foto-Szop | Konto</title>
 <link rel="icon" href="${favicon}">
 
@@ -86,17 +95,16 @@
     	<h2>Witamy w panelu pracownika</h2>
     	<p class="client-part-haead wow fadeInDown delay-05 caption">${employee.getName()}</p>
     	<h6>Terminy w jakich udostępniasz możliwość zamówienia sesji:</h6>
-        <div class="row">
-        	   <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-        	   <br>
-        	   <br>
-        	   <br>
-            	<img src="<c:url value="/resources/img/photographer.png"/>">
-            </figure>
+        
         	<h6>Dodaj kolejne terminy:</h6>
          
-        
-        </div>
+		<p>Date: <input type="text" id="datepicker"></p>
+        <div class="input-group date" data-provide="datepicker">
+    		<input type="text" class="form-control">
+   		 	<div class="input-group-addon">
+        		<span class="glyphicon glyphicon-th"></span>
+   			 </div>
+		</div>
 	</div>
 </section><!--main-section-end-->
 
@@ -225,6 +233,10 @@ $(window).load(function(){
     });
   
 });
+
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
 
 </script>
 </body>

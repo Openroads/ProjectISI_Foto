@@ -20,7 +20,7 @@ import pl.fotoszop.modelinterfaces.ITerm;
 
 public class TermDAODbImpl implements TermDAO {
 	
-	private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_term= ? and date_of_term >= ?";
+	private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
 	private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
 	
 
