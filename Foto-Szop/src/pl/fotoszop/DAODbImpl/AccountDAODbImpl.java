@@ -66,7 +66,7 @@ public class AccountDAODbImpl implements AccountDAO{
 		
 		Connection connection = null;
 		Collection<IAccount> accounts = null;
-		IAccount account = new Account();
+		
 		try {
 			connection=dataSource.getConnection();
 			String sqlQuery = "SELECT * from Account";
@@ -74,6 +74,7 @@ public class AccountDAODbImpl implements AccountDAO{
 			ResultSet rs = statement.executeQuery(sqlQuery);
 			accounts = new ArrayList<>();
 			while(rs.next()){
+				IAccount account = new Account();
 				account.setAccountId(rs.getInt("id_account")); account.setLogin(rs.getString("login"));
 				account.setClientId(rs.getInt("id_client")); account.setCreationDate(rs.getDate("date_of_creation"));
 				account.setPassword(rs.getString("password"));

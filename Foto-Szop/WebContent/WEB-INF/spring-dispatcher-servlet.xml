@@ -26,6 +26,9 @@ xsi:schemaLocation="
 </bean>
 
  <!-- declare beans -->
+   <bean id="termDAODbImpl" class="pl.fotoszop.DAODbImpl.TermDAODbImpl">
+ 	<property name="dataSource" ref="dataSource"/>
+ </bean>
   <bean id="employeeDAODbImpl" class="pl.fotoszop.DAODbImpl.EmployeeDAODbImpl">
  	<property name="dataSource" ref="dataSource"/>
  </bean>

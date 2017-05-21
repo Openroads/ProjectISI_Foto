@@ -71,7 +71,7 @@
             <li><a href="#oferta">Oferta</a></li>
             <li><a href="#zamowienia">Zamówienia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="${contextPath}/termList" >Terminy </a></li>	
+			<li><a href="termList">Terminy</a></li>	
 			<li><a href="logout">Wyloguj</a></li>	
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
@@ -84,7 +84,8 @@
 <section class="main-section" id="konto"><!--main-section-start-->
 	<div class="container">
     	<h2>Witamy w panelu pracownika</h2>
-    	<h6>Tutaj znajdziesz informacje o swoim koncie</h6>
+    	<p class="client-part-haead wow fadeInDown delay-05 caption">${employee.getName()}</p>
+    	<h6>Terminy w jakich udostępniasz możliwość zamówienia sesji:</h6>
         <div class="row">
         	   <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
         	   <br>
@@ -92,54 +93,7 @@
         	   <br>
             	<img src="<c:url value="/resources/img/photographer.png"/>">
             </figure>
-        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-            	<div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-user"></i>
-                    </div>
-                	<div class="service-list-col2">
-                	
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getName()}</p>
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getSurname()}</p>
-                        
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-info"></i>
-                    </div>
-                	<div class="service-list-col2">
-                	
-                     <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${employee.getIdentityNumber()}</p>
-                 
-                    </div>
-                </div>
-                
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-phone"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${employee.getPhoneNumber()}</p>
-                   
-                    </div>
-                </div>
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-envelope"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getEmail()}</p>
-                   
-                    </div>
-                </div>
-                
-                
-            </div>
+        	<h6>Dodaj kolejne terminy:</h6>
          
         
         </div>
