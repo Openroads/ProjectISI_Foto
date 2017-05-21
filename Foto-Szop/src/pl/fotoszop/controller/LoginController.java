@@ -15,16 +15,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
 import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.modelinterfaces.IAccount;
 import pl.fotoszop.modelinterfaces.IClient;
+import pl.fotoszop.modelinterfaces.IEmployee;
 
 @Controller
-@SessionAttributes({"account", "client"})
+@SessionAttributes({"account", "client","employee"})
 public class LoginController {
 	
 	@Autowired
 	private ClientDAODbImpl clientDatabaseDAO;
+	@Autowired
+	private EmployeeDAODbImpl employeeDatabaseDAO;
 	@Autowired
 	private AccountDAODbImpl aclientDatabaseDAO;
 
@@ -51,11 +55,12 @@ public class LoginController {
 		{
 			model = new ModelAndView("/index");
 			model.addObject("loginForm",form);
-			//redirectAttributes.addFlashAttribute("loginForm", form);
+
 		}
 		else
 		{
 			form.doHash();
+			System.out.println(form.getPassword());
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");
@@ -77,12 +82,27 @@ public class LoginController {
 				model.addObject("loginForm",form);
 			}else if(r == 1){
 				IAccount account = aclientDatabaseDAO.getAccount(form);
-				IClient client = clientDatabaseDAO.getClientById(account.getClientId());
-				model = new ModelAndView("account");
-				model.addObject("account",account);
-				model.addObject("client", client);
+				
+				if(account.getClientId() !=0 && account.getEmployeeId() == 0)
+				{
+					IClient client = clientDatabaseDAO.getClientById(account.getClientId());
+					model = new ModelAndView("account");
+					model.addObject("account",account);
+					model.addObject("client", client);
+				}
+				else if(account.getEmployeeId() !=0 && account.getClientId() == 0)
+				{
+					IEmployee employee = employeeDatabaseDAO.getEmployeeById(account.getEmployeeId());
+					model = new ModelAndView("employeeAccount");
+					model.addObject("account",account);
+					model.addObject("employee",employee);
+				}
+				else
+				{
+					model = new ModelAndView("redirect:/index");
+				}
+				
 			}
-			  
 		}
 		
 		return model;

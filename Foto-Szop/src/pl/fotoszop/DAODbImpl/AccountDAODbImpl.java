@@ -108,6 +108,7 @@ public class AccountDAODbImpl implements AccountDAO{
 				account.setPassword(rs.getString("password"));
 				account.setCreationDate(rs.getDate("date_of_creation"));
 				account.setClientId(rs.getInt("id_client"));
+				account.setEmployeeId(rs.getInt("id_employee"));
 			}
 			statement.close();
 			rs.close();
@@ -140,7 +141,7 @@ public class AccountDAODbImpl implements AccountDAO{
 	public int checkToLogin(LoginFormDTO form){
 		
 		IAccount acc = this.getAccountByLogin(form.getLogin());
-		
+		System.out.println("hash from db: "+ acc.getPassword());
 		if(acc==null)
 			return -1;
 		else 
