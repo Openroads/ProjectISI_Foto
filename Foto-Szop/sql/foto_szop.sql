@@ -54,7 +54,7 @@ CREATE TABLE term(
 	date_of_term date NOT NULL,
 	
 	CONSTRAINT fk_term_id_employee FOREIGN KEY (id_employee) REFERENCES employee(id_employee) ON UPDATE CASCADE ON DELETE NO ACTION
-)
+);
 
 -- Table structure  ORDER --
 
