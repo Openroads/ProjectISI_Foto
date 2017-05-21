@@ -103,6 +103,7 @@
  							<input type="submit">
 							</form>	
 							<br>
+		
 							Wybierz format: <select class="selectpicker" >
   							<optgroup label="Formaty fotograficzne">
     						  <option>4:3</option>
@@ -429,6 +430,10 @@ $(window).load(function(){
   
 });
 
+
+
 </script>
+
+
 </body>
 </html>
