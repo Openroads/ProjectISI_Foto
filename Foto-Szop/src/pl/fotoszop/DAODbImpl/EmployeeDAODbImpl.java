@@ -20,11 +20,12 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
 	
 	@Override
 	public IEmployee getEmployeeById(long employeeId) {
-		String sqlQuery = "select * from employee where employee.id_employee = " + employeeId;
 		
-		List<Employee> employeeL =  this.jdbcTemplate.query(sqlQuery, new EmployeeMapper());
+		String sqlQuery = "select * from employee where employee.id_employee = ? ";
+	
+		Employee employee =  this.jdbcTemplate.queryForObject(sqlQuery, new Object[] { employeeId }, new EmployeeMapper());
 		
-		return employeeL.get(0);
+		return employee;
 
 	}
 
