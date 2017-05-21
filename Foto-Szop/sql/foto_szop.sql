@@ -46,20 +46,31 @@ CREATE TABLE employee (
 	email varchar(255) NOT NULL
 );
 
+
+-- Table structure  TERM --
+CREATE TABLE term(
+	id_term int(4)PRIMARY KEY,
+	id_employee int(4) NOT NULL,
+	date_of_term date NOT NULL,
+	
+	CONSTRAINT fk_term_id_employee FOREIGN KEY (id_employee) REFERENCES employee(id_employee) ON UPDATE CASCADE ON DELETE NO ACTION
+)
+
 -- Table structure  ORDER --
 
 CREATE TABLE order_ps(
 	id_order int(4) PRIMARY KEY,
 	date_of_order date NOT NULL,
-	date_of_implementation date NOT NULL,
+	id_of_realization_term int(4) NULL,
 	date_of_modification date,
+	order_status ENUM('IN_REALIZTION','FINISHED','PENDING'),
 	
-	id_employee int(4) NOT NULL,
 	id_service int(4) NOT NULL,
 	id_client int(4) NOT NULL,
 	
 	CONSTRAINT fk_order_id_employee FOREIGN KEY (id_employee) REFERENCES employee(id_employee) ON UPDATE CASCADE ON DELETE NO ACTION,
 	CONSTRAINT fk_order_id_service FOREIGN KEY (id_service) REFERENCES service(id_service) ON UPDATE CASCADE ON DELETE NO ACTION,
+	CONSTRAINT fk_order_id_term FOREIGN KEY (id_of_realization_term) REFERENCES term(id_term) ON UPDATE CASCADE ON DELETE NO ACTION,
 	CONSTRAINT fk_order_id_client FOREIGN KEY (id_client) REFERENCES client(id_client) ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
