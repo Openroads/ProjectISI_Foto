@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -35,12 +36,11 @@ public class LoginController {
 	
 	
 	@RequestMapping(value ="/logout")
-	public ModelAndView logOut(HttpSession session){
+	public ModelAndView logOut(HttpSession session,SessionStatus status){
 		ModelAndView model = null;
-		
-		session.invalidate();
-		
-		model = new ModelAndView("/index");
+		status.setComplete();
+		model = new ModelAndView("redirect:/index");
+	
 		return model;
 	}
 	
@@ -60,7 +60,6 @@ public class LoginController {
 		else
 		{
 			form.doHash();
-			System.out.println(form.getPassword());
 			int r = aclientDatabaseDAO.checkToLogin(form);
 			if(r == 0){
 				System.out.println("B�edne has�o");

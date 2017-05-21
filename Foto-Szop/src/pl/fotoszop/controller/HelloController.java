@@ -2,6 +2,8 @@ package pl.fotoszop.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dto.LoginFormDTO;
+import pl.fotoszop.model.Client;
+import pl.fotoszop.model.Employee;
 import pl.fotoszop.modelinterfaces.IAccount;
 import pl.fotoszop.modelinterfaces.IClient;
 
@@ -30,10 +35,25 @@ public class HelloController{
 	private AccountDAODbImpl aclientDatabaseDAO;
 	
 	@RequestMapping(value ={ "/index","/"}, method = RequestMethod.GET)
-	public ModelAndView showIndex(){
+	public ModelAndView showIndex(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Client client = (Client) session.getAttribute("client");
+		Employee employee = (Employee) session.getAttribute("employee");
+		ModelAndView model = null;
+		if(client != null)
+		{
+			model = new ModelAndView("account");
+			
+		}else if(employee != null)
+		{
+			model = new ModelAndView("employeeAccount");
+		}else
+		{
+			model = new ModelAndView("index");
+			model.addObject("loginForm",new LoginFormDTO());
+		}
 		
-		ModelAndView model = new ModelAndView("index");
-		model.addObject("loginForm",new LoginFormDTO());
+
 		
 		
 		return model;

@@ -141,7 +141,6 @@ public class AccountDAODbImpl implements AccountDAO{
 	public int checkToLogin(LoginFormDTO form){
 		
 		IAccount acc = this.getAccountByLogin(form.getLogin());
-		System.out.println("hash from db: "+ acc.getPassword());
 		if(acc==null)
 			return -1;
 		else 
