@@ -29,6 +29,17 @@
 <spring:url value="resources/favicon.png" var="favicon"/>
 
 
+<!-- For datepicker! -->
+<spring:url value="https://formden.com/static/cdn/bootstrap-iso.css" var="bootstrapiso" /> 
+<spring:url value="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" var="fontawesome"/>
+<!-- END DATEPICKER -->
+
+
+
+
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -46,6 +57,11 @@
 
 <title>Foto-Szop | Konto</title>
 <link rel="icon" href="${favicon}">
+
+<!-- For datepicker! -->
+<link rel="stylesheet" href="${bootstrapiso}">
+<link rel="stylesheet" href="${fontawesome}">
+<!-- END DATEPICKER -->
 
 <link href="${font1}" rel="stylesheet">
 <link href="${font2}" rel="stylesheet">
@@ -90,37 +106,74 @@
 
 
 
+
+
+
 <section class="main-section" id="konto"><!--main-section-start-->
-	<div class="container">
+	<div class="container ">
     	<h2>Witamy w panelu pracownika</h2>
-    	<p class="client-part-haead wow fadeInDown delay-05 caption">${employee.getName()}</p>
+    	<p class="client-part-haead wow fadeInDown delay-05 caption" style="color:black; text-align:center;">${employee.getName()}</p>
     	<h6>Terminy w jakich udostępniasz możliwość zamówienia sesji:</h6>
         
         	<h6>Dodaj kolejne terminy:</h6>
+        	
          
-		<p>Date: <input type="text" id="datepicker"></p>
-        <div class="input-group date" data-provide="datepicker">
-    		<input type="text" class="form-control">
-   		 	<div class="input-group-addon">
-        		<span class="glyphicon glyphicon-th"></span>
-   			 </div>
-		</div>
+         <div class="bootstrap-iso text-center ">
+ <div class="container-fluid ">
+  <div class="row">
+   <div class="col-lg-4 col-lg-offset-4">
+    <form method="post">
+     <div class="form-group ">
+      <label class="control-label " for="date">
+       Data
+      </label>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-calendar">
+        </i>
+       </div>
+       <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+      </div>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-success " name="submit" type="submit">
+        Dodaj
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+         
+         
+         
+         
+         
+         
 	</div>
 </section><!--main-section-end-->
 
 
-<section class="main-section client-part" id="zamowienia"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Historia zamówień</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Zamówienia</a>
-    </div>
-</section><!--main-section client-part-end-->
-<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -234,10 +287,27 @@ $(window).load(function(){
   
 });
 
-$( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-
 </script>
+
+
+<!-- DATEPICKER -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+
+<!-- DATEPICKER -->
+
+
 </body>
 </html>
