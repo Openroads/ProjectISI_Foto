@@ -1,20 +1,11 @@
 package pl.fotoszop.dto;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.model.HashGenerator;
-import pl.fotoszop.modelinterfaces.IClient;
 
 public class Form {
 

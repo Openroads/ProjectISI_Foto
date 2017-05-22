@@ -1,8 +1,5 @@
 package pl.fotoszop.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -10,21 +7,20 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.fotoszop.DAODbImpl.FileUploadImpl;
-import pl.fotoszop.model.UploadFile;
-import pl.fotoszop.modelinterfaces.IClient;
-import pl.fotoszop.model.Account;
-import pl.fotoszop.model.Client;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
-import pl.fotoszop.dao.AccountDAO;
-import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.DAODbImpl.FileUploadImpl;
 import pl.fotoszop.dto.Form;
-import pl.fotoszop.mocks.ClientDAOMock;
+import pl.fotoszop.dto.OrderPhotosFormDTO;
+import pl.fotoszop.model.UploadFile;
 
 @Controller
 @SessionAttributes({"client","account"})
@@ -38,7 +34,7 @@ public class OrderPhotosController {
 	private FileUploadImpl fileUploadService;
 	
 	@RequestMapping(value="/orderPhotos", method = RequestMethod.POST)
-	public ModelAndView processForm(@ModelAttribute("form")@Valid Form form, BindingResult result){
+	public ModelAndView processForm(@ModelAttribute("form")@Valid OrderPhotosFormDTO form, BindingResult result){
 		
 		ModelAndView model = null;
 	
@@ -84,7 +80,7 @@ public class OrderPhotosController {
 			ModelAndView model;
 		
 			model = new ModelAndView("/orderPhotos");
-			model.addObject("form", new Form());
+			model.addObject("form", new OrderPhotosFormDTO());
 		
 		return model;
 	}
