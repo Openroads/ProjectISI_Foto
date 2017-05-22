@@ -59,7 +59,7 @@ public class OrderSessionController {
 		
 			ModelAndView model;
 			
-			List<ITerm> termList = termDAO.getFreeTermsForWeek(LocalDate.now());
+			List<ITerm> termList = termDAO.getFreeTermsFromDate(LocalDate.now());
 			model = new ModelAndView("/orderSession");
 			
 			model.addObject("form", new OrderSessionFormDTO());
