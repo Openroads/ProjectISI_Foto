@@ -100,7 +100,7 @@
 
 
 <section class="main-section" id="oferta"><!--main-section-start-->
-	<div class="container">
+	<div class="container wow fadeInLeft delay-01s">
     	<h2>Oferta</h2>
     	<h6>Oferujemy szereg usług fotograficznych o najwyższym standardzie.</h6>
         <div class="row">
@@ -239,7 +239,7 @@
 <section class="main-section team" id="zaloguj"><!--main-section team-start-->
 	<div class="container">
 			  	 
-			<div class="form"style="width: 100%; text-align: center;">
+			<div class="col-lg-4 col-lg-offset-4 wow fadeInLeft delay-01s" style="text-align: center;">
 					<form:form action="login" modelAttribute="loginForm" method="post">
                 	<c:if test="${pageContext.request.method=='GET'}">
                 	<h3 class="wow fadeInDown delay-03s">Zaloguj</h3>

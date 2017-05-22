@@ -23,7 +23,7 @@ import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.modelinterfaces.IEmployee;
 
 @Controller
-@SessionAttributes({"account", "client","employee"})
+@SessionAttributes({"account", "client", "employee"})
 public class LoginController {
 	
 	@Autowired

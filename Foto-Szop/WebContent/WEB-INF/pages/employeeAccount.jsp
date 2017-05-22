@@ -72,13 +72,13 @@
    			<li class="dropdown"><a href="#" data-toggle="dropdown">Zamówienia <span class="caret"></span></a>
    			<ul class="dropdown-menu">
    			<li><a href="#">Odbierz</a></li>
-   			<li><a href="#">Terminy</a></li>
+   			<li><a href="#">Przyjęte</a></li>
    			</ul>
    			</li>
-   			
-            <li><a href="#zamowienia">Historia</a></li>
+   			<li><a href="${contextPath}/termList" >Ustal Terminy</a></li>
+            
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="${contextPath}/termList" >Terminy </a></li>	
+			<li><a href="#zamowienia">Historia</a></li>
 			<li><a href="logout">Wyloguj</a></li>	
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
@@ -162,7 +162,7 @@
             	<p class="client-part-haead wow fadeInDown delay-05">Historia zamówień</p>
             </div>
         </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Zamówienia</a>
+    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Wejdź</a>
     </div>
 </section><!--main-section client-part-end-->
 <br>

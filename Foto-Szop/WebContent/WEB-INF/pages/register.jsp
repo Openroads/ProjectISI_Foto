@@ -150,7 +150,7 @@
                 </div>
             </div>
             <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-            	<img src="<c:url value="/resources/img/camera.png"/>">
+            	<img src="<c:url value="/resources/img/register.jpg"/>">
             </figure>
         
         </div>
