@@ -113,17 +113,25 @@
     	<p class="client-part-haead wow fadeInDown delay-05 caption" style="color:black; text-align:center;">${employee.getName()}</p>
     	<h6>Terminy w jakich udostępniasz możliwość zamówienia sesji:</h6>
     	<div class="bootstrap-iso text-center ">
-        <c:forEach items="${termList}" var ="term" >
+       
     
 		<ol style="list-style-type:none">
+		
+		 	<c:forEach items="${termList}" var ="term" varStatus="status">
 				<li>
-					 ${ term.date }
-					<a href=""> edytuj </a>
-					<a href=""> usuń </a>
+					
+					<form action="deleteTerm" method="post">
+              			  <input type="hidden" name="termToDelete" value="${term.id}" />
+              			  <c:out value="${term.date}"/>
+              			  <input class="btn btn-danger " type="submit" value="Usuń" name="remove"/>
+              			  
+            		</form>
+					<br/>
 					
 				</li>
+			</c:forEach>
 		</ol>
-		</c:forEach>
+	
 		<br/>
 		<button class="btn btn-success"> Zatwierdź </button>
 		

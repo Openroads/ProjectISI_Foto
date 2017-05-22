@@ -26,7 +26,7 @@ public class TermDAODbImpl implements TermDAO {
 	private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
 	private static final String SQL_GET_LAST_ID = "select max(id_term) from term";
 	private static final String INSERT_NEW_TERM = "insert into term(id_term, id_employee,date_of_term) VALUES(?,?,?)";
-	
+	private static final String SQL_DELETE_TERM_FOR_ID = "delete from term where term.id_term = ?";
 	private DataSource dataSource;
 
 	public void setDataSource(DataSource dataSource) {
@@ -155,4 +155,40 @@ public class TermDAODbImpl implements TermDAO {
 		return 0;
 	}
 
+	@Override
+	public boolean deleteTerm(int id) {
+		
+		Connection connection = null;
+		
+		
+		try {
+			
+			connection = dataSource.getConnection();
+			
+
+			PreparedStatement statement = connection.prepareStatement(SQL_DELETE_TERM_FOR_ID);
+			statement.setInt(1, id);
+			statement.executeUpdate();
+			
+			return true;
+			
+		}catch (SQLException e) {
+			//TODO TO LOGER 
+			
+			e.printStackTrace();
+			return false;
+		}finally {
+			if(connection != null)
+			{
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+			
+	}
 }

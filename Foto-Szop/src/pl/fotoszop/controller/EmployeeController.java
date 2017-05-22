@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +19,7 @@ import pl.fotoszop.DAODbImpl.TermDAODbImpl;
 import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
 import pl.fotoszop.model.Employee;
+import pl.fotoszop.model.Term;
 import pl.fotoszop.modelinterfaces.ITerm;
 
 @Controller
@@ -43,7 +46,9 @@ public class EmployeeController {
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		if(result.hasErrors())
 		{
+			List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
 			model.addObject("termForm",termForm);
+			model.addObject("termList",termList);
 			return model;
 		}else
 		{
@@ -51,6 +56,24 @@ public class EmployeeController {
 			termDAO.addNewTerm(termForm);
 		}
 		return new ModelAndView("redirect:/termList");
+	}
+	
+	@RequestMapping(value ="/deleteTerm", method=RequestMethod.POST)
+	public ModelAndView deleteTerm(@RequestParam String termToDelete)
+	{
+
+		int idTermToDelete = Integer.valueOf(termToDelete);
+		if(idTermToDelete > 0 && termDAO.deleteTerm(idTermToDelete))
+		{
+			return new ModelAndView("redirect:/termList");
+
+		}else
+		{
+			//TODO przekierować do strony ostrzegawczej z przekierowaniem na glowna + logi
+			return new ModelAndView("redirect:/index");
+		}
+		
+		
 	}
 	
 }

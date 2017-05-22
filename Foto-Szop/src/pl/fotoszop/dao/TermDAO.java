@@ -11,4 +11,5 @@ public interface TermDAO {
 	public List<ITerm> getFreeTermsFromDate(LocalDate date);
 	public List<ITerm> getCurrentTermsForEmployee(IEmployee employee);
 	public int addNewTerm(TermFormtDTO newTerm);
+	public boolean deleteTerm(int id);
 }
