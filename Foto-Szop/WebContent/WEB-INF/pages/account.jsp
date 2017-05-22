@@ -67,8 +67,16 @@
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
-        <ul class="main-nav">
-            <li><a href="#oferta">Oferta</a></li>
+        <ul class="main-nav">         
+            <li class="dropdown"><a href="#" data-toggle="dropdown">Oferta <span class="caret"></span></a>
+   			<ul class="dropdown-menu">
+   			<li><a href="${contextPath}/photos">Obróbka zdjęć</a></li>
+   			<li><a href="${contextPath}/session">Sesja zdjęciowa</a></li>
+   			</ul>
+   			</li>
+   			
+   			
+   			
             <li><a href="#zamowienia">Zamówienia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 			<li><a href="#edytuj">Edytuj Konto</a></li>	
@@ -238,7 +246,7 @@
             	<p class="client-part-haead wow fadeInDown delay-05">Twoja historia zamówień</p>
             </div>
         </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Zamówienia</a>
+    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/history">Wejdź</a>
     </div>
 </section><!--main-section client-part-end-->
 <br>
