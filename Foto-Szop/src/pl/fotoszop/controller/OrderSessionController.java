@@ -23,6 +23,7 @@ import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.dto.Form;
+import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller
@@ -35,7 +36,7 @@ public class OrderSessionController {
 	private AccountDAODbImpl aclientDatabaseDAO;
 	
 	@RequestMapping(value="/orderSession", method = RequestMethod.POST)
-	public ModelAndView processForm(@ModelAttribute("form")@Valid Form form, BindingResult result){
+	public ModelAndView processForm(@ModelAttribute("form")@Valid OrderSessionFormDTO form, BindingResult result){
 		
 		ModelAndView model = null;
 	
@@ -51,7 +52,7 @@ public class OrderSessionController {
 			ModelAndView model;
 		
 			model = new ModelAndView("/orderSession");
-			model.addObject("form", new Form());
+			model.addObject("form", new OrderSessionFormDTO());
 		
 		return model;
 	}
