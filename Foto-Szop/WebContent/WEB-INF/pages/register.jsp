@@ -96,20 +96,28 @@
                 	 <div class="form">
                         <form:form method="post"  modelAttribute="form" id="register-form"  action="addClient">	
 							Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
+							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="name" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iname"></div><br>
 							Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
+							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="surname" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="isurname"></div><br>
 							Adres: <form:input class="input-text" path="address" id="address-form" />
+							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="address" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iaddress"></div><br>
 							PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
+							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="identityNumber" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iidentity-number"></div><br>
 							E-mail:<form:input class="input-text" type="email" path="email" id="email" />
+							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="email" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iemail"></div><br>
 							Hasło: <form:input class="input-text" type="password" path="password" id="password" />
+	                     	<c:if test="${pageContext.request.method=='POST'}"><form:errors path="password" 	 cssStyle="color: #ff0000;"/></c:if>
 	                     	<div id="ipassword"></div><br>
 	                     	Powtorz hasło: <form:input class="input-text"  type="password" id="password2" path="password2" />
+                           <c:if test="${pageContext.request.method=='POST'}"> <form:errors path="password2" 	 cssStyle="color: #ff0000;"/></c:if>
                             <div id="ipassword2"></div><br>
                                 Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
+                               <c:if test="${pageContext.request.method=='POST'}"> huj<form:errors path="phoneNumber" 	 cssStyle="color: #ff0000;"/></c:if>
                                 <div id="iphone"></div><br>
                                 <div style="text-align:center;">
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>

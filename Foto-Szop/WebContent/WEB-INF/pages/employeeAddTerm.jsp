@@ -93,7 +93,7 @@
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        <li><a href="${contextPath}/employeeAccount">Powrót</a></li>
+        <li><a href="${contextPath}/index">Powrót</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 		
         </ul>
