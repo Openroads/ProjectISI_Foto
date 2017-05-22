@@ -11,13 +11,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class TermFormtDTO {
 	
-	@NotNull
-	@Min(0)
 	private int employeeId;
 	
 	@Future
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate date;
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private Date date;
 	
 	
 	public int getEmployeeId() {
@@ -26,10 +24,10 @@ public class TermFormtDTO {
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	

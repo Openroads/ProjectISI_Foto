@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
@@ -117,17 +117,26 @@
     	<div class="bootstrap-iso text-center ">
         <c:forEach items="${termList}" var ="term" >
     
-		<ul style="list-style-type:none">
-				<li>${ term.date }</li>
-		</ul>
+		<ol style="list-style-type:none">
+				<li>
+					 ${ term.date }
+					<a href=""> edytuj </a>
+					<a href=""> usuń </a>
+					
+				</li>
+		</ol>
 		</c:forEach>
+		<br/>
+		<button class="btn btn-success"> Zatwierdź </button>
+		
 		</div>
+		
 
 
 
 
 
-			</br>
+			<br/> <br/>
         	<h6>Dodaj kolejne terminy:</h6>
         	
          
@@ -135,21 +144,23 @@
  <div class="container-fluid ">
   <div class="row">
    <div class="col-lg-4 col-lg-offset-4">
-    <form:form action="login" modelAttribute="loginForm" method="post">
+    <form:form action="addTerm" modelAttribute="termForm" method="post">
      <div class="form-group ">
       <label class="control-label " for="date">
        Data
       </label>
+      <form:errors path="date" 	 cssStyle="color: #ff0000;"/>
       <div class="input-group">
        <div class="input-group-addon">
         <i class="fa fa-calendar">
         </i>
        </div>
-       <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+       <form:input path ="date" cssClass="form-control" id="date"  placeholder="DD/MM/YYYY" type="text"></form:input>
       </div>
      </div>
      <div class="form-group">
       <div>
+      ${termForm.setEmployeeId(employee.id) }
        <button class="btn btn-success " name="submit" type="submit">
         Dodaj
        </button>
@@ -311,7 +322,7 @@ $(window).load(function(){
         var date_input=$('input[name="date"]'); //our date input has the name "date"
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            format: 'mm/dd/yyyy',
+            format: 'yyyy/mm/dd',
             container: container,
             todayHighlight: true,
             autoclose: true,

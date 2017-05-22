@@ -29,6 +29,7 @@ public class EmployeeController {
 		List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		TermFormtDTO form = new TermFormtDTO();
+		form.setEmployeeId((int)employee.getId());
 		model.addObject("termForm",form);
 		model.addObject("termList",termList);
 		
@@ -37,17 +38,19 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/addTerm")
-	public ModelAndView showList(@ModelAttribute("newTerm")@Valid TermFormtDTO newTerm,BindingResult result)
+	public ModelAndView showList(@SessionAttribute Employee employee, @ModelAttribute("termForm")@Valid TermFormtDTO termForm,BindingResult result)
 	{
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		if(result.hasErrors())
 		{
-			model.addObject("termForm",newTerm);
+			model.addObject("termForm",termForm);
+			return model;
 		}else
 		{
-			termDAO.addNewTerm(newTerm);
+			termForm.setEmployeeId((int)employee.getId());
+			termDAO.addNewTerm(termForm);
 		}
-		return null;
+		return new ModelAndView("redirect:/termList");
 	}
 	
 }

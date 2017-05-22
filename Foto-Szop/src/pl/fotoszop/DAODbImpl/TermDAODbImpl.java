@@ -127,13 +127,14 @@ public class TermDAODbImpl implements TermDAO {
 			int id = 0;
 			if(rs.next())
 			{
-				id = rs.getInt(0); 
+				id = rs.getInt(1) +1; 
 			}
+			
 			
 			PreparedStatement prStatement = connection.prepareStatement(INSERT_NEW_TERM);
 			prStatement.setInt(1, id);
 			prStatement.setInt(2, newTerm.getEmployeeId());
-			prStatement.setDate(3, java.sql.Date.valueOf(newTerm.getDate()));
+			prStatement.setDate(3,new java.sql.Date((newTerm.getDate().getTime())));
 			prStatement.executeUpdate();
 		
 		}catch (SQLException e) {
