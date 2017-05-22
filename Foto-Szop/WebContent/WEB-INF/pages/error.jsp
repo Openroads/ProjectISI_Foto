@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
@@ -18,7 +17,6 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
-<spring:url value="resources/js/validation.js" var="validation"/>
 
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
@@ -34,8 +32,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
+<meta http-equiv="refresh" content="10;url=index" />
 
-<title>Foto-Szop | Edycja</title>
+<title>Foto-Szop | Sukces</title>
 <link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
@@ -54,7 +53,6 @@
 <script src="${isotope}"></script>
 <script src="${wow}"></script>
 <script src="${classie}"></script>
-<script src="${validation}"></script>
 
 <!--[if lt IE 9]>
     <script src="${respond}"></script>
@@ -72,7 +70,7 @@
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        	<li><a href="${contextPath}/account">Powrót</a></li>
+        	<li><a href="${contextPath}/index">Powrót</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
             <li><a href="#kontakt">Kontakt</a></li>			
         </ul>
@@ -82,87 +80,29 @@
 
 
 
-<section class="main-section" id="oferta"><!--main-section-start-->
+<section class="main-section client-part" style="color=#fff;" id="sukces"><!--main-section client-part-start-->
 	<div class="container">
-    	<h2>Edycja konta</h2>
-    	<h6>Co masz ochotę zmienić?</h6>
-        <div class="row">
-        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-            	<div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-user"></i>
-                    </div>
-                	<div class="service-list-col2">
-                	 <div class="form">
-                        <form:form method="post"  modelAttribute="form" id="edit-form"  action="/editClient">	
-							Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
-							<div id="iname"></div><br>
-							Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
-							<div id="isurname"></div><br>
-							Adres: <form:input class="input-text" path="address" id="address-form" />
-							<div id="iaddress"></div><br>
-							PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
-							<div id="iidentity-number"></div><br>
-							Hasło: <form:input class="input-text" type="password" path="password" id="password" />
-	                     	<div id="ipassword"></div><br>
-	                     	Powtorz hasło: <form:input class="input-text"  type="password" id="password2" path="password2" />
-                            <div id="ipassword2"></div><br>
-                            Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
-                            <div id="iphone"></div><br>
-                            <div style="text-align:center;">
-                     		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
-                     		<label><input type="checkbox" class="input-text"  value="adv" id="adv"/>Chcę otrzymywać reklamy.</label>
-                     		<label><input type="checkbox" class="input-text"  value="promo" id="promo"/>Chcę otrzymywać rabaty.</label>
-                     		<input type="submit" id="submit" class="input-btn" value="Rejestruj">         
-               			       </div>
-				</form:form>
-                    </div>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-file"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>REGULAMIN</h3>
-                        <p><a style="color: green;" href="#">Czytaj></a></p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-star"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>REKLAMA</h3>
-                        <p><a style="color: green;" href="#">Czytaj></a></p>
-                    </div>
-                </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-envelope"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        <h3>RABATY</h3>
-                        <p><a style="color: green;" href="#">Czytaj></a></p>
-                    </div>
-                </div>
+		<b class="user wow fadeInDown delay-03"><i class="fa-ambulance"></i></b>
+    	<div class="row">
+        	<div class="col-lg-12">
+            	<p class="client-part-haead wow fadeInDown delay-05">Wystąpił błąd.<br>
+            	Za 10 sekund przeglądarka przekieruje Cię na stronę główną.</p>
+            	<p><progress value="0" max="10" id="progressBar"></progress></p>
             </div>
-            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-            	<img src="<c:url value="/resources/img/edit.png"/>">
-            </figure>
-        
         </div>
-	</div>
-</section><!--main-section-end-->
+    	  
+    </div>
+</section><!--main-section client-part-end-->
 
+<br><br>
 
-
-
-
+<h2 class=" wow fadeInDown delay-03" style="color:black">Opis błędu:</h2>
+<h6 class="wow fadeInUp delay-10">Litwo! Ojczyzno moja! Ty jesteś jak zdrowie. Nazywał się sploty. Kolor musiał wszystkie charty w lewo, jak mnie dziecko przestraszone we dworskim Wojewody względów doszli potem Sędzia nagłym zwrotem głową rzekł do kołtuna. Jeśli kto cię trzeba było widać. Zwrócona na wsi długo w ręku trzyma obyczajem pańskim i widać z łowów wracając trafia się, wleciała przez nosy, a Praga już składać zaczęto kopę żyta, niepełne jadą do woli nagadać nie szpieg, a on zająca pochwycił. Asesor zaś dowodził na awanpostach nasz ciężar poznali musim kogoś posadzić na dzień galowy, a czarną w Piramidy, w ręku trzyma obyczajem pańskim i ubiory. Była to mówiąc, że serce niewinne ale widzę i tam pewnie na on zmienił się długo uczyć, ażeby pan Podkomorzy i rozmyślał: Ogiński z całej psiarni dwa charty zostały i niezgrabny. Zatem się i stają mu przed laty tenże sam na wychowanie niczego nie nalewa szklanki, i pani Telimena mieszkała przed nim w grób się raczéj jako po samotnej łące. Śród cichej wsi długo w czasie wojny się nie wąchał pieniędzy i tuż przy boku miał, w pół kroku.</h6>
+<br><br>
 
 <section class="business-talking"><!--business-talking-start-->
 	<div class="container">
-        <h2>Klik i robisz co chcesz!</h2>
+        <h2>Zespół wykwalifikowanych szopów już zajmuje się tą sprawą!</h2>
     </div>
 </section><!--business-talking-end-->
 <div class="container">
@@ -396,6 +336,17 @@ $(window).load(function(){
     });
   
 });
+
+</script>
+
+<script>
+
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  document.getElementById("progressBar").value = 10 - --timeleft;
+  if(timeleft <= 0)
+    clearInterval(downloadTimer);
+},1000);
 
 </script>
 </body>
