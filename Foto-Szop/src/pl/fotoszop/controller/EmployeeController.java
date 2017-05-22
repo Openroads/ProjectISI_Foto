@@ -1,5 +1,6 @@
 package pl.fotoszop.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -29,7 +30,8 @@ public class EmployeeController {
 	@RequestMapping("/termList")
 	public ModelAndView showList(@SessionAttribute Employee employee)
 	{
-		List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
+		//List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
+		List<ITerm> termList = termDAO.getFreeTermsForWeek(LocalDate.now());
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		TermFormtDTO form = new TermFormtDTO();
 		form.setEmployeeId((int)employee.getId());
@@ -46,7 +48,8 @@ public class EmployeeController {
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		if(result.hasErrors())
 		{
-			List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
+			//List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
+			List<ITerm> termList = termDAO.getFreeTermsForWeek(LocalDate.now());
 			model.addObject("termForm",termForm);
 			model.addObject("termList",termList);
 			return model;

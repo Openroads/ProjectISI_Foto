@@ -12,4 +12,10 @@ public interface TermDAO {
 	public List<ITerm> getCurrentTermsForEmployee(IEmployee employee);
 	public int addNewTerm(TermFormtDTO newTerm);
 	public boolean deleteTerm(int id);
+	/**
+	 * Function return list of free Terms from the passed date until the end of the  week
+	 * @param date - the date from which we start getting the terms
+	 * @return 
+	 */
+	List<ITerm> getFreeTermsForWeek(LocalDate date);
 }
