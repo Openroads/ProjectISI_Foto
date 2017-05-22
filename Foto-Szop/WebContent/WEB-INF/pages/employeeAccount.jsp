@@ -68,8 +68,15 @@
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-            <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#zamowienia">Zamówienia</a></li>
+        
+   			<li class="dropdown"><a href="#" data-toggle="dropdown">Zamówienia <span class="caret"></span></a>
+   			<ul class="dropdown-menu">
+   			<li><a href="#">Odbierz</a></li>
+   			<li><a href="#">Terminy</a></li>
+   			</ul>
+   			</li>
+   			
+            <li><a href="#zamowienia">Historia</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 			<li><a href="${contextPath}/termList" >Terminy </a></li>	
 			<li><a href="logout">Wyloguj</a></li>	
