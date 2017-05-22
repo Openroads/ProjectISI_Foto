@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import pl.fotoszop.dao.TermDAO;
+import pl.fotoszop.dto.TermFormtDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Term;
 import pl.fotoszop.modelinterfaces.IEmployee;
@@ -22,8 +24,8 @@ public class TermDAODbImpl implements TermDAO {
 	
 	private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
 	private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
-	
-
+	private static final String SQL_GET_LAST_ID = "select max(id_term) from term";
+	private static final String INSERT_NEW_TERM = "insert into term(id_term, id_employee,date_of_term) VALUES(?,?,?)";
 	
 	private DataSource dataSource;
 
@@ -109,6 +111,47 @@ public class TermDAODbImpl implements TermDAO {
 		}
 		
 		return termList;
+	}
+
+	@Override
+	public int addNewTerm(TermFormtDTO newTerm) {
+		Connection connection = null;
+		
+		
+		try {
+			
+			connection = dataSource.getConnection();
+			
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(SQL_GET_LAST_ID);
+			int id = 0;
+			if(rs.next())
+			{
+				id = rs.getInt(0); 
+			}
+			
+			PreparedStatement prStatement = connection.prepareStatement(INSERT_NEW_TERM);
+			prStatement.setInt(1, id);
+			prStatement.setInt(2, newTerm.getEmployeeId());
+			prStatement.setDate(3, java.sql.Date.valueOf(newTerm.getDate()));
+			prStatement.executeUpdate();
+		
+		}catch (SQLException e) {
+			//TODO TO LOGER 
+			e.printStackTrace();
+		}finally {
+			if(connection != null)
+			{
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+			
+		return 0;
 	}
 
 }

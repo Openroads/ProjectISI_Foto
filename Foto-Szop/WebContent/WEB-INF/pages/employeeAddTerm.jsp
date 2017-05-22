@@ -114,7 +114,20 @@
     	<h2>Witamy w panelu pracownika</h2>
     	<p class="client-part-haead wow fadeInDown delay-05 caption" style="color:black; text-align:center;">${employee.getName()}</p>
     	<h6>Terminy w jakich udostępniasz możliwość zamówienia sesji:</h6>
-        
+    	<div class="bootstrap-iso text-center ">
+        <c:forEach items="${termList}" var ="term" >
+    
+		<ul style="list-style-type:none">
+				<li>${ term.date }</li>
+		</ul>
+		</c:forEach>
+		</div>
+
+
+
+
+
+			</br>
         	<h6>Dodaj kolejne terminy:</h6>
         	
          
@@ -122,7 +135,7 @@
  <div class="container-fluid ">
   <div class="row">
    <div class="col-lg-4 col-lg-offset-4">
-    <form method="post">
+    <form:form action="login" modelAttribute="loginForm" method="post">
      <div class="form-group ">
       <label class="control-label " for="date">
        Data
@@ -132,7 +145,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
-       <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
       </div>
      </div>
      <div class="form-group">
@@ -142,7 +155,7 @@
        </button>
       </div>
      </div>
-    </form>
+    </form:form>
    </div>
   </div>
  </div>
