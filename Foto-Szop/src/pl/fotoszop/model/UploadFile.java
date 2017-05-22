@@ -15,6 +15,11 @@ public class UploadFile
         this.data = data;
     }
 
+    public UploadFile()
+    {
+
+    }
+
     public int getId() {
         return id;
     }
