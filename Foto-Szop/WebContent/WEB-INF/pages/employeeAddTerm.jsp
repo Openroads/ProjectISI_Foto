@@ -160,7 +160,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
-       <form:input path ="date" cssClass="form-control" id="date"  placeholder="DD/MM/YYYY" type="text"></form:input>
+       <form:input path ="date" cssClass="form-control" id="date"  placeholder="DD/MM/YYYY" type="text" required="required"></form:input>
       </div>
      </div>
      <div class="form-group">
