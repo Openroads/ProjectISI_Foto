@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.mocks.ClientDAOMock;
 import pl.fotoszop.model.Client;
-import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
 
 @Controller

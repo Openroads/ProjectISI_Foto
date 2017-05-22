@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.model.Client;
-import pl.fotoszop.model.Form;
 import pl.fotoszop.modelinterfaces.IClient;
 /**
  * 

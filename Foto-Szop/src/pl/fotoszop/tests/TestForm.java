@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import pl.fotoszop.model.Form;
+import pl.fotoszop.dto.Form;
 
 public class TestForm {
 	

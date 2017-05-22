@@ -1,5 +1,6 @@
 package pl.fotoszop.model;
 
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.modelinterfaces.IClient;
 
 public class Client implements IClient{

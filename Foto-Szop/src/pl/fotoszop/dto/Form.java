@@ -1,4 +1,4 @@
-package pl.fotoszop.model;
+package pl.fotoszop.dto;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.model.HashGenerator;
 import pl.fotoszop.modelinterfaces.IClient;
 
 public class Form {
@@ -45,56 +46,7 @@ public class Form {
 	@NotEmpty
 	private String password2;
 	
-	
-	// ORDER SESSION //
-	
-	@NotEmpty
-	@Size(min=4, max=256)
-	private String subject;
-	@NotEmpty
-	@Size(min=4, max=256)
-	private String sessionAddress;
-	@NotEmpty
-	@Size(min=4, max=256)
-	private String sessionPlace;
-	
-	
-	// ORDER PHOTOS //
-	
-	@NotEmpty
-	@Size(min=4, max=256)
-	private String orderAddress;
-	
-	
-	
-	
-	
-	
-	
-	public String getOrderAddress() {
-		return orderAddress;
-	}
-	public void setOrderAddress(String orderAddress) {
-		this.orderAddress = orderAddress;
-	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getSessionAddress() {
-		return sessionAddress;
-	}
-	public void setSessionAddress(String sessionAddress) {
-		this.sessionAddress = sessionAddress;
-	}
-	public String getSessionPlace() {
-		return sessionPlace;
-	}
-	public void setSessionPlace(String sessionPlace) {
-		this.sessionPlace = sessionPlace;
-	}
+
 	public int getId() {
 		return id;
 	}

@@ -15,7 +15,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.DAODbImpl.FileUploadImpl;
-import pl.fotoszop.model.Form;
 import pl.fotoszop.model.UploadFile;
 import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.model.Account;
@@ -24,6 +23,7 @@ import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.mocks.ClientDAOMock;
 
 @Controller

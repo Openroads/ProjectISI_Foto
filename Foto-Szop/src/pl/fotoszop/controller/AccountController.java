@@ -24,7 +24,7 @@ import pl.fotoszop.modelinterfaces.IEmployee;
 
 @Controller
 @SessionAttributes({"account", "client", "employee"})
-public class LoginController {
+public class AccountController {
 	
 	@Autowired
 	private ClientDAODbImpl clientDatabaseDAO;

@@ -4,6 +4,7 @@ package pl.fotoszop.model;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.modelinterfaces.IAccount;
 
 

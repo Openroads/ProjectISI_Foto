@@ -117,7 +117,7 @@
                            <c:if test="${pageContext.request.method=='POST'}"> <form:errors path="password2" 	 cssStyle="color: #ff0000;"/></c:if>
                             <div id="ipassword2"></div><br>
                                 Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
-                               <c:if test="${pageContext.request.method=='POST'}"> huj<form:errors path="phoneNumber" 	 cssStyle="color: #ff0000;"/></c:if>
+                               <c:if test="${pageContext.request.method=='POST'}"><form:errors path="phoneNumber" 	 cssStyle="color: #ff0000;"/></c:if>
                                 <div id="iphone"></div><br>
                                 <div style="text-align:center;">
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
