@@ -30,8 +30,7 @@ public class EmployeeController {
 	@RequestMapping("/termList")
 	public ModelAndView showList(@SessionAttribute Employee employee)
 	{
-		//List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
-		List<ITerm> termList = termDAO.getFreeTermsForWeek(LocalDate.now());
+		List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		TermFormtDTO form = new TermFormtDTO();
 		form.setEmployeeId((int)employee.getId());
@@ -48,8 +47,7 @@ public class EmployeeController {
 		ModelAndView model = new ModelAndView("employeeAddTerm");
 		if(result.hasErrors())
 		{
-			//List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
-			List<ITerm> termList = termDAO.getFreeTermsForWeek(LocalDate.now());
+			List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
 			model.addObject("termForm",termForm);
 			model.addObject("termList",termList);
 			return model;
@@ -73,7 +71,10 @@ public class EmployeeController {
 		}else
 		{
 			//TODO przekierować do strony ostrzegawczej z przekierowaniem na glowna + logi
-			return new ModelAndView("redirect:/index");
+			String message = "Coś poszło nie tak... Nie możemy usunąćc tego terminu.";
+			ModelAndView model = new ModelAndView("error");
+			model.addObject("error", message);
+			return model;
 		}
 		
 		

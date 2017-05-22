@@ -133,7 +133,6 @@
 		</ol>
 	
 		<br/>
-		<button class="btn btn-success"> Zatwierdź </button>
 		
 		</div>
 		

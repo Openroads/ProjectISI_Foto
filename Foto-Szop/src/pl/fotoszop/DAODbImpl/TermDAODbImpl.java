@@ -12,9 +12,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
-import org.springframework.format.datetime.joda.LocalDateParser;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
