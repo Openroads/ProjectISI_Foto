@@ -22,9 +22,10 @@ public class ErrorController{
 //	private ClientDAODbImpl clientDatabaseDAO;
 	
 	@RequestMapping("/error")
-	public ModelAndView helloworld(){
-
+	public ModelAndView helloworld(String error){
 		ModelAndView model = new ModelAndView("error");
+		error="Najgorszy błąd na świecie...";
+		model.addObject("error", error);
 		return model;
 	}
 	

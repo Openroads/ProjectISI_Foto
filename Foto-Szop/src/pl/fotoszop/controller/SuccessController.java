@@ -23,7 +23,7 @@ public class SuccessController{
 	
 	@RequestMapping("/account")
 	public ModelAndView helloworld(){
-
+		
 		ModelAndView model = new ModelAndView("account");
 		return model;
 	}
