@@ -144,6 +144,15 @@
                      		<input type="submit" id="submit" class="input-btn" value="Umów">     
                			       </div>
 				</form:form>
+				
+				<c:forEach items="${termList}" var ="term" varStatus="status">
+				<li>
+              			  <c:out value="${term.date}"/>
+
+					<br/>
+					
+				</li>
+			</c:forEach>
                     </div>
                     </div>
                 </div>
