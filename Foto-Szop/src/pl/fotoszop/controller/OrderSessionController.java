@@ -36,7 +36,8 @@ import pl.fotoszop.mocks.ClientDAOMock;
 @SessionAttributes({"client","account"})
 public class OrderSessionController {
 	
-	@Autowired TermDAODbImpl termDAO;
+	@Autowired 
+	private TermDAODbImpl termDAO;
 	
 	@Autowired
 	private ClientDAODbImpl clientDatabaseDAO;
@@ -47,7 +48,12 @@ public class OrderSessionController {
 	public ModelAndView processForm(@ModelAttribute("form")@Valid OrderSessionFormDTO form, BindingResult result){
 		
 		ModelAndView model = null;
-	
+			if(result.hasErrors()){
+				
+			}
+			else {
+				
+			} 
 			model=new ModelAndView("orderSession");
 			return model.addObject("form",  form);
 	
