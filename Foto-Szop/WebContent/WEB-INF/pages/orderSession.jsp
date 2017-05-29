@@ -105,14 +105,10 @@
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label><br><br><br>
                      		
                      		
-                     		    <select>
-								
-                     			<c:forEach items="${termList}" var ="term" varStatus="status">
-								
-										<option>${term.date}</option>
-
-								</c:forEach>	
-                     			</select>
+                     		<form:select  path="date">
+    						<form:option value="date"> --SELECT DATE--</form:option>
+    						<form:options items="${termList}" itemValue="date" itemLabel="date"></form:options> 
+  							</form:select>
                      				<br/><br/><br/>
                      		
                      		

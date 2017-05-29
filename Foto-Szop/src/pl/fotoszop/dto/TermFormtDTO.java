@@ -1,11 +1,10 @@
 package pl.fotoszop.dto;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 

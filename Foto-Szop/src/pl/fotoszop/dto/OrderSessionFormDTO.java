@@ -26,7 +26,7 @@ public class OrderSessionFormDTO {
 		 	
 			
 			@Future
-			@DateTimeFormat(pattern = "yyyy/MM/dd")
+			//@DateTimeFormat(pattern = "yyyy-MM-dd")
 			private Date date;
 		 	
 		 	public Date getDate() {
