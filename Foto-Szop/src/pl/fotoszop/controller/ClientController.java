@@ -33,6 +33,7 @@ public class ClientController {
 		return model;
 	}
 	
+	
 	@RequestMapping(value="/editClient", method=RequestMethod.POST)
 	public ModelAndView editClient(@SessionAttribute Account account,@SessionAttribute Client client, @ModelAttribute("editForm")@Valid EditFormDTO editForm,BindingResult result){
 		
@@ -47,6 +48,7 @@ public class ClientController {
 		}
 		else{
 				if(editForm.getPassword()==account.getPassword()){
+					
 					if(editForm.getPasswordNew()!=null || editForm.getAddress()!=null || editForm.getPhoneNumber()!=null){
 						
 						clientDAO.updateClient(client,editForm);
@@ -58,11 +60,16 @@ public class ClientController {
 						
 					}
 					else{
-						model = new ModelAndView("/editForm");
+						model = new ModelAndView("edit");
 						model.addObject("editForm",editForm);
 					}
+					
 					//if(editForm.getAddress()!=null);
 					//if(editForm.getPhoneNumber()!=null);
+				}else{
+					System.out.println("Bledne haslo");
+					model = new ModelAndView("edit");
+					model.addObject("editForm",editForm);
 				}
 		}
 		return model;
