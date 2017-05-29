@@ -93,17 +93,19 @@ public class ClientDAODbImpl implements ClientDAO{
 		String sqlQuery;
 		
 				
-			if(form.getAddress()!=null && form.getPhoneNumber()!=null){
+			if(!form.getAddress().equals("") && !form.getPhoneNumber().equals("")){
+				
+				System.out.println("addr:"+form.getAddress()+"nr:"+form.getPhoneNumber());
 				
 				sqlQuery = "UPDATE client SET address=?, phone_nr=? WHERE id_client=?";
 				jdbcTemplate.update(sqlQuery,form.getAddress(),form.getPhoneNumber(),client.getId());
 				
-			}else if(form.getAddress()!=null){
+			}else if(!form.getAddress().equals("")){
 				
 				sqlQuery = "UPDATE client SET address=? WHERE id_client=?";
 				jdbcTemplate.update(sqlQuery,form.getAddress(),client.getId());
 				
-			}else if(form.getPhoneNumber()!=null){
+			}else if(!form.getPhoneNumber().equals("")){
 				
 				sqlQuery = "UPDATE client SET phone_nr=? WHERE id_client=?";
 				jdbcTemplate.update(sqlQuery,form.getPhoneNumber(),client.getId());

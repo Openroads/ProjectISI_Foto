@@ -52,8 +52,9 @@ public class EditFormDTO {
 	public void doHash(){
 		
 		password = HashGenerator.doHash(password);
-		
+		if(!passwordNew.equals("") && !passwordNew.equals("")){
+			passwordNew = HashGenerator.doHash(passwordNew);
+			passwordNew2 = HashGenerator.doHash(passwordNew2);
+		}
 	}
-	
-	
 }

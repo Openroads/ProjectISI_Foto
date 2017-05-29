@@ -47,13 +47,17 @@ public class ClientController {
 
 		}
 		else{
-				if(editForm.getPassword()==account.getPassword()){
+				if(editForm.getPassword().equals(account.getPassword())){
 					
-					if(editForm.getPasswordNew()!=null || editForm.getAddress()!=null || editForm.getPhoneNumber()!=null){
+					if(!editForm.getPasswordNew().equals("") || !editForm.getAddress().equals("") || !editForm.getPhoneNumber().equals("")){
 						
 						clientDAO.updateClient(client,editForm);
+						if(!editForm.getAddress().equals("")) 
+							client.setAddress(editForm.getAddress());
+						if(!editForm.getPhoneNumber().equals("")) 
+							client.setPhoneNumber(editForm.getPhoneNumber());
 						
-						if(editForm.getPasswordNew()!=null && editForm.getPasswordNew()==editForm.getPasswordNew2())
+						if(!editForm.getPasswordNew().equals("") && editForm.getPasswordNew().equals(editForm.getPasswordNew2()))
 							aclientDAO.update(account,editForm);
 						
 						model = new ModelAndView("account");
