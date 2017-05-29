@@ -3,6 +3,7 @@ package pl.fotoszop.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -69,6 +70,8 @@ public class OrderSessionController {
 			model = new ModelAndView("/orderSession");
 			
 			model.addObject("form", new OrderSessionFormDTO());
+			
+			Collections.sort(termList,(term1,term2)->term1.getDate().compareTo(term2.getDate()));
 			model.addObject("termList",termList);
 		return model;
 	}

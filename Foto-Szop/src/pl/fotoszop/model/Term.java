@@ -1,9 +1,7 @@
 package pl.fotoszop.model;
 
 import java.util.Date;
-import java.util.List;
 
-import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.ITerm;
 
 public class Term implements ITerm{
@@ -32,6 +30,7 @@ public class Term implements ITerm{
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 
 
 }

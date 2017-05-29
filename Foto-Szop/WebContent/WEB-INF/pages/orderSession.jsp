@@ -104,9 +104,23 @@
 							<div style="text-align:center;">
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label><br><br><br>
                      		
+                     		
+                     		    <select>
+								
+                     			<c:forEach items="${termList}" var ="term" varStatus="status">
+								
+										<option>${term.date}</option>
+
+								</c:forEach>	
+                     			</select>
+                     				<br/><br/><br/>
+                     		
+                     		
+                     		
+                     		
                      				<button type="button" class="btn btn-success"><</button><button type="button" class="btn btn-success">></button>  
                      				
-                     				
+  
                      		<!--   w zależności od tego kiedy będzie wolny termin
                      		 tam będzie zmieniał typ z hidden na checkbox, wtedy
                      		  checkbox będzie wysyłał zaznaczone elementy do kontrolera,
@@ -145,14 +159,7 @@
                			       </div>
 				</form:form>
 				
-				<c:forEach items="${termList}" var ="term" varStatus="status">
-				<li>
-              			  <c:out value="${term.date}"/>
-
-					<br/>
-					
-				</li>
-			</c:forEach>
+				
                     </div>
                     </div>
                 </div>

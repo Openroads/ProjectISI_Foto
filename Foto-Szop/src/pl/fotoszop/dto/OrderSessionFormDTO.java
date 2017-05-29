@@ -1,15 +1,17 @@
 package pl.fotoszop.dto;
 
+import java.util.Date;
+
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import pl.fotoszop.model.HashGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class OrderSessionFormDTO {
 
-	
+
 	// ORDER SESSION //
  	
 		 	@NotEmpty
@@ -22,8 +24,19 @@ public class OrderSessionFormDTO {
 		 	@Size(min=4, max=256)
 		 	private String sessionPlace;
 		 	
+			
+			@Future
+			@DateTimeFormat(pattern = "yyyy/MM/dd")
+			private Date date;
 		 	
-		 	public String getSubject() {
+		 	public Date getDate() {
+				return date;
+			}
+		 	
+			public void setDate(Date date) {
+				this.date = date;
+			}
+			public String getSubject() {
 		 		return subject;
 		 	}
 		 	public void setSubject(String subject) {
