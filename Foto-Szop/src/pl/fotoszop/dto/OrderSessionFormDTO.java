@@ -25,15 +25,15 @@ public class OrderSessionFormDTO {
 		 	private String sessionPlace;
 		 	
 			
-			@Future
+			//@Future
 			//@DateTimeFormat(pattern = "yyyy-MM-dd")
-			private Date date;
+			private String date;
 		 	
-		 	public Date getDate() {
+		 	public String getDate() {
 				return date;
 			}
 		 	
-			public void setDate(Date date) {
+			public void setDate(String date) {
 				this.date = date;
 			}
 			public String getSubject() {

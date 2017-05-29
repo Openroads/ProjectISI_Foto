@@ -50,13 +50,18 @@ public class OrderSessionController {
 		
 		ModelAndView model = null;
 			if(result.hasErrors()){
-				
+				List<ITerm> termList = termDAO.getFreeTermsFromDate(LocalDate.now());
+				model=new ModelAndView("orderSession");
+				Collections.sort(termList,(term1,term2)->term1.getDate().compareTo(term2.getDate()));
+				model.addObject("termList",termList);
 			}
 			else {
-				
+				model = new ModelAndView("sessionOrderSuccess");
 			} 
-			model=new ModelAndView("orderSession");
-			return model.addObject("form",  form);
+			
+			
+			model.addObject("form",  form);
+			return model;
 	
 		}
 		
