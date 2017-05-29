@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.ClientDAO;
+import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.dto.Form;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.modelinterfaces.IClient;
@@ -84,6 +85,31 @@ public class ClientDAODbImpl implements ClientDAO{
 		id++;
 		form.setId(id);
 		return isTaken;
+	}
+	
+	public int updateClient (IClient client, EditFormDTO form){
+		
+		
+		String sqlQuery;
+		
+				
+			if(form.getAddress()!=null && form.getPhoneNumber()!=null){
+				
+				sqlQuery = "UPDATE client SET address=?, phone_nr=? WHERE id_client=?";
+				jdbcTemplate.update(sqlQuery,form.getAddress(),form.getPhoneNumber(),client.getId());
+				
+			}else if(form.getAddress()!=null){
+				
+				sqlQuery = "UPDATE client SET address=? WHERE id_client=?";
+				jdbcTemplate.update(sqlQuery,form.getAddress(),client.getId());
+				
+			}else if(form.getPhoneNumber()!=null){
+				
+				sqlQuery = "UPDATE client SET phone_nr=? WHERE id_client=?";
+				jdbcTemplate.update(sqlQuery,form.getPhoneNumber(),client.getId());
+			}
+		
+		return 0;
 	}
 	
 

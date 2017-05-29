@@ -25,7 +25,7 @@ public class ClientController {
 	@Autowired
 	private AccountDAODbImpl aclientDAO;
 	
-	@RequestMapping(value="/editForm", method=RequestMethod.POST)
+	@RequestMapping(value="/editForm", method=RequestMethod.GET)
 	public ModelAndView getEditForm(@SessionAttribute Client client){
 		
 		ModelAndView model = new ModelAndView("edit");
@@ -34,7 +34,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="/editClient", method=RequestMethod.POST)
-	public ModelAndView editClient(@SessionAttribute Account account, @ModelAttribute("editForm")@Valid EditFormDTO editForm,BindingResult result){
+	public ModelAndView editClient(@SessionAttribute Account account,@SessionAttribute Client client, @ModelAttribute("editForm")@Valid EditFormDTO editForm,BindingResult result){
 		
 		ModelAndView model = null;
 		editForm.doHash();
@@ -47,9 +47,17 @@ public class ClientController {
 		}
 		else{
 				if(editForm.getPassword()==account.getPassword()){
-					if(editForm.getNewPassword()!=null);
-					if(editForm.getAddress()!=null);
-					if(editForm.getPhoneNumber()!=null);
+					if(editForm.getNewPassword()!=null || editForm.getAddress()!=null || editForm.getPhoneNumber()!=null){
+						clientDAO.updateClient(client,editForm);
+						model = new ModelAndView("account");
+						
+					}
+					else{
+						model = new ModelAndView("/editForm");
+						model.addObject("editForm",editForm);
+					}
+					//if(editForm.getAddress()!=null);
+					//if(editForm.getPhoneNumber()!=null);
 				}
 		}
 		return model;
