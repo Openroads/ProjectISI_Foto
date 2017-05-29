@@ -25,7 +25,7 @@ public class ClientController {
 	@Autowired
 	private AccountDAODbImpl aclientDAO;
 	
-	@RequestMapping(value="/editForm", method=RequestMethod.GET)
+	@RequestMapping(value="/edit", method=RequestMethod.GET)
 	public ModelAndView getEditForm(@SessionAttribute Client client){
 		
 		ModelAndView model = new ModelAndView("edit");

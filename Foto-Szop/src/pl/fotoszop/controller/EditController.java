@@ -1,6 +1,6 @@
-package pl.fotoszop.controller;
+//package pl.fotoszop.controller;
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.dto.Form;
-import pl.fotoszop.mocks.ClientDAOMock;
-
+import pl.fotoszop.mocks.ClientDAOMock; */
+/* NOT USE 
 @Controller
 public class EditController {
 	
@@ -53,7 +53,7 @@ public class EditController {
 		
 	}
 	
-	@RequestMapping("/edit")
+	@RequestMapping("/editS")
 	public ModelAndView getForm(){
 		
 		ModelAndView model = new ModelAndView("edit");
@@ -62,4 +62,4 @@ public class EditController {
 	}
 }
 	
-	
+	*/

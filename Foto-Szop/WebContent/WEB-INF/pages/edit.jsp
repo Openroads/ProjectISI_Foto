@@ -94,7 +94,7 @@
                     </div>
                 	<div class="service-list-col2">
                 	 <div class="form">
-                        <form:form method="post"  modelAttribute="form" id="edit-form"  action="/editClient">	
+                        <form:form method="post"  modelAttribute="editForm" id="edit-form"  action="/editClient">	
 							Adres: <form:input class="input-text" path="address" id="address-form" />
 							<div id="iaddress"></div><br>
 							Stare Hasło: <form:input class="input-text" type="password" path="password" id="password" />
