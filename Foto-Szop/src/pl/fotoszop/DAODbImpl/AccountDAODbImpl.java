@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import pl.fotoszop.dao.AccountDAO;
+import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.HashGenerator;
@@ -131,6 +132,37 @@ public class AccountDAODbImpl implements AccountDAO{
 		}
 		
 		return null;
+	}
+	
+	public int update(Account account, EditFormDTO form){
+		
+		Connection conn = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sqlQuery="UPDATE account SET password=? WHERE id_account=?"; 
+			PreparedStatement statement = conn.prepareStatement(sqlQuery);
+			statement.setString(1, form.getPasswordNew());
+			statement.setInt(2, account.getAccountId());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(conn != null)
+			{
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+				
+		return 0;
 	}
 	
 	/**
