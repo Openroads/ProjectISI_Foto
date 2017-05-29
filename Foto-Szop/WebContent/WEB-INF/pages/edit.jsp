@@ -18,7 +18,7 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
-<spring:url value="resources/js/validation.js" var="validation"/>
+
 
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
@@ -54,7 +54,6 @@
 <script src="${isotope}"></script>
 <script src="${wow}"></script>
 <script src="${classie}"></script>
-<script src="${validation}"></script>
 
 <!--[if lt IE 9]>
     <script src="${respond}"></script>
@@ -94,7 +93,7 @@
                     </div>
                 	<div class="service-list-col2">
                 	 <div class="form">
-                        <form:form method="post"  modelAttribute="editForm" id="edit-form"  action="/editClient">	
+                        <form:form method="post"  modelAttribute="editForm" id="edit-form"  action="editClient">	
 							Adres: <form:input class="input-text" path="address" id="address-form" />
 							<div id="iaddress"></div><br>
 							Stare Hasło: <form:input class="input-text" type="password" path="password" id="password" />
