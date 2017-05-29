@@ -95,25 +95,19 @@
                 	<div class="service-list-col2">
                 	 <div class="form">
                         <form:form method="post"  modelAttribute="form" id="edit-form"  action="/editClient">	
-							Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
-							<div id="iname"></div><br>
-							Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
-							<div id="isurname"></div><br>
 							Adres: <form:input class="input-text" path="address" id="address-form" />
 							<div id="iaddress"></div><br>
-							PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
-							<div id="iidentity-number"></div><br>
-							Hasło: <form:input class="input-text" type="password" path="password" id="password" />
+							Stare Hasło: <form:input class="input-text" type="password" path="password" id="password" />
 	                     	<div id="ipassword"></div><br>
-	                     	Powtorz hasło: <form:input class="input-text"  type="password" id="password2" path="password2" />
+	                     	Nowe hasło: <form:input class="input-text"  type="password" id="passwordNew" path="passwordNew" />
+                            <div id="ipassword2"></div><br>
+                            Powtórz nowe hasło: <form:input class="input-text"  type="password" id="passwordNew2" path="passwordNew2" />
                             <div id="ipassword2"></div><br>
                             Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
                             <div id="iphone"></div><br>
                             <div style="text-align:center;">
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
-                     		<label><input type="checkbox" class="input-text"  value="adv" id="adv"/>Chcę otrzymywać reklamy.</label>
-                     		<label><input type="checkbox" class="input-text"  value="promo" id="promo"/>Chcę otrzymywać rabaty.</label>
-                     		<input type="submit" id="submit" class="input-btn" value="Rejestruj">         
+                     		<input type="submit" id="submit" class="input-btn" value="edit">         
                			       </div>
 				</form:form>
                     </div>
