@@ -47,7 +47,7 @@ public class ClientController {
 		}
 		else{
 				if(editForm.getPassword()==account.getPassword()){
-					if(editForm.getNewPassword()!=null || editForm.getAddress()!=null || editForm.getPhoneNumber()!=null){
+					if(editForm.getPasswordNew()!=null || editForm.getAddress()!=null || editForm.getPhoneNumber()!=null){
 						clientDAO.updateClient(client,editForm);
 						model = new ModelAndView("account");
 						

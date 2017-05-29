@@ -99,11 +99,11 @@
 							<div id="iaddress"></div><br>
 							Stare Hasło: <form:input class="input-text" type="password" path="password" id="password" />
 	                     	<div id="ipassword"></div><br>
-	                     	Nowe hasło: <form:input class="input-text"  type="password" id="passwordNew" path="passwordNew" />
-                            <div id="ipassword2"></div><br>
-                            Powtórz nowe hasło: <form:input class="input-text"  type="password" id="passwordNew2" path="passwordNew2" />
-                            <div id="ipassword2"></div><br>
-                            Numer telefonu komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
+	                     	Nowe Hasło: <form:input class="input-text"  type="password" id="passwordNew" path="passwordNew" />
+                            <div id="ipasswordNew"></div><br>
+                            Powtórz Nowe Hasło: <form:input class="input-text"  type="password" id="passwordNew2" path="passwordNew2" />
+                            <div id="ipasswordNew2"></div><br>
+                            Numer Telefonu Komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number" />
                             <div id="iphone"></div><br>
                             <div style="text-align:center;">
                      		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
