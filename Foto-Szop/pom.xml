@@ -27,6 +27,14 @@
   
    <dependencies>
   
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>3.0.0.RELEASE</version>
+    <scope>test</scope> 
+</dependency>
+  
+  
   <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 <dependency>
     <groupId>org.springframework</groupId>

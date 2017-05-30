@@ -96,7 +96,7 @@
                         <form:form method="post"  modelAttribute="editForm" id="edit-form"  action="editClient">	
 							Adres: <form:input class="input-text" path="address" id="address-form" />
 							<div id="iaddress"></div><br>
-							Stare Hasło: <form:input class="input-text" type="password" path="password" id="password" />
+							Obecne Hasło: <form:input class="input-text" type="password" path="password" id="password" />
 	                     	<div id="ipassword"></div><br>
 	                     	Nowe Hasło: <form:input class="input-text"  type="password" id="passwordNew" path="passwordNew" />
                             <div id="ipasswordNew"></div><br>

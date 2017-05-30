@@ -65,6 +65,9 @@ public class ClientController {
 					}
 					else{
 						model = new ModelAndView("edit");
+						editForm.setPassword("");
+						editForm.setPasswordNew("");
+						editForm.setPasswordNew2("");
 						model.addObject("editForm",editForm);
 					}
 					
@@ -72,6 +75,9 @@ public class ClientController {
 					//if(editForm.getPhoneNumber()!=null);
 				}else{
 					System.out.println("Bledne haslo");
+					editForm.setPassword("");
+					editForm.setPasswordNew("");
+					editForm.setPasswordNew2("");
 					model = new ModelAndView("edit");
 					model.addObject("editForm",editForm);
 				}
