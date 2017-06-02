@@ -1,7 +1,11 @@
 package pl.fotoszop.tests;
 
 import org.junit.Test;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import static org.junit.Assert.*;
 import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
@@ -19,21 +23,27 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "WebContent//WEB-INF/spring-dispatcher-servlet.xml" })
-public class TermTest {
+@ContextConfiguration("classpath*:spring-dispatcher-servlet.xml")
+public class TermTest implements ApplicationContextAware {
 	
 	@Autowired TermDAODbImpl termDAO;
 	@Autowired EmployeeDAODbImpl employeeDAO;
-	
 
 	@Test
 	public void getTermsTests()
 	{
 		System.out.println("ASDAS");
-		 //EmployeeDAODbImpl employeeDAO = new EmployeeDAODbImpl();
+		EmployeeDAODbImpl employeeDAO = new EmployeeDAODbImpl();
 		IEmployee empl = employeeDAO.getEmployeeById(1);
-		assertNull(empl);
-		//assertNotNull(termDAO.getCurrentTermsForEmployee(empl));
+		//assertNull(empl);
+		assertNotNull(termDAO.getCurrentTermsForEmployee(empl));
+		
+	}
+
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		getTermsTests();
 		
 	}
 	

@@ -21,6 +21,7 @@ import pl.fotoszop.modelinterfaces.IClient;
  * @author dariusz
  *
  */
+@Component
 @Repository
 public class ClientDAODbImpl implements ClientDAO{
 	private JdbcTemplate jdbcTemplate;

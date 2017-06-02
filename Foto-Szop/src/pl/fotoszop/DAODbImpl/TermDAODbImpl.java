@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
@@ -20,6 +22,7 @@ import pl.fotoszop.model.Term;
 import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.ITerm;
 
+@Component
 public class TermDAODbImpl implements TermDAO {
 	
 	private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
