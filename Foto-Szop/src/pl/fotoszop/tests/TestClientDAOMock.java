@@ -5,9 +5,6 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-
-
-
 import pl.fotoszop.mocks.ClientDAOMock;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.modelinterfaces.IClient;
