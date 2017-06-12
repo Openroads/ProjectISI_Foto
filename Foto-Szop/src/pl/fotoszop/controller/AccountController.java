@@ -101,7 +101,7 @@ public class AccountController {
                     model.addObject("employee", employee);
                     logger.info(employee.getEmail() + "has been logged");
                 	}else{
-                		 model = new ModelAndView("employeeAccount");
+                		 model = new ModelAndView("managerAccount");
                          model.addObject("account", account);
                          model.addObject("manager", manager);
                          logger.info(manager.getEmail() + "has been logged");
