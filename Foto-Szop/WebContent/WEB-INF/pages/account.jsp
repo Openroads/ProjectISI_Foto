@@ -248,7 +248,7 @@
                 <p class="client-part-haead wow fadeInDown delay-05">Twoja historia zamówień</p>
             </div>
         </div>
-        <a class="link animated fadeInUp delay-1s" href="${contextPath}/history">Wejdź</a>
+        <a class="link animated fadeInUp delay-1s" href="${contextPath}/order">Wejdź</a>
     </div>
 </section><!--main-section client-part-end-->
 <br>

@@ -1,8 +1,13 @@
 package pl.fotoszop.DAODbImpl;
 
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +19,10 @@ import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.OrderDAO;
 import pl.fotoszop.model.Order;
+import pl.fotoszop.model.Term;
+import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.IOrder;
+import pl.fotoszop.modelinterfaces.ITerm;
 /**
  * 
  * @author Szymon
@@ -23,6 +31,8 @@ import pl.fotoszop.modelinterfaces.IOrder;
 @Component
 @Repository
 public class OrderDAODbImpl implements OrderDAO{
+	
+
 	private JdbcTemplate jdbcTemplate;
 	
 	public OrderDAODbImpl() {}
@@ -53,16 +63,9 @@ public class OrderDAODbImpl implements OrderDAO{
 	}
 
 	@Override
-	public IOrder getOrderByClientId(int clientId) {
+	public List<IOrder> getAllOrders(int clientId) {
+		System.out.println(clientId);
 		String sqlQuery = "select * from order_ps where order_ps.id_client = " + clientId;
-		List<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
-		
-		return OrderL.get(0);
-	}
-
-	@Override
-	public Collection<IOrder> getAllOrders() {
-		String sqlQuery = "select * from order";
 		Collection<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
 		return OrderL.stream().map(x->(IOrder) x).collect(Collectors.toList());
 	}

@@ -1,6 +1,7 @@
 package pl.fotoszop.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import pl.fotoszop.modelinterfaces.IOrder;
 
@@ -19,16 +20,11 @@ public interface OrderDAO {
 	 * @return true - if deleting was successful, false if order on passed id doesn't exist
 	 */
 	public boolean delete(String orderId);
-	/**
-	 * 
-	 * @param clientId
-	 * @return Order object for passed id, null if client of passed id doesn't exist
-	 */
-	public IOrder getOrderByClientId(int clientId);
+
 	/**
 	 * Method to obtain all orders
 	 * @return All orders objects from data storage or empty collection 
 	 */
-	public Collection<IOrder> getAllOrders();
+	public List<IOrder> getAllOrders(int clientId);
 	
 }
