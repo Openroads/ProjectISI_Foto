@@ -64,6 +64,9 @@ CREATE TABLE order_ps(
 	id_of_realization_term int(4) NULL,
 	date_of_modification date,
 	order_status ENUM('IN_REALIZTION','FINISHED','PENDING'),
+	subject VARCHAR(256) NOT NULL,
+	sessionAddress VARCHAR(256) NOT NULL,
+	sessionPlace VARCHAR(256) NOT NULL,
 	
 	id_service int(4) NOT NULL,
 	id_client int(4) NOT NULL,
