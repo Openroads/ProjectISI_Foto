@@ -14,9 +14,10 @@ public class OrderMapper implements RowMapper<Order>{
 		Order order = new Order();
 		order.setOrderId(rs.getInt("id_order"));
 		order.setDateOfOrder(rs.getDate("date_of_order"));
-		order.setIdOfRealizationTerm("" + rs.getInt("id_of_realization_term"));
+		order.setIdOfRealizationTerm(rs.getInt("id_of_realization_term"));
 		order.setDateOfModification(rs.getDate("date_of_modification"));
-		order.setOrderStatus(rs.getString("order_status"));
+		//String status =rs.getString("order_status");   // How to use breakpoints
+		order.setOrderStatus(rs.getString("order_status")); // breakpoint here <=
 		order.setIdService(rs.getInt("id_service"));
 		order.setClientId( rs.getInt("id_client"));
 		return order;

@@ -9,7 +9,7 @@ public class Order implements IOrder{
 
 	private int idOrder;
 	private Date dateOfOrder;
-	private String idOfRealizationTerm;
+	private int idOfRealizationTerm;
 	private Date dateOfModification;
 	private String orderStatus;
 	private int idService;
@@ -21,7 +21,7 @@ public class Order implements IOrder{
 
 	public Order(int idOrder,
 			     Date dateOfOrder,
-			     String idOfRealizationTerm,
+			     int idOfRealizationTerm,
 			     Date dateOfModification,
 			     String orderStatus,
 			     int idService,
@@ -59,7 +59,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setIdOfRealizationTerm(String termId) {
+	public void setIdOfRealizationTerm(int termId) {
 		this.idOfRealizationTerm = termId;
 	}
 
@@ -94,7 +94,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public String getIdOfRealizationTerm() {
+	public int getIdOfRealizationTerm() {
 	return this.idOfRealizationTerm;
 	}
 

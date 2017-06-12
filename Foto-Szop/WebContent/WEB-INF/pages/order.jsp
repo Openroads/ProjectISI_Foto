@@ -92,6 +92,13 @@
 
     </div>
     
+
+    
+    
+    
+    
+</section><!--main-section client-part-end-->
+
     <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
                 <table class="table table-hover table-hovered" style="text-align: center;">
                     <thead>
@@ -99,7 +106,6 @@
                         <th style="text-align:center;">ID</th>
                         <th style="text-align:center;">Data zamówienia</th>
                         <th style="text-align:center;">Termin</th>
-                        <th style="text-align:center;">Data modyfikacji</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:center;">Usługa</th>
                     </tr>
@@ -115,11 +121,7 @@
                             
                             <td id="dateOfOrder">
                             	<c:out value="${order.dateOfOrder}"/>
-                            </td>
-                            
-                            <td id="idOfRealizationTerm">
-                            	<c:out value="${order.idOfRealizationTerm}"/>
-                            </td>
+                            </td>        
                             
                             <td id="dateOfModification">
                             	<c:out value="${order.dateOfModification}"/>
@@ -145,11 +147,7 @@
                 </table>
 
             </div>
-    
-    
-    
-    
-</section><!--main-section client-part-end-->
+
 
 <br><br>
 
@@ -159,7 +157,11 @@
     <div class="container">
         <h2>Zespół wykwalifikowanych szopów już zajmuje się tą sprawą!</h2>
     </div>
+    
+    
 </section><!--business-talking-end-->
+
+
 <div class="container">
     <section class="main-section contact" id="kontakt">
         <h2>Zespół</h2>

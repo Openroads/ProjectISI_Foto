@@ -6,7 +6,7 @@ public interface IOrder {
 	
 	public void setOrderId(int id);
 	public void setDateOfOrder(Date dateOfOrder);
-	public void setIdOfRealizationTerm(String termId);
+	public void setIdOfRealizationTerm(int termId);
 	public void setDateOfModification(Date dateOfModification);
 	public void setOrderStatus(String orderStatus);
 	public void setIdService(int serviceId);
@@ -15,7 +15,7 @@ public interface IOrder {
 	
 	public int getIdOrder();
 	public Date getDateOfOrder();
-	public String getIdOfRealizationTerm();
+	public int getIdOfRealizationTerm();
 	public Date getDateOfModification();
 	public String getOrderStatus();
 	public int getIdService();
