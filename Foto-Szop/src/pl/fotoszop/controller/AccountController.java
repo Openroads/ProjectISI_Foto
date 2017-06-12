@@ -92,11 +92,19 @@ public class AccountController {
 				}
 				else if(account.getEmployeeId() !=0 && account.getClientId() == 0)
 				{
-					IEmployee employee = employeeDatabaseDAO.getEmployeeById(account.getEmployeeId());
-					model = new ModelAndView("employeeAccount");
-					model.addObject("account",account);
-					model.addObject("employee",employee);
-				}
+					IEmployee manager = null;
+					manager = employeeDatabaseDAO.getManagerById(account.getEmployeeId());
+					if(manager == null){
+						IEmployee employee = employeeDatabaseDAO.getEmployeeById(account.getEmployeeId());
+						model = new ModelAndView("employeeAccount");
+						model.addObject("account",account);
+						model.addObject("employee",employee);
+					} else {
+						model = new ModelAndView("managerAccount");
+						model.addObject("account",account);
+						model.addObject("manager",manager);
+					}
+				}	
 				else
 				{
 					model = new ModelAndView("redirect:/index");
