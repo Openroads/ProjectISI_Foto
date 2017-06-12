@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import pl.fotoszop.dao.EmployeeDAO;
 import pl.fotoszop.model.Employee;
+import pl.fotoszop.model.Manager;
 import pl.fotoszop.modelinterfaces.IEmployee;
 
 
@@ -35,7 +36,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
 	@Override 
 	public IEmployee getManagerById(long employeeId){
 		
-		Employee manager = null;
+		Manager manager = null;
 		
 		return manager;
 	}
