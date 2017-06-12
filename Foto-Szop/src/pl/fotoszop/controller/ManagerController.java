@@ -74,9 +74,12 @@ public class ManagerController {
         	
         	empForm.doHash();
         	if(empDAO.checkToAddEmp(empForm)){
+        		
         		model = new ModelAndView("employeeAdding");
     			model.addObject("AddEmpDTO", new AddEmpDTO());
+    			
         	}else{
+        		
         		model = new ModelAndView("managerAccount");
         		Employee newEmp = new Employee();
         		System.out.println("EmpId: "+empForm.getId());
@@ -97,7 +100,9 @@ public class ManagerController {
         		newAcc.setLogin(newEmp.getEmail());
         		newAcc.setPassword(empForm.getPassword());
         		accDAO.saveOrUpdate(newAcc);
+        		
         		System.out.println("Dodano konto"+newAcc.getEmployeeId());
+        		
         		return model;
         	}
            
