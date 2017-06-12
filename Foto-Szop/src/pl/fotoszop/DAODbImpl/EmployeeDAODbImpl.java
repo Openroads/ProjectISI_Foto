@@ -1,6 +1,7 @@
 package pl.fotoszop.DAODbImpl;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -15,12 +16,17 @@ import pl.fotoszop.modelinterfaces.IEmployee;
 
 
 @Repository
-public class EmployeeDAODbImpl implements EmployeeDAO {
+public class EmployeeDAODbImpl implements EmployeeDAO
+{
+	private static final Logger logger = Logger.getLogger(EmployeeDAODbImpl.class.getName());
     private JdbcTemplate jdbcTemplate;
 
 
-    public void setDataSource(DataSource dataSource) {
+    public void setDataSource(DataSource dataSource)
+	{
+
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        logger.info("Connected with database");
     }
 
     @Override
@@ -29,7 +35,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         String sqlQuery = "select * from employee where employee.id_employee = ? ";
 
         Employee employee = this.jdbcTemplate.queryForObject(sqlQuery, new Object[]{employeeId}, new EmployeeMapper());
-
+		logger.info("Getting employeee with id: " + employeeId);
         return employee;
 
 	}
@@ -43,8 +49,10 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
 				+ "where employee_type_employee.id_employee = ? and employee_type_employee.id_type=1";
 		try{
 		manager = this.jdbcTemplate.queryForObject(sqlQuery, new Object[] {employeeId}, new ManagerMapper());
+		logger.info("Manager with id: " + employeeId + " has been taken");
 		}
 		catch(EmptyResultDataAccessException erdae){
+			logger.warning("Cannot take manager with id: " + employeeId);
 			manager = null;
 		}
 

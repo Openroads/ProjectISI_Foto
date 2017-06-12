@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dao.ClientDAO;
-import pl.fotoszop.dao.IFileUpload;
+import pl.fotoszop.modelinterfaces.IFileUpload;
 import pl.fotoszop.model.UploadFile;
 
 import static org.mockito.Mockito.mock;
