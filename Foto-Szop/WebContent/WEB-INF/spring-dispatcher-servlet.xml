@@ -1,8 +1,8 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:mvc="http://www.springframework.org/schema/mvc"
-xmlns:context="http://www.springframework.org/schema/context"
-xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
  http://www.springframework.org/schema/mvc 
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
  http://www.springframework.org/schema/beans 
@@ -11,36 +11,36 @@ xsi:schemaLocation="
  http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
-<context:component-scan base-package="pl.fotoszop.controller"/>
+    <context:component-scan base-package="pl.fotoszop.controller"/>
 
-<mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
-<bean id="viewResolver"
-	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix">
-		<value>/WEB-INF/pages/</value>
-	</property>
-	<property name="suffix">
-		<value>.jsp</value>
-	</property>
-</bean>
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/pages/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
 
- <!-- declare beans -->
-   <bean id="termDAODbImpl" class="pl.fotoszop.DAODbImpl.TermDAODbImpl">
- 	<property name="dataSource" ref="dataSource"/>
- </bean>
-  <bean id="employeeDAODbImpl" class="pl.fotoszop.DAODbImpl.EmployeeDAODbImpl">
- 	<property name="dataSource" ref="dataSource"/>
- </bean>
- <bean id="clientDAODbImpl" class="pl.fotoszop.DAODbImpl.ClientDAODbImpl">
- 	<property name="dataSource" ref="dataSource"/>
- </bean>
-<import resource = "Spring-Account.xml"/>
-<!-- declare datasource bean -->
- <import resource = "Spring-DataSource.xml"/>
- 
- <mvc:resources mapping="/resources/**" location="/resources/index/"/>
- <mvc:resources mapping="/css/**" location="/resources/css/" /> 
- <mvc:default-servlet-handler/>
- <mvc:annotation-driven/>
+    <!-- declare beans -->
+    <bean id="termDAODbImpl" class="pl.fotoszop.DAODbImpl.TermDAODbImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="employeeDAODbImpl" class="pl.fotoszop.DAODbImpl.EmployeeDAODbImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="clientDAODbImpl" class="pl.fotoszop.DAODbImpl.ClientDAODbImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <import resource="Spring-Account.xml"/>
+    <!-- declare datasource bean -->
+    <import resource="Spring-DataSource.xml"/>
+
+    <mvc:resources mapping="/resources/**" location="/resources/index/"/>
+    <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
 </beans>

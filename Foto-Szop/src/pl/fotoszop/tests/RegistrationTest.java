@@ -1,7 +1,5 @@
 package pl.fotoszop.tests;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +12,10 @@ import pl.fotoszop.modelinterfaces.IAccount;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class RegistrationTest
-{
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class RegistrationTest {
     @Autowired
     private AccountDAODbImpl acc;
 
@@ -26,8 +26,7 @@ public class RegistrationTest
     private WebApplicationContext wac;
 
     @Before
-    public void setup()
-    {
+    public void setup() {
         acc = mock(AccountDAODbImpl.class);
         account = new Account();
         account.setAccountId(1);
@@ -51,8 +50,7 @@ public class RegistrationTest
 
 
     @Test
-    public void GivenRegistrationService_WhenFormIsEmpty_OutputError()
-    {
+    public void GivenRegistrationService_WhenFormIsEmpty_OutputError() {
         Collection<IAccount> accounts = new ArrayList<>();
 
         accounts.add(account);
@@ -64,8 +62,7 @@ public class RegistrationTest
     }
 
     @Test
-    public void GivenLogin_WhenGettingAccountByLogin_OutputAccountLogin()
-    {
+    public void GivenLogin_WhenGettingAccountByLogin_OutputAccountLogin() {
         Account result = (Account) acc.getAccountByLogin("pieterm4@wp.pl");
 
         Assert.assertEquals("pieterm4@wp.pl", result.getLogin());

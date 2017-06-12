@@ -5,12 +5,12 @@
  * Copyright (c) 2011 Joseph Cava-Lynch
  * MIT license
  */
-(function($) {
-    $.isScrollToFixed = function(el) {
+(function ($) {
+    $.isScrollToFixed = function (el) {
         return !!$(el).data('ScrollToFixed');
     };
 
-    $.ScrollToFixed = function(el, options) {
+    $.ScrollToFixed = function (el, options) {
         // To avoid scope issues, use 'base' instead of 'this' to reference this
         // class from internal events and functions.
         var base = this;
@@ -130,29 +130,32 @@
                 // Set the spacer to fill the height and width of the target
                 // element, then display it.
                 spacer.css({
-                    'display' : target.css('display'),
-                    'width' : target.outerWidth(true),
-                    'height' : target.outerHeight(true),
-                    'float' : target.css('float')
+                    'display': target.css('display'),
+                    'width': target.outerWidth(true),
+                    'height': target.outerHeight(true),
+                    'float': target.css('float')
                 });
 
                 // Set the target element to fixed and set its width so it does
                 // not fill the rest of the page horizontally. Also, set its top
                 // to the margin top specified in the options.
 
-                cssOptions={
-                    'z-index' : base.options.zIndex,
-                    'position' : 'fixed',
-                    'top' : base.options.bottom == -1?getMarginTop():'',
-                    'bottom' : base.options.bottom == -1?'':base.options.bottom,
-                    'margin-left' : '0px'
+                cssOptions = {
+                    'z-index': base.options.zIndex,
+                    'position': 'fixed',
+                    'top': base.options.bottom == -1 ? getMarginTop() : '',
+                    'bottom': base.options.bottom == -1 ? '' : base.options.bottom,
+                    'margin-left': '0px'
                 }
-                if (!base.options.dontSetWidth){ cssOptions['width']=target.width(); };
+                if (!base.options.dontSetWidth) {
+                    cssOptions['width'] = target.width();
+                }
+                ;
 
                 target.css(cssOptions);
-                
+
                 target.addClass(base.options.baseClassName);
-                
+
                 if (base.options.className) {
                     target.addClass(base.options.className);
                 }
@@ -171,14 +174,17 @@
                 top = top - offsetTop;
             }
 
-            cssOptions={
-              'position' : 'absolute',
-              'top' : top,
-              'left' : left,
-              'margin-left' : '0px',
-              'bottom' : ''
+            cssOptions = {
+                'position': 'absolute',
+                'top': top,
+                'left': left,
+                'margin-left': '0px',
+                'bottom': ''
             }
-            if (!base.options.dontSetWidth){ cssOptions['width']=target.width(); };
+            if (!base.options.dontSetWidth) {
+                cssOptions['width'] = target.width();
+            }
+            ;
 
             target.css(cssOptions);
 
@@ -198,12 +204,12 @@
                 // Remove the style attributes that were added to the target.
                 // This will reverse the target back to the its original style.
                 target.css({
-                    'z-index' : originalZIndex,
-                    'width' : '',
-                    'position' : originalPosition,
-                    'left' : '',
-                    'top' : originalOffsetTop,
-                    'margin-left' : ''
+                    'z-index': originalZIndex,
+                    'width': '',
+                    'position': originalPosition,
+                    'left': '',
+                    'top': originalOffsetTop,
+                    'margin-left': ''
                 });
 
                 target.removeClass('scroll-to-fixed-fixed');
@@ -298,9 +304,9 @@
                         setAbsolute();
                         target.trigger('unfixed.ScrollToFixed');
                     }
-                // If the vertical scroll position, plus the optional margin, would
-                // put the target element above the top of the page, set the target
-                // element to fixed.
+                    // If the vertical scroll position, plus the optional margin, would
+                    // put the target element above the top of the page, set the target
+                    // element to fixed.
                 } else if (y >= offsetTop - getMarginTop()) {
                     if (!isFixed() || !wasReset) {
                         postPosition();
@@ -374,21 +380,21 @@
             }
         }
 
-        var windowResize = function(event) {
+        var windowResize = function (event) {
             // Check if the element is visible before updating it's position, which
             // improves behavior with responsive designs where this element is hidden.
-            if(target.is(':visible')) {
+            if (target.is(':visible')) {
                 isReset = false;
                 checkScroll();
             }
         }
 
-        var windowScroll = function(event) {
+        var windowScroll = function (event) {
             (!!window.requestAnimationFrame) ? requestAnimationFrame(checkScroll) : checkScroll();
         }
 
         // From: http://kangax.github.com/cft/#IS_POSITION_FIXED_SUPPORTED
-        var isPositionFixedSupported = function() {
+        var isPositionFixedSupported = function () {
             var container = document.body;
 
             if (document.createElement && container && container.appendChild && container.removeChild) {
@@ -401,7 +407,7 @@
                 container.appendChild(el);
 
                 var originalHeight = container.style.height,
-                originalScrollTop = container.scrollTop;
+                    originalScrollTop = container.scrollTop;
 
                 container.style.height = '3000px';
                 container.scrollTop = 500;
@@ -419,7 +425,7 @@
             return null;
         }
 
-        var preventDefault = function(e) {
+        var preventDefault = function (e) {
             e = e || window.event;
             if (e.preventDefault) {
                 e.preventDefault();
@@ -430,7 +436,7 @@
         // Initializes this plugin. Captures the options passed in, turns this
         // off for devices that do not support fixed position, adds the spacer,
         // and binds to the window scroll and resize events.
-        base.init = function() {
+        base.init = function () {
             // Capture the options for this plugin.
             base.options = $.extend({}, $.ScrollToFixed.defaultOptions, options);
 
@@ -470,7 +476,7 @@
             // For touch devices, call checkScroll directlly rather than
             // rAF wrapped windowScroll to animate the element
             if ('ontouchmove' in window) {
-              $(window).bind('touchmove.ScrollToFixed', checkScroll);
+                $(window).bind('touchmove.ScrollToFixed', checkScroll);
             }
 
             if (base.options.preFixed) {
@@ -502,18 +508,18 @@
                 spacer.addClass(base.options.spacerClass);
             }
 
-            target.bind('resize.ScrollToFixed', function() {
+            target.bind('resize.ScrollToFixed', function () {
                 spacer.height(target.height());
             });
 
-            target.bind('scroll.ScrollToFixed', function() {
+            target.bind('scroll.ScrollToFixed', function () {
                 target.trigger('preUnfixed.ScrollToFixed');
                 setUnfixed();
                 target.trigger('unfixed.ScrollToFixed');
                 checkScroll();
             });
 
-            target.bind('detach.ScrollToFixed', function(ev) {
+            target.bind('detach.ScrollToFixed', function (ev) {
                 preventDefault(ev);
 
                 target.trigger('preUnfixed.ScrollToFixed');
@@ -541,17 +547,17 @@
 
     // Sets the option defaults.
     $.ScrollToFixed.defaultOptions = {
-        marginTop : 0,
-        limit : 0,
-        bottom : -1,
-        zIndex : 1000,
+        marginTop: 0,
+        limit: 0,
+        bottom: -1,
+        zIndex: 1000,
         baseClassName: 'scroll-to-fixed-fixed'
     };
 
     // Returns enhanced elements that will fix to the top of the page when the
     // page is scrolled.
-    $.fn.scrollToFixed = function(options) {
-        return this.each(function() {
+    $.fn.scrollToFixed = function (options) {
+        return this.each(function () {
             (new $.ScrollToFixed(this, options));
         });
     };

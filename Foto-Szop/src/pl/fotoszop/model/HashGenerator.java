@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class HashGenerator {
-	
-	private HashGenerator(){
-		
-	}
+
+    private HashGenerator() {
+
+    }
 
     public static String doHash(String haslo) {
 

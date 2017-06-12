@@ -2,43 +2,40 @@ package pl.fotoszop.dto;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.model.HashGenerator;
-import pl.fotoszop.modelinterfaces.IAccount;
 
 public class LoginFormDTO {
-	@NotEmpty
-	@Email
-	private String login;
-	
-	@NotEmpty(message = "Password cannot be empty.")
-	private String password;
+    @NotEmpty
+    @Email
+    private String login;
 
-	public String getLogin() {
-		return login;
-	}
+    @NotEmpty(message = "Password cannot be empty.")
+    private String password;
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public String getLogin() {
+        return login;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	/**
-	 * Method to change plaintext password to hash
-	 */
-	public void doHash(){
-		
-		password = HashGenerator.doHash(password);
-		
-	}
-	
-	
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Method to change plaintext password to hash
+     */
+    public void doHash() {
+
+        password = HashGenerator.doHash(password);
+
+    }
+
+
 }

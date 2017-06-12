@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
@@ -24,7 +24,9 @@
 <spring:url value="resources/index/js/html5element.js" var="html5element"/>
 
 <spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
-<spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
+<spring:url
+        value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600"
+        var="font2"/>
 
 <spring:url value="resources/favicon.png" var="favicon"/>
 
@@ -32,30 +34,30 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop | Konto</title>
-<link rel="icon" href="${favicon}">
+    <title>Foto-Szop | Konto</title>
+    <link rel="icon" href="${favicon}">
 
-<link href="${font1}" rel="stylesheet">
-<link href="${font2}" rel="stylesheet">
+    <link href="${font1}" rel="stylesheet">
+    <link href="${font2}" rel="stylesheet">
 
-<link href="${bootstrap}" rel="stylesheet"/>
-<link href="${style}" rel="stylesheet"/>
-<link href="${font}" rel="stylesheet"/>
-<link href="${responsive}" rel="stylesheet"/>
-<link href="${animate}" rel="stylesheet"/>
+    <link href="${bootstrap}" rel="stylesheet"/>
+    <link href="${style}" rel="stylesheet"/>
+    <link href="${font}" rel="stylesheet"/>
+    <link href="${responsive}" rel="stylesheet"/>
+    <link href="${animate}" rel="stylesheet"/>
 
-<script src="${jquery}"></script>
-<script src="${boot}"></script>
-<script src="${scroll}"></script>
-<script src="${easing}"></script>
-<script src="${isotope}"></script>
-<script src="${wow}"></script>
-<script src="${classie}"></script>
+    <script src="${jquery}"></script>
+    <script src="${boot}"></script>
+    <script src="${scroll}"></script>
+    <script src="${easing}"></script>
+    <script src="${isotope}"></script>
+    <script src="${wow}"></script>
+    <script src="${classie}"></script>
 
-<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="${respond}"></script>
     <script src="${html5shiv}"></script>
     <script src="${html5element}></script>
@@ -66,119 +68,121 @@
 <body>
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
-	<div class="container">
+    <div class="container">
         <ul class="main-nav">
-        
-   			<li class="dropdown"><a href="#" data-toggle="dropdown">Zamówienia <span class="caret"></span></a>
-   			<ul class="dropdown-menu">
-   			<li><a href="#">Odbierz</a></li>
-   			<li><a href="#">Przyjęte</a></li>
-   			</ul>
-   			</li>
-   			<li><a href="${contextPath}/termList" >Ustal Terminy</a></li>
-            
+
+            <li class="dropdown"><a href="#" data-toggle="dropdown">Zamówienia <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Odbierz</a></li>
+                    <li><a href="#">Przyjęte</a></li>
+                </ul>
+            </li>
+            <li><a href="${contextPath}/termList">Ustal Terminy</a></li>
+
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="#zamowienia">Historia</a></li>
-			<li><a href="logout">Wyloguj</a></li>	
+            <li><a href="#zamowienia">Historia</a></li>
+            <li><a href="logout">Wyloguj</a></li>
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
     </div>
 </nav><!--main-nav-end-->
 
 
-
-
 <section class="main-section" id="konto"><!--main-section-start-->
-	<div class="container">
-    	<h2>Witamy w panelu pracownika</h2>
-    	<h6>Tutaj znajdziesz informacje o swoim koncie</h6>
+    <div class="container">
+        <h2>Witamy w panelu pracownika</h2>
+        <h6>Tutaj znajdziesz informacje o swoim koncie</h6>
         <div class="row">
-        	   <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-        	   <br>
-        	   <br>
-        	   <br>
-            	<img src="<c:url value="/resources/img/photographer.png"/>">
+            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
+                <br>
+                <br>
+                <br>
+                <img src="<c:url value="/resources/img/photographer.png"/>">
             </figure>
-        	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
-            	<div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-user"></i>
+            <div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
+                <div class="service-list">
+                    <div class="service-list-col1">
+                        <i class="fa-user"></i>
                     </div>
-                	<div class="service-list-col2">
-                	
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getName()}</p>
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getSurname()}</p>
-                        
+                    <div class="service-list-col2">
+
+                        <p class="client-part-haead wow fadeInDown delay-05 caption"
+                           style="color : black;">${employee.getName()}</p>
+                        <p class="client-part-haead wow fadeInDown delay-05 caption"
+                           style="color : black;">${employee.getSurname()}</p>
+
                     </div>
                 </div>
                 <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-info"></i>
+                    <div class="service-list-col1">
+                        <i class="fa-info"></i>
                     </div>
-                	<div class="service-list-col2">
-                	
-                     <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${employee.getIdentityNumber()}</p>
-                 
+                    <div class="service-list-col2">
+
+                        <p class="client-part-haead wow fadeInDown delay-05"
+                           style="color : black;">${employee.getIdentityNumber()}</p>
+
                     </div>
                 </div>
-                
-                
+
+
                 <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-phone"></i>
+                    <div class="service-list-col1">
+                        <i class="fa-phone"></i>
                     </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${employee.getPhoneNumber()}</p>
-                   
+                    <div class="service-list-col2">
+
+                        <p class="client-part-haead wow fadeInDown delay-05"
+                           style="color : black;">${employee.getPhoneNumber()}</p>
+
                     </div>
                 </div>
-                
+
                 <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-envelope"></i>
+                    <div class="service-list-col1">
+                        <i class="fa-envelope"></i>
                     </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${employee.getEmail()}</p>
-                   
+                    <div class="service-list-col2">
+
+                        <p class="client-part-haead wow fadeInDown delay-05 caption"
+                           style="color : black;">${employee.getEmail()}</p>
+
                     </div>
                 </div>
-                
-                
+
+
             </div>
-         
-        
+
+
         </div>
-	</div>
+    </div>
 </section><!--main-section-end-->
 
 
 <section class="main-section client-part" id="zamowienia"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Historia zamówień</p>
+    <div class="container">
+        <b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="client-part-haead wow fadeInDown delay-05">Historia zamówień</p>
             </div>
         </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Wejdź</a>
+        <a class="link animated fadeInUp delay-1s" href="${contextPath}/edit">Wejdź</a>
     </div>
 </section><!--main-section client-part-end-->
 <br>
 
 
-
-<div class="c-logo-part" ><!--c-logo-part-start-->
-	<div class="container" >
-    	<ul>
-        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
+<div class="c-logo-part"><!--c-logo-part-start-->
+    <div class="container">
+        <ul>
+            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
             <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
             <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
             <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
             <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
-    	</ul>
-	</div>
+        </ul>
+    </div>
 </div><!--c-logo-part-end-->
 
 
@@ -191,93 +195,93 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function(e) {
+    $(document).ready(function (e) {
         $('#test').scrollToFixed();
-        $('.res-nav_click').click(function(){
+        $('.res-nav_click').click(function () {
             $('.main-nav').slideToggle();
-            return false    
-            
+            return false
+
         });
-        
+
     });
 </script>
 
-  <script>
+<script>
     wow = new WOW(
-      {
-        animateClass: 'animated',
-        offset:       100
-      }
+        {
+            animateClass: 'animated',
+            offset: 100
+        }
     );
     wow.init();
- 
-  </script>
+
+</script>
 
 
 <script type="text/javascript">
-	$(window).load(function(){
-		
-		$('.main-nav li a').bind('click',function(event){
-			var $anchor = $(this);
-			
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top - 102
-			}, 1500,'easeInOutExpo');
-			/*
-			if you don't want to use the easing effects:
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top
-			}, 1000);
-			*/
-			event.preventDefault();
-		});
-	})
+    $(window).load(function () {
+
+        $('.main-nav li a').bind('click', function (event) {
+            var $anchor = $(this);
+
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 102
+            }, 1500, 'easeInOutExpo');
+            /*
+             if you don't want to use the easing effects:
+             $('html, body').stop().animate({
+             scrollTop: $($anchor.attr('href')).offset().top
+             }, 1000);
+             */
+            event.preventDefault();
+        });
+    })
 </script>
 
 <script type="text/javascript">
 
-$(window).load(function(){
-  
-  
-  var $container = $('.portfolioContainer'),
-      $body = $('body'),
-      colW = 375,
-      columns = null;
+    $(window).load(function () {
 
-  
-  $container.isotope({
-    // disable window resizing
-    resizable: true,
-    masonry: {
-      columnWidth: colW
-    }
-  });
-  
-  $(window).smartresize(function(){
-    // check if columns has changed
-    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
-    if ( currentColumns !== columns ) {
-      // set new column count
-      columns = currentColumns;
-      // apply width to container manually, then trigger relayout
-      $container.width( columns * colW )
-        .isotope('reLayout');
-    }
-    
-  }).smartresize(); // trigger resize to set container width
-  $('.portfolioFilter a').click(function(){
-        $('.portfolioFilter .current').removeClass('current');
-        $(this).addClass('current');
- 
-        var selector = $(this).attr('data-filter');
+
+        var $container = $('.portfolioContainer'),
+            $body = $('body'),
+            colW = 375,
+            columns = null;
+
+
         $container.isotope({
-			
-            filter: selector,
-         });
-         return false;
+            // disable window resizing
+            resizable: true,
+            masonry: {
+                columnWidth: colW
+            }
+        });
+
+        $(window).smartresize(function () {
+            // check if columns has changed
+            var currentColumns = Math.floor(( $body.width() - 30 ) / colW);
+            if (currentColumns !== columns) {
+                // set new column count
+                columns = currentColumns;
+                // apply width to container manually, then trigger relayout
+                $container.width(columns * colW)
+                    .isotope('reLayout');
+            }
+
+        }).smartresize(); // trigger resize to set container width
+        $('.portfolioFilter a').click(function () {
+            $('.portfolioFilter .current').removeClass('current');
+            $(this).addClass('current');
+
+            var selector = $(this).attr('data-filter');
+            $container.isotope({
+
+                filter: selector,
+            });
+            return false;
+        });
+
     });
-  
-});
 
 </script>
 </body>

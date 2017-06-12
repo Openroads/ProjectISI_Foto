@@ -1,18 +1,28 @@
 package pl.fotoszop.modelinterfaces;
 
 public interface IEmployee {
-	
-	public long getId();
-	public void setId(long id);
-	public void setName(String name);
-	public void setSurname(String surname);
-	public void setIdentityNumber(String identityNumber);
-	public void setPhoneNumber(String phoneNumber);
-	public void setEmail(String email);
-	
-	public String getName();
-	public String getSurname();
-	public String getIdentityNumber();
-	public String getPhoneNumber();
-	public String getEmail();
+
+    public long getId();
+
+    public void setId(long id);
+
+    public String getName();
+
+    public void setName(String name);
+
+    public String getSurname();
+
+    public void setSurname(String surname);
+
+    public String getIdentityNumber();
+
+    public void setIdentityNumber(String identityNumber);
+
+    public String getPhoneNumber();
+
+    public void setPhoneNumber(String phoneNumber);
+
+    public String getEmail();
+
+    public void setEmail(String email);
 }

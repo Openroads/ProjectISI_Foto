@@ -1,8 +1,6 @@
 package pl.fotoszop.model;
 
 
-
-public class Order extends OrderBase
-{
+public class Order extends OrderBase {
 
 }

@@ -1,8 +1,7 @@
 package pl.fotoszop.model;
 
 
-public class UploadFile
-{
+public class UploadFile {
     private int id;
     private String fileName;
     private String url;
@@ -15,8 +14,7 @@ public class UploadFile
         this.data = data;
     }
 
-    public UploadFile()
-    {
+    public UploadFile() {
 
     }
 
