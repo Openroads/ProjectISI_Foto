@@ -1,4 +1,4 @@
-package pl.fotoszop.dao;
+package pl.fotoszop.modelinterfaces;
 
 
 import pl.fotoszop.model.UploadFile;
