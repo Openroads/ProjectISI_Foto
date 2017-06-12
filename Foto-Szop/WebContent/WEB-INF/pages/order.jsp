@@ -105,7 +105,8 @@
                     <tr>
                         <th style="text-align:center;">ID</th>
                         <th style="text-align:center;">Data zamówienia</th>
-                        <th style="text-align:center;">Termin</th>
+                        <th style="text-align:center;">Termin realizacji</th>
+                        <th style="text-align:center;">Data modyfikacji</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:center;">Usługa</th>
                     </tr>
@@ -121,7 +122,11 @@
                             
                             <td id="dateOfOrder">
                             	<c:out value="${order.dateOfOrder}"/>
-                            </td>        
+                            </td>  
+                            
+                             <td id="idOfRealization">
+                            	<c:out value="${order.RealizationDate}"/>
+                            </td>       
                             
                             <td id="dateOfModification">
                             	<c:out value="${order.dateOfModification}"/>
@@ -132,7 +137,7 @@
                             </td>
                             
                             <td id="idService">
-                            	<c:out value="${order.idService}"/>
+                            	<c:out value="${order.service}"/>
                             </td>              
                             <td id="operacja">
                                 <form action="deleteOrder" method="post">

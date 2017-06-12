@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.fotoszop.DAODbImpl.OrderDAODbImpl;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.model.OrderParser;
 import pl.fotoszop.modelinterfaces.IOrder;
 
 @Controller
@@ -21,8 +22,9 @@ public class OrderController {
 	
 	 @RequestMapping("/order")
 	    public ModelAndView showList(@SessionAttribute Client client) {
-	        List<IOrder> orderList = orderDAO.getAllOrders(client.getId());
-	        System.out.println(orderList.toString());
+	        List<IOrder> rawOrderList = orderDAO.getAllOrders(client.getId());
+	        OrderParser parser = new OrderParser();
+	        List<IOrder> orderList = parser.getTermDates(rawOrderList);
 	        ModelAndView model = new ModelAndView("order");
  	        model.addObject("orderList", orderList);
 	        return model;

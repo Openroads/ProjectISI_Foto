@@ -1,10 +1,13 @@
 package pl.fotoszop.DAODbImpl;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
+import pl.fotoszop.model.Order;
 import pl.fotoszop.model.Term;
 import pl.fotoszop.modelinterfaces.IEmployee;
+import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;
 
 import javax.sql.DataSource;
@@ -12,8 +15,10 @@ import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Component
 public class TermDAODbImpl implements TermDAO {
@@ -28,7 +33,8 @@ public class TermDAODbImpl implements TermDAO {
     private static final String SQL_GET_TERMS_BETWEEN_DATE = "Select * from term where date_of_term >= ? and date_of_term <= ?";
 
     private DataSource dataSource;
-
+    private JdbcTemplate jdbcTemplate;
+    
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -246,4 +252,13 @@ public class TermDAODbImpl implements TermDAO {
 
 
     }
+
+	@Override
+	public ITerm getTermById(int id) {
+		        String sqlQuery = "select * from term where term.id_term = " + id;
+		        List<Term> termL = this.jdbcTemplate.query(sqlQuery, new TermMapper());
+
+		        logger.info("Client id: " + id + "is searching in the database");
+		        return termL.get(0);	    
+	}
 }
