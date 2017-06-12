@@ -35,7 +35,7 @@
     <bean id="clientDAODbImpl" class="pl.fotoszop.DAODbImpl.ClientDAODbImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="orderDAODbImpl" class="pl.fotoszop.DAODbImpl.orderDAODbImpl">
+    <bean id="orderDAODbImpl" class="pl.fotoszop.DAODbImpl.OrderDAODbImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <import resource="Spring-Account.xml"/>

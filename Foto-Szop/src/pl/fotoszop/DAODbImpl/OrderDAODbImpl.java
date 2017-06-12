@@ -73,20 +73,7 @@ public class OrderDAODbImpl implements OrderDAO{
 	public List<IOrder> getAllOrders(int clientId) {
 		System.out.println(clientId);
 		String sqlQuery = "select * from order_ps where order_ps.id_client = " + clientId;
-<<<<<<< HEAD
-=======
-		List<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
-
-		logger.info("Order by client id has been taken");
-		return OrderL.get(0);
-	}
-
-	@Override
-	public Collection<IOrder> getAllOrders() {
-		String sqlQuery = "select * from order";
->>>>>>> 26d5ecaaa052961a65062ddc7ca06d1eaa7a5032
 		Collection<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
-
 		logger.info("All orders has been taken");
 		return OrderL.stream().map(x->(IOrder) x).collect(Collectors.toList());
 	}
