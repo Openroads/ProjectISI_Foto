@@ -70,7 +70,7 @@
         <ul class="main-nav">
         
    			<li><a href="${contextPath}/#" >Edycja Strony</a></li>
-   			<li><a href="${contextPath}/#" >Dodaj Pracownika</a></li>
+   			<li><a href="${contextPath}/employeeAdding" >Dodaj Pracownika</a></li>
             
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
 			<li><a href="#">Historia</a></li>
