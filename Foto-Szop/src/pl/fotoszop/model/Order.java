@@ -1,13 +1,15 @@
 package pl.fotoszop.model;
 
+import java.sql.Date;
+
 import pl.fotoszop.modelinterfaces.IOrder;
 
 public class Order implements IOrder{
 	
 	private String idOrder;
-	private String dateOfOrder;
+	private Date dateOfOrder;
 	private String idOfRealizationTerm;
-	private String dateOfModification;
+	private Date dateOfModification;
 	private String orderStatus;
 	private String idService;
 	private String idClient;
@@ -17,9 +19,9 @@ public class Order implements IOrder{
 	}
 
 	public Order(String idOrder,
-			     String dateOfOrder,
+			     Date dateOfOrder,
 			     String idOfRealizationTerm,
-			     String dateOfModification,
+			     Date dateOfModification,
 			     String orderStatus,
 			     String idService,
 			     String idClient) {
@@ -50,7 +52,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setDateOfOrder(String dateOfOrder) {
+	public void setDateOfOrder(Date dateOfOrder) {
 		this.dateOfOrder = dateOfOrder;
 	}
 
@@ -60,7 +62,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setDateOfModification(String dateOfModification) {
+	public void setDateOfModification(Date dateOfModification) {
 		this.dateOfModification = dateOfModification;		
 	}
 
@@ -85,7 +87,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public String getDateOfOrder() {
+	public Date getDateOfOrder() {
 		return this.dateOfOrder;
 	}
 
@@ -95,7 +97,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public String getDateOfModification() {
+	public Date getDateOfModification() {
 	return this.dateOfModification;
 	}
 

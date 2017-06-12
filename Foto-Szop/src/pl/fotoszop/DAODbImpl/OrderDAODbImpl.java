@@ -1,6 +1,8 @@
 package pl.fotoszop.DAODbImpl;
 
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +38,7 @@ public class OrderDAODbImpl implements OrderDAO{
 		jdbcTemplate.update(sqlQuery,order.getOrderId(),
 									 order.getDateOfOrder(),
 									 order.getIdOfRealizationTerm(),
-									 order.getDateOfModification(),
+									 Date.valueOf(LocalDate.now()),
 									 order.getOrderStatus(),
 									 order.getServiceId(),
 									 order.getClientId());
