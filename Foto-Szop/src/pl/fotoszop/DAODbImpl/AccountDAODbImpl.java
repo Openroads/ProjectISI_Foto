@@ -34,13 +34,14 @@ public class AccountDAODbImpl implements AccountDAO {
             connection = dataSource.getConnection();
             logger.info("Save or Update - Connection to database");
             String sqlQuery = "insert into account(id_account,login,password,date_of_creation,id_employee,id_client) "
-                    + "values (?,?,?,?,NULL,?)";
+                    + "values (?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, account.getAccountId());
             statement.setString(2, account.getLogin());
             statement.setString(3, account.getPassword());
             statement.setDate(4, account.getCreationDate());
-            statement.setInt(5, account.getClientId());
+            statement.setInt(5,(int) account.getEmployeeId());
+            statement.setInt(6, account.getClientId());
             statement.executeUpdate();
 
             logger.info("Save or update has been successfully made");
@@ -64,7 +65,7 @@ public class AccountDAODbImpl implements AccountDAO {
         return 0;
     }
 
-    public Collection<IAccount> getAllAccounts(int id) {
+    public Collection<IAccount> getAllAccounts() {
 
         Connection connection = null;
         Collection<IAccount> accounts = null;
@@ -72,7 +73,7 @@ public class AccountDAODbImpl implements AccountDAO {
         try {
             connection = dataSource.getConnection();
             logger.info("Get all Accounts - connected with database");
-            String sqlQuery = "SELECT * from Account";
+            String sqlQuery = "SELECT * from account";
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sqlQuery);
             accounts = new ArrayList<>();

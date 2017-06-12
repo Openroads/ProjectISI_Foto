@@ -14,6 +14,6 @@ public interface AccountDAO {
 
     public int saveOrUpdate(IAccount account);
 
-    public Collection<IAccount> getAllAccounts(int id);
+    public Collection<IAccount> getAllAccounts();
 
 }
