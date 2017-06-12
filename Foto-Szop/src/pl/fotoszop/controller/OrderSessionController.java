@@ -9,15 +9,16 @@ import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.OrderDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
+import pl.fotoszop.constants.Constants;
 import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.model.Order;
 import pl.fotoszop.modelinterfaces.ITerm;
-
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -54,8 +55,11 @@ public class OrderSessionController {
         	
         	Order order = new Order();
         	order.setClientId(client.getId());
-        	/*order.setDateOfOrder();
-        	order.setIdOfRealizationTerm(termId);*/
+        	order.setDateOfOrder(new Date());
+        	order.setServiceId(Constants.SERVICE_SESJA);
+        	order.setOrderStatus(Constants.PENDING);
+        	
+        	//order.setIdOfRealizationTerm(termId);
         	
             model = new ModelAndView("sessionOrderSuccess");
         }
