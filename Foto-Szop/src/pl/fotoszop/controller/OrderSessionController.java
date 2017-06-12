@@ -56,7 +56,7 @@ public class OrderSessionController {
         	Order order = new Order();
         	order.setClientId(client.getId());
         	order.setDateOfOrder(new Date());
-        	order.setServiceId(Constants.SERVICE_SESJA);
+        	order.setIdService(Constants.SERVICE_SESJA);
         	order.setOrderStatus(Constants.PENDING);
         	
         	//order.setIdOfRealizationTerm(termId);
