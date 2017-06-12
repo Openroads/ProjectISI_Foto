@@ -121,7 +121,6 @@ public class AccountDAODbImpl implements AccountDAO {
             }
             statement.close();
             rs.close();
-            logger.info("Get account by login - successfully account has been taken");
             return account;
 
         } catch (SQLException e) {

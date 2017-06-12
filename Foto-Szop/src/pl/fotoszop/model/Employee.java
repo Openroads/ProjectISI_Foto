@@ -4,12 +4,12 @@ import pl.fotoszop.modelinterfaces.IEmployee;
 
 public class Employee implements IEmployee {
 
-    private long id;
-    private String name;
-    private String surname;
-    private String identityNumber;
-    private String phoneNumber;
-    private String email;
+    protected long id;
+    protected String name;
+    protected String surname;
+    protected String identityNumber;
+    protected String phoneNumber;
+    protected String email;
 
 
     public long getId() {
