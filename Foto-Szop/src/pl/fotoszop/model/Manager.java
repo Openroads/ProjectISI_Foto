@@ -3,15 +3,7 @@ package pl.fotoszop.model;
 import pl.fotoszop.modelinterfaces.IEmployee;;
 
 public class Manager extends Employee implements IEmployee{
-	
-	private long id;
-	private String name;
-	private String surname;
-	private String identityNumber;
-	private String phoneNumber;
-	private String email;
-	
-	
+		
 	public long getId() {
 		return id;
 	}
@@ -47,6 +39,10 @@ public class Manager extends Employee implements IEmployee{
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public void dodajPracownika(){
+		
 	}
 
 }
