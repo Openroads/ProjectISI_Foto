@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
@@ -24,6 +25,8 @@ import pl.fotoszop.modelinterfaces.IOrder;
 @Repository
 public class OrderDAODbImpl implements OrderDAO{
 	private JdbcTemplate jdbcTemplate;
+
+	private static final Logger logger = Logger.getLogger(OrderDAODbImpl.class.getName());
 	
 	public OrderDAODbImpl() {}
 	
@@ -42,6 +45,8 @@ public class OrderDAODbImpl implements OrderDAO{
 									 order.getOrderStatus(),
 									 order.getServiceId(),
 									 order.getClientId());
+
+		logger.info("Order has been saved or updated successfully");
 		return 0;
 	}
 
@@ -49,6 +54,8 @@ public class OrderDAODbImpl implements OrderDAO{
 	public boolean delete(String orderId) {
 		String sqlQuery = "delete order_ps where id_order = " + orderId;
 		jdbcTemplate.execute(sqlQuery);
+
+		logger.info("Order has been deleted successfully");
 		return true;
 	}
 
@@ -56,7 +63,8 @@ public class OrderDAODbImpl implements OrderDAO{
 	public IOrder getOrderByClientId(int clientId) {
 		String sqlQuery = "select * from order_ps where order_ps.id_client = " + clientId;
 		List<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
-		
+
+		logger.info("Order by client id has been taken");
 		return OrderL.get(0);
 	}
 
@@ -64,6 +72,8 @@ public class OrderDAODbImpl implements OrderDAO{
 	public Collection<IOrder> getAllOrders() {
 		String sqlQuery = "select * from order";
 		Collection<Order> OrderL =  this.jdbcTemplate.query(sqlQuery, new OrderMapper());
+
+		logger.info("All orders has been taken");
 		return OrderL.stream().map(x->(IOrder) x).collect(Collectors.toList());
 	}
 }

@@ -13,9 +13,12 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Component
 public class TermDAODbImpl implements TermDAO {
+
+    private static final Logger logger = Logger.getLogger(OrderDAODbImpl.class.getName());
 
     private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
     private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
