@@ -1,30 +1,31 @@
 package pl.fotoszop.model;
 
-import java.sql.Date;
+import java.util.Date;
 
+import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.modelinterfaces.IOrder;
 
 public class Order implements IOrder{
 
-	private String idOrder;
+	private int idOrder;
 	private Date dateOfOrder;
 	private String idOfRealizationTerm;
 	private Date dateOfModification;
 	private String orderStatus;
-	private String idService;
-	private String idClient;
+	private int idService;
+	private int idClient;
 
 	public Order()
 	{
 	}
 
-	public Order(String idOrder,
+	public Order(int idOrder,
 			     Date dateOfOrder,
 			     String idOfRealizationTerm,
 			     Date dateOfModification,
 			     String orderStatus,
-			     String idService,
-			     String idClient) {
+			     int idService,
+			     int idClient) {
 
 		this.idOrder = idOrder;
 		this.dateOfOrder = dateOfOrder;
@@ -35,6 +36,7 @@ public class Order implements IOrder{
 		this.idClient = idClient;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Order [idOrder="+ idOrder +
@@ -47,7 +49,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setOrderId(String id) {
+	public void setOrderId(int id) {
 		this.idOrder = id;
 	}
 
@@ -72,17 +74,17 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setServiceId(String serviceId) {
+	public void setServiceId(int serviceId) {
 		this.idService = serviceId;
 	}
 
 	@Override
-	public void setClientId(String clientId) {
+	public void setClientId(int clientId) {
 		this.idClient = clientId;
 	}
 
 	@Override
-	public String getOrderId() {
+	public int getOrderId() {
 		return this.idOrder;
 	}
 
@@ -107,12 +109,12 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public String getServiceId() {
+	public int getServiceId() {
 	return this.idService;
 	}
 
 	@Override
-	public String getClientId() {
+	public int getClientId() {
 	return this.idClient;
 	}
 }

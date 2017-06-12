@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.DAODbImpl.OrderDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
 import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.model.Order;
 import pl.fotoszop.modelinterfaces.ITerm;
 
 import javax.validation.Valid;
@@ -29,12 +31,15 @@ public class OrderSessionController {
     private TermDAODbImpl termDAO;
 
     @Autowired
+    private OrderDAODbImpl orderDatabaseDAO;
+    
+    @Autowired
     private ClientDAODbImpl clientDatabaseDAO;
     @Autowired
     private AccountDAODbImpl aclientDatabaseDAO;
 
     @RequestMapping(value = "/orderSession", method = RequestMethod.POST)
-    public ModelAndView processForm(@ModelAttribute("form") @Valid OrderSessionFormDTO form, BindingResult result) {
+    public ModelAndView processForm(@SessionAttribute("client") Client client,@ModelAttribute("form") @Valid OrderSessionFormDTO form, BindingResult result) {
 
         ModelAndView model = null;
         if (result.hasErrors()) {
@@ -44,6 +49,14 @@ public class OrderSessionController {
             Collections.sort(termList, (term1, term2) -> term1.getDate().compareTo(term2.getDate()));
             model.addObject("termList", termList);
         } else {
+        	
+        	System.out.println(form);
+        	
+        	Order order = new Order();
+        	order.setClientId(client.getId());
+        	/*order.setDateOfOrder();
+        	order.setIdOfRealizationTerm(termId);*/
+        	
             model = new ModelAndView("sessionOrderSuccess");
         }
 
