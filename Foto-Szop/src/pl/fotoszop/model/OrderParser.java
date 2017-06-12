@@ -45,8 +45,7 @@ public class OrderParser extends Order {
 			int termId = item.getIdOfRealizationTerm();
 			int serviceId = item.getIdService();
 			
-			String termIdk =""+ termId;
-			ITerm term =  termDAO.getTermById(termId);
+			Term term =  termDAO.getTermById(termId);
 			realizationDate = term.getDate();
 			
 			if(serviceId == Constants.SERVICE_SESJA)

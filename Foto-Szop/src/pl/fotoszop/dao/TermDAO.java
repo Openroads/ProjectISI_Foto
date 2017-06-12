@@ -28,6 +28,6 @@ public interface TermDAO {
      */
     List<ITerm> getFreeTermsForWeek(LocalDate date);
     
-    public ITerm getTermById(int id);
+    public Term getTermById(int id);
   
 }

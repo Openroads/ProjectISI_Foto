@@ -254,10 +254,11 @@ public class TermDAODbImpl implements TermDAO {
     }
 
 	@Override
-	public ITerm getTermById(int id) {
+	public Term getTermById(int id) {
+				System.out.println("buuuu");
 		        String sqlQuery = "select * from term where term.id_term = " + id;
 		        List<Term> termL = this.jdbcTemplate.query(sqlQuery, new TermMapper());
-
+		        System.out.println(termL);
 		        logger.info("Client id: " + id + "is searching in the database");
 		        return termL.get(0);	    
 	}
