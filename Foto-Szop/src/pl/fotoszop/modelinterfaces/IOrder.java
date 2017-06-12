@@ -9,15 +9,15 @@ public interface IOrder {
 	public void setIdOfRealizationTerm(String termId);
 	public void setDateOfModification(Date dateOfModification);
 	public void setOrderStatus(String orderStatus);
-	public void setServiceId(int serviceId);
+	public void setIdService(int serviceId);
 	public void setClientId(int clientId);
 
 	
-	public int getOrderId();
+	public int getIdOrder();
 	public Date getDateOfOrder();
 	public String getIdOfRealizationTerm();
 	public Date getDateOfModification();
 	public String getOrderStatus();
-	public int getServiceId();
+	public int getIdService();
 	public int getClientId();	
 }

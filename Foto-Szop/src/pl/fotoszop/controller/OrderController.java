@@ -15,18 +15,16 @@ import pl.fotoszop.modelinterfaces.IOrder;
 @Controller
 public class OrderController {
 
-
+	@Autowired
     OrderDAODbImpl orderDAO;
 	
 	
 	 @RequestMapping("/order")
 	    public ModelAndView showList(@SessionAttribute Client client) {
 	        List<IOrder> orderList = orderDAO.getAllOrders(client.getId());
+	        System.out.println(orderList.toString());
 	        ModelAndView model = new ModelAndView("order");
-	        if(!orderList.isEmpty())
-	        {
-	 	        model.addObject("termList", orderList);
-	        }
+ 	        model.addObject("orderList", orderList);
 	        return model;
 	    }
 }

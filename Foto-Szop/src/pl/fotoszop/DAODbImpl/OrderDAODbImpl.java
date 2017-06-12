@@ -48,12 +48,12 @@ public class OrderDAODbImpl implements OrderDAO{
 	public int saveOrUpdate(IOrder order) {
 		String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,id_service,id_client) "
 				+ "values (?,?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlQuery,order.getOrderId(),
+		jdbcTemplate.update(sqlQuery,order.getIdOrder(),
 									 order.getDateOfOrder(),
 									 order.getIdOfRealizationTerm(),
 									 Date.valueOf(LocalDate.now()),
 									 order.getOrderStatus(),
-									 order.getServiceId(),
+									 order.getIdService(),
 									 order.getClientId());
 
 		logger.info("Order has been saved or updated successfully");

@@ -74,7 +74,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setServiceId(int serviceId) {
+	public void setIdService(int serviceId) {
 		this.idService = serviceId;
 	}
 
@@ -84,7 +84,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public int getOrderId() {
+	public int getIdOrder() {
 		return this.idOrder;
 	}
 
@@ -109,7 +109,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public int getServiceId() {
+	public int getIdService() {
 	return this.idService;
 	}
 
