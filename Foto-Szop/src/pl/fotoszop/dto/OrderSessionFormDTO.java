@@ -9,10 +9,11 @@ public class OrderSessionFormDTO {
 
     // ORDER SESSION //
 
-	 @NotEmpty
-    private int termId;
-	
-    @NotEmpty
+	 
+    private Integer termId;
+
+
+	@NotEmpty
     @Size(min = 4, max = 256)
     private String subject;
     @NotEmpty
@@ -34,6 +35,15 @@ public class OrderSessionFormDTO {
     public void setDate(String date) {
         this.date = date;
     }
+    
+	
+   public Integer getTermId() {
+		return termId;
+	}
+
+	public void setTermId(Integer termId) {
+		this.termId = termId;
+	}
 
     public String getSubject() {
         return subject;

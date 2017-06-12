@@ -111,10 +111,11 @@
                                         regulamin</label><br><br><br>
 
 
-                                    <form:select path="date">
-                                        <form:option value="date"> --SELECT DATE--</form:option>
-                                        <form:options items="${termList}" itemValue="date"
+                                    <form:select path="termId">
+                                        <form:option value=""> --SELECT DATE--</form:option>
+                                        <form:options items="${termList}" itemValue="id"
                                                       itemLabel="date"></form:options>
+                                   
                                     </form:select>
                                     <br/><br/><br/>
 

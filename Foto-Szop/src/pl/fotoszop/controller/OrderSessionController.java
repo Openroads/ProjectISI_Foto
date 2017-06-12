@@ -58,8 +58,7 @@ public class OrderSessionController {
         	order.setDateOfOrder(new Date());
         	order.setIdService(Constants.SERVICE_SESJA);
         	order.setOrderStatus(Constants.PENDING);
-        	
-        	//order.setIdOfRealizationTerm(termId);
+        	order.setIdOfRealizationTerm(form.getTermId());
         	
             model = new ModelAndView("sessionOrderSuccess");
         }

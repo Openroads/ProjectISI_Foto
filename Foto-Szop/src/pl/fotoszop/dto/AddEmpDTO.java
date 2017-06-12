@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 public class AddEmpDTO {
 
 
-    // REGISTER //
 
     private long id;
     @NotEmpty
