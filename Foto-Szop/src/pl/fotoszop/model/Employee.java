@@ -1,5 +1,6 @@
 package pl.fotoszop.model;
 
+import pl.fotoszop.dto.AddEmpDTO;
 import pl.fotoszop.modelinterfaces.IEmployee;
 
 public class Employee implements IEmployee {
@@ -11,7 +12,16 @@ public class Employee implements IEmployee {
     protected String phoneNumber;
     protected String email;
 
-
+    
+    public void setFromForm(AddEmpDTO empForm){
+    	this.id = empForm.getId();
+    	this.name = empForm.getName();
+    	this.surname = empForm.getSurname();
+    	this.identityNumber=empForm.getIdentityNumber();
+    	this.phoneNumber=empForm.getPhoneNumber();
+    	this.email=empForm.getEmail();
+    }
+    
     public long getId() {
         return id;
     }

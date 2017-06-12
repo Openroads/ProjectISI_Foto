@@ -11,16 +11,13 @@ public class AddEmpDTO {
 
     // REGISTER //
 
-    private int id;
+    private long id;
     @NotEmpty
     @Size(min = 2, max = 20)
     private String name;
     @NotEmpty
     @Size(min = 2, max = 20)
     private String surname;
-    @NotEmpty
-    @Size(min = 6)
-    private String address;
     @NotEmpty
     @Size(min = 11, max = 11)
     private String identityNumber;
@@ -36,11 +33,11 @@ public class AddEmpDTO {
     private String password2;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -74,14 +71,6 @@ public class AddEmpDTO {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getIdentityNumber() {
