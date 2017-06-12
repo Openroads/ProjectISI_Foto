@@ -9,6 +9,9 @@ public class OrderSessionFormDTO {
 
     // ORDER SESSION //
 
+	 @NotEmpty
+    private int termId;
+	
     @NotEmpty
     @Size(min = 4, max = 256)
     private String subject;
