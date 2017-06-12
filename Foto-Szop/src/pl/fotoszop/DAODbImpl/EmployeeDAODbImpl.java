@@ -31,5 +31,13 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
 		return employee;
 
 	}
+	
+	@Override 
+	public IEmployee getManagerById(long employeeId){
+		
+		Employee manager = null;
+		
+		return manager;
+	}
 
 }
