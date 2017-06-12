@@ -29,7 +29,7 @@ public class ManagerController {
     @RequestMapping("/employeeAdding")
     public ModelAndView showList(@SessionAttribute Manager manager) {
     	List<ITerm> employeeAdding = termDAO.getCurrentTermsForEmployee(manager);
-    	ModelAndView model = new ModelAndView("success");
+    	ModelAndView model = new ModelAndView();
     	TermFormtDTO form = new TermFormtDTO();
     	form.setEmployeeId((int) manager.getId());
         model.addObject("termForm", form);
