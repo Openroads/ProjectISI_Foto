@@ -23,7 +23,7 @@ import javax.validation.Valid;
 import java.util.logging.Logger;
 
 @Controller
-@SessionAttributes({"account", "client", "employee"})
+@SessionAttributes({"account", "client", "employee","manager"})
 public class AccountController {
 
     private static final Logger logger = Logger.getLogger(AccountController.class.getName());
