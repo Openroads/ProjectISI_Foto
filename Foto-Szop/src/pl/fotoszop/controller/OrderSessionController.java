@@ -19,13 +19,13 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 @Controller
 @SessionAttributes({"client", "account"})
 public class OrderSessionController {
 
-    private static final Logger logger = Logger.getLogger(OrderSessionController.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(OrderSessionController.class.getName());
 
     @Autowired
     private TermDAODbImpl termDAO;
@@ -43,7 +43,7 @@ public class OrderSessionController {
 
         ModelAndView model = null;
         if (result.hasErrors()) {
-            logger.warning("Error with ordering session");
+            logger.error("Error with ordering session");
             List<ITerm> termList = termDAO.getFreeTermsFromDate(LocalDate.now());
             model = new ModelAndView("orderSession");
             Collections.sort(termList, (term1, term2) -> term1.getDate().compareTo(term2.getDate()));
@@ -80,7 +80,7 @@ public class OrderSessionController {
         Collections.sort(termList, Comparator.comparing(ITerm::getDate));
         model.addObject("termList", termList);
 
-        logger.info("List of terms in session order page has been loaded succesfully");
+        logger.debug("List of terms in session order page has been loaded succesfully");
         return model;
     }
 }

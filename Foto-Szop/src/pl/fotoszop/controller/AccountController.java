@@ -1,5 +1,7 @@
 package pl.fotoszop.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,13 +22,12 @@ import pl.fotoszop.modelinterfaces.IEmployee;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.logging.Logger;
 
 @Controller
 @SessionAttributes({"account", "client", "employee", "manager"})
 public class AccountController {
 
-    private static final Logger logger = Logger.getLogger(AccountController.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Autowired
     private ClientDAODbImpl clientDatabaseDAO;
@@ -42,7 +43,7 @@ public class AccountController {
         status.setComplete();
         model = new ModelAndView("redirect:/index");
 
-        logger.info(clientDatabaseDAO.toString() + "has been logged out");
+        logger.debug(clientDatabaseDAO.toString() + "has been logged out");
 
         return model;
     }
@@ -55,7 +56,7 @@ public class AccountController {
         ModelAndView model = null;
 
         if (result.hasErrors()) {
-            logger.warning("Login failed");
+            logger.error("Login failed");
             model = new ModelAndView("/index");
             model.addObject("loginForm", form);
 
@@ -68,7 +69,7 @@ public class AccountController {
                 int failed = 1;
                 model = new ModelAndView("/index");
                 result.rejectValue("password", "errCodePassword", "Podane hasło jest nie prawidłowe");
-                logger.warning("Password is incorrect");
+                logger.error("Password is incorrect");
                 model.addObject("failed", failed);
                 model.addObject("loginForm", form);
 
@@ -77,7 +78,7 @@ public class AccountController {
                 model = new ModelAndView("/index");
                 int failed = 1;
                 result.rejectValue("login", "errorCodeLogin", "Konto o podanym E-mail nie istnieje.");
-                logger.warning("Email doesn't exist");
+                logger.error("Email doesn't exist");
                 form.setPassword(null);
                 model.addObject("failed", failed);
                 model.addObject("loginForm", form);
@@ -89,7 +90,7 @@ public class AccountController {
                     model = new ModelAndView("account");
                     model.addObject("account", account);
                     model.addObject("client", client);
-                    logger.info(client.getEmail() + "has been logged");
+                    logger.debug(client.getEmail() + "has been logged");
                 } else if (account.getEmployeeId() != 0 && account.getClientId() == 0) {
                 	
                 	Manager manager = null;
@@ -99,12 +100,12 @@ public class AccountController {
                     model = new ModelAndView("employeeAccount");
                     model.addObject("account", account);
                     model.addObject("employee", employee);
-                    logger.info(employee.getEmail() + "has been logged");
+                    logger.debug(employee.getEmail() + "has been logged");
                 	}else{
                 		 model = new ModelAndView("managerAccount");
                          model.addObject("account", account);
                          model.addObject("manager", manager);
-                         logger.info(manager.getEmail() + "has been logged");
+                         logger.debug(manager.getEmail() + "has been logged");
                 	}
                     
                 } else {

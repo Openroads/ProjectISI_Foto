@@ -4,11 +4,7 @@
          id="WebApp_ID" version="3.0">
     <display-name>Fotoszop</display-name>
 
-    <!-- location of log4j config file -->
-    <context-param>
-        <param-name>log4jConfigLocation</param-name>
-        <param-value>/WEB-INF/log4j.properties</param-value>
-    </context-param>
+
 
     <filter>
         <filter-name>charsetFilter</filter-name>

@@ -1,6 +1,8 @@
 package pl.fotoszop.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,12 +19,13 @@ import pl.fotoszop.model.Employee;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.logging.Logger;
+
 
 
 @Controller
 public class HelloController {
-    private static final Logger logger = Logger.getLogger(HelloController.class.getName());
+
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @Autowired
     private ClientDAODbImpl clientDatabaseDAO;
@@ -46,7 +49,7 @@ public class HelloController {
         }
 
 
-        logger.info("Index page has been loaded");
+        logger.debug("Index page has been loaded");
         return model;
     }
 
@@ -70,7 +73,7 @@ public class HelloController {
             System.out.println(form.getPassword());
             model.addObject("loginForm", new LoginFormDTO());
         }
-        logger.info("Login form has been initialized");
+        logger.debug("Login form has been initialized");
         return model;
     }
 

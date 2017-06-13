@@ -15,11 +15,11 @@ import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Client;
 
 import javax.validation.Valid;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 @Controller
 public class ClientController {
-    private static final Logger logger = Logger.getLogger(ClientController.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class.getName());
 
     @Autowired
     private ClientDAODbImpl clientDAO;
@@ -31,7 +31,7 @@ public class ClientController {
 
         ModelAndView model = new ModelAndView("edit");
         model.addObject("editForm", new EditFormDTO());
-        logger.info(client.getEmail() + "entered edit page");
+        logger.debug(client.getEmail() + "entered edit page");
         return model;
     }
 
@@ -60,7 +60,7 @@ public class ClientController {
                     if (!editForm.getPasswordNew().equals("") && editForm.getPasswordNew().equals(editForm.getPasswordNew2()))
                         aclientDAO.update(account, editForm);
 
-                    logger.info(client.getEmail() + " has changed his account data info");
+                    logger.debug(client.getEmail() + " has changed his account data info");
                     model = new ModelAndView("account");
 
                 } else {
@@ -75,7 +75,7 @@ public class ClientController {
                 //if(editForm.getPhoneNumber()!=null);
             } else {
                 System.out.println("Bledne haslo");
-                logger.warning(client.getEmail() + "put wrong password");
+                logger.error(client.getEmail() + "put wrong password");
                 editForm.setPassword("");
                 editForm.setPasswordNew("");
                 editForm.setPasswordNew2("");

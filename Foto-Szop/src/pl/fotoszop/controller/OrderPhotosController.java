@@ -15,13 +15,13 @@ import pl.fotoszop.model.UploadFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 @Controller
 @SessionAttributes({"client", "account"})
 public class OrderPhotosController {
 
-    private static final Logger logger = Logger.getLogger(OrderPhotosController.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(OrderPhotosController.class.getName());
 
     @Autowired
     private ClientDAODbImpl clientDatabaseDAO;
@@ -62,7 +62,7 @@ public class OrderPhotosController {
 
             }
         }
-        logger.info("Photo has been uploaded successfully");
+        logger.debug("Photo has been uploaded successfully");
         return "File has been successfully uploaded";
     }
 

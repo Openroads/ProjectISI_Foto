@@ -1,7 +1,7 @@
 package pl.fotoszop.controller;
 
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 import javax.validation.Valid;
 
@@ -21,7 +21,7 @@ import pl.fotoszop.modelinterfaces.ITerm;
 
 @Controller
 public class ManagerController {
-	private static final Logger logger = Logger.getLogger(ManagerController.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class.getName());
 
     @Autowired
     TermDAODbImpl termDAO;

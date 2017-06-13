@@ -10,11 +10,11 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 public class AccountDAODbImpl implements AccountDAO {
 
-    private static final Logger logger = Logger.getLogger(AccountDAODbImpl.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AccountDAODbImpl.class.getName());
 
     private static final String SQL_GET_ACCOUNT_BY_LOGIN = "SELECT * from account where login = ? ";
 
@@ -32,7 +32,7 @@ public class AccountDAODbImpl implements AccountDAO {
 
         try {
             connection = dataSource.getConnection();
-            logger.info("Save or Update - Connection to database");
+            logger.debug("Save or Update - Connection to database");
             String sqlQuery = "insert into account(id_account,login,password,date_of_creation,id_employee,id_client) "
                     + "values (?,?,?,?,NULL,?)";
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
@@ -43,20 +43,20 @@ public class AccountDAODbImpl implements AccountDAO {
             statement.setInt(5, account.getClientId());
             statement.executeUpdate();
 
-            logger.info("Save or update has been successfully made");
+            logger.debug("Save or update has been successfully made");
         } catch (SQLException e) {
 
-            logger.warning("Cannot connect to database or save/update data");
+            logger.error("Cannot connect to database or save/update data");
             e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
                     connection.close();
-                    logger.info("Disconnect database");
+                    logger.debug("Disconnect database");
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
-                    logger.warning("Cannot disconnect with the database");
+                    logger.error("Cannot disconnect with the database");
                 }
             }
         }
@@ -71,7 +71,7 @@ public class AccountDAODbImpl implements AccountDAO {
 
         try {
             connection = dataSource.getConnection();
-            logger.info("Get all Accounts - connected with database");
+            logger.debug("Get all Accounts - connected with database");
             String sqlQuery = "SELECT * from Account";
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sqlQuery);
@@ -86,9 +86,9 @@ public class AccountDAODbImpl implements AccountDAO {
                 accounts.add(account);
             }
 
-            logger.info("All accounts has been taken from database");
+            logger.debug("All accounts has been taken from database");
         } catch (SQLException e) {
-            logger.warning("Get all accounts - cannot connect with the database or gets accounts");
+            logger.error("Get all accounts - cannot connect with the database or gets accounts");
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -104,7 +104,7 @@ public class AccountDAODbImpl implements AccountDAO {
         try {
 
             connection = dataSource.getConnection();
-            logger.info("Get account by login - connected with database");
+            logger.debug("Get account by login - connected with database");
             PreparedStatement statement = connection.prepareStatement(SQL_GET_ACCOUNT_BY_LOGIN);
             statement.setString(1, login);
             ResultSet rs = statement.executeQuery();
@@ -125,7 +125,7 @@ public class AccountDAODbImpl implements AccountDAO {
 
         } catch (SQLException e) {
 
-            logger.info("Get account by login - cannot connect with database or gets account by login");
+            logger.debug("Get account by login - cannot connect with database or gets account by login");
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
@@ -133,10 +133,10 @@ public class AccountDAODbImpl implements AccountDAO {
                 try {
 
                     connection.close();
-                    logger.info("Get account by login - disconnect with database");
+                    logger.debug("Get account by login - disconnect with database");
                 } catch (SQLException e) {
 
-                    logger.info("Get account by login - cannot disconnect with database");
+                    logger.debug("Get account by login - cannot disconnect with database");
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -152,27 +152,27 @@ public class AccountDAODbImpl implements AccountDAO {
 
         try {
             conn = dataSource.getConnection();
-            logger.info("Update - connected with database");
+            logger.debug("Update - connected with database");
             String sqlQuery = "UPDATE account SET password=? WHERE id_account=?";
             PreparedStatement statement = conn.prepareStatement(sqlQuery);
             statement.setString(1, form.getPasswordNew());
             statement.setInt(2, account.getAccountId());
             statement.executeUpdate();
 
-            logger.info("Update - succesfully updated");
+            logger.debug("Update - succesfully updated");
         } catch (SQLException e) {
 
-            logger.info("Update - cannot connect with database or update data");
+            logger.debug("Update - cannot connect with database or update data");
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             if (conn != null) {
                 try {
                     conn.close();
-                    logger.info("Update - disconnect with database");
+                    logger.debug("Update - disconnect with database");
                 } catch (SQLException e) {
 
-                    logger.info("Update - cannoct disconnect");
+                    logger.debug("Update - cannoct disconnect");
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -194,12 +194,12 @@ public class AccountDAODbImpl implements AccountDAO {
 
         IAccount acc = this.getAccountByLogin(form.getLogin());
         if (acc == null) {
-            logger.warning("Login form incorrect");
+            logger.error("Login form incorrect");
             return -1;
         } else {
             if (acc.getPassword().equals(form.getPassword())) {
                 this.account = acc;
-                logger.info("Login - password correctly checked");
+                logger.debug("Login - password correctly checked");
                 return 1;
             }
         }
@@ -219,14 +219,14 @@ public class AccountDAODbImpl implements AccountDAO {
         //User has called the checkToLogin method already
         if (this.account != null) {
             if (this.account.getLogin().equals(form.getLogin()) && this.account.getPassword().equals(form.getPassword())) {
-                logger.info(account.getLogin() + " successfully taken from database");
+                logger.debug(account.getLogin() + " successfully taken from database");
                 return this.account;
             } else {
                 this.account = null;
             }
         } else {
             if (this.checkToLogin(form) == 1) {
-                logger.info(account.getLogin() + " successfully taken from database");
+                logger.debug(account.getLogin() + " successfully taken from database");
                 this.account = this.getAccountByLogin(form.getLogin());
             }
 

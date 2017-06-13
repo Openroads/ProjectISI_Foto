@@ -13,12 +13,12 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 @Component
 public class TermDAODbImpl implements TermDAO {
 
-    private static final Logger logger = Logger.getLogger(TermDAODbImpl.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(TermDAODbImpl.class.getName());
 
     private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
     private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
@@ -41,7 +41,7 @@ public class TermDAODbImpl implements TermDAO {
         try {
             connection = dataSource.getConnection();
 
-            logger.info("Connection with database");
+            logger.debug("Connection with database");
             PreparedStatement statement = connection.prepareStatement(SQL_GET_TERMS_EMPLOYEE);
             statement.setInt(1, (int) employee.getId());
             statement.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
@@ -55,19 +55,19 @@ public class TermDAODbImpl implements TermDAO {
                 term.setDate(rs.getDate("date_of_term"));
                 termList.add(term);
             }
-            logger.info("Term list has been taken successfully");
+            logger.debug("Term list has been taken successfully");
         } catch (SQLException e) {
 
-            logger.warning("Cannot connect with database or cannot get list of terms: " + e.getMessage());
+            logger.error("Cannot connect with database or cannot get list of terms: " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
                     connection.close();
-                    logger.info("Disconnect with database");
+                    logger.debug("Disconnect with database");
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
-                    logger.warning("Something went wrong: " + e.getMessage());
+                    logger.error("Something went wrong: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -84,7 +84,7 @@ public class TermDAODbImpl implements TermDAO {
 
         try {
             connection = dataSource.getConnection();
-            logger.info("Connection with database");
+            logger.debug("Connection with database");
             PreparedStatement statement = connection.prepareStatement(SQL_GET_TERMS_FROM_DATE);
             statement.setDate(1, java.sql.Date.valueOf(date));
             ResultSet rs = statement.executeQuery();
@@ -148,17 +148,17 @@ public class TermDAODbImpl implements TermDAO {
                 termList.add(term);
             }
 
-            logger.info("Free term list has been taken successfully");
+            logger.debug("Free term list has been taken successfully");
         } catch (SQLException e) {
-            logger.warning("Cannot connect to database or get list of free terms: " + e.getMessage());
+            logger.error("Cannot connect to database or get list of free terms: " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
                     connection.close();
-                    logger.info("Disconnect with database");
+                    logger.debug("Disconnect with database");
                 } catch (SQLException e) {
-                    logger.warning("Something went wrong: " + e.getMessage());
+                    logger.error("Something went wrong: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -176,7 +176,7 @@ public class TermDAODbImpl implements TermDAO {
         try {
 
             connection = dataSource.getConnection();
-            logger.info("Add new term connecting to database");
+            logger.debug("Add new term connecting to database");
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(SQL_GET_LAST_ID);
             int id = 0;
@@ -190,18 +190,18 @@ public class TermDAODbImpl implements TermDAO {
             prStatement.setInt(2, newTerm.getEmployeeId());
             prStatement.setDate(3, new java.sql.Date((newTerm.getDate().getTime())));
             prStatement.executeUpdate();
-            logger.info("New term has been saved or updated");
+            logger.debug("New term has been saved or updated");
 
         } catch (SQLException e) {
-            logger.warning("Cannot connect to database or insert/update new term: " + e.getMessage());
+            logger.error("Cannot connect to database or insert/update new term: " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (connection != null) {
                 try {
                     connection.close();
-                    logger.info("Disconnect wit database");
+                    logger.debug("Disconnect wit database");
                 } catch (SQLException e) {
-                    logger.warning("Something went wrong: " + e.getMessage());
+                    logger.error("Something went wrong: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -220,15 +220,15 @@ public class TermDAODbImpl implements TermDAO {
 
             connection = dataSource.getConnection();
 
-            logger.info("Delete term connecting with database");
+            logger.debug("Delete term connecting with database");
             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_TERM_FOR_ID);
             statement.setInt(1, id);
             statement.executeUpdate();
-            logger.info("Term with id: " + id + " has been deleted successfully");
+            logger.debug("Term with id: " + id + " has been deleted successfully");
             return true;
 
         } catch (SQLException e) {
-            logger.warning("Cannot connect with database or delete term: " + e.getMessage());
+            logger.error("Cannot connect with database or delete term: " + e.getMessage());
 
             e.printStackTrace();
             return false;
@@ -236,9 +236,9 @@ public class TermDAODbImpl implements TermDAO {
             if (connection != null) {
                 try {
                     connection.close();
-                    logger.info("Disconnect with database");
+                    logger.debug("Disconnect with database");
                 } catch (SQLException e) {
-                    logger.warning("Something went wrong: " + e.getMessage());
+                    logger.error("Something went wrong: " + e.getMessage());
                     e.printStackTrace();
                 }
             }

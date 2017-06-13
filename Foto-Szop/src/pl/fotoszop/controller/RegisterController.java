@@ -16,13 +16,13 @@ import pl.fotoszop.model.Client;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
 @Controller
 @SessionAttributes({"client", "account"})
 public class RegisterController {
 
-    private static final Logger logger = Logger.getLogger(RegisterController.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(RegisterController.class.getName());
 
     @Autowired
     private ClientDAODbImpl clientDatabaseDAO;
@@ -36,7 +36,7 @@ public class RegisterController {
 
         if (result.hasErrors()) {
 
-            logger.warning("Error in registration, binding result");
+            logger.error("Error in registration, binding result");
             model = new ModelAndView("register");
             model.addObject("form", form);
             return model;
@@ -59,11 +59,11 @@ public class RegisterController {
                 model.addObject("client", newClient);
                 model.addObject("account", newAccount);
 
-                logger.info(newClient.getEmail() + " has been registered successfully");
+                logger.debug(newClient.getEmail() + " has been registered successfully");
                 return model;
             } else {
 
-                logger.warning("Registration error, two flags don't match");
+                logger.error("Registration error, two flags don't match");
                 model = new ModelAndView("register");
                 model.addObject("form", new Form());
                 return model;
@@ -81,7 +81,7 @@ public class RegisterController {
         model = new ModelAndView("register");
         model.addObject("form", new Form());
 
-        logger.info("Register form has been initialized");
+        logger.debug("Register form has been initialized");
         return model;
     }
 

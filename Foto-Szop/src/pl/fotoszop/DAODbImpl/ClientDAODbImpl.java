@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Repository
 public class ClientDAODbImpl implements ClientDAO {
 
-    private static final Logger logger = Logger.getLogger(ClientDAODbImpl.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ClientDAODbImpl.class.getName());
     private JdbcTemplate jdbcTemplate;
 
     public ClientDAODbImpl() {
@@ -41,7 +41,7 @@ public class ClientDAODbImpl implements ClientDAO {
         jdbcTemplate.update(sqlQuery, client.getId(), client.getName(), client.getSurname(), client.getAddress(),
                 client.getIdentityNumber(), client.getPhoneNumber(), client.getEmail());
 
-        logger.info(client.getEmail() + "has been added or updated");
+        logger.debug(client.getEmail() + "has been added or updated");
         return 0;
     }
 
@@ -56,7 +56,7 @@ public class ClientDAODbImpl implements ClientDAO {
         String sqlQuery = "select * from client where client.id_client = " + clientId;
         List<Client> clientL = this.jdbcTemplate.query(sqlQuery, new ClientMapper());
 
-        logger.info("Client id: " + clientId + "is searching in the database");
+        logger.debug("Client id: " + clientId + "is searching in the database");
         return clientL.get(0);
     }
 
@@ -65,7 +65,7 @@ public class ClientDAODbImpl implements ClientDAO {
         String sqlQuery = "select * from client";
         Collection<Client> clientL = this.jdbcTemplate.query(sqlQuery, new ClientMapper());
 
-        logger.info("All contact has been taken from the database");
+        logger.debug("All contact has been taken from the database");
         return clientL.stream().map(x -> (IClient) x).collect(Collectors.toList());
     }
 
@@ -106,20 +106,20 @@ public class ClientDAODbImpl implements ClientDAO {
 
             sqlQuery = "UPDATE client SET address=?, phone_nr=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getAddress(), form.getPhoneNumber(), client.getId());
-            logger.info(client.getEmail() + " has changed his address to: " + form.getAddress() + " and phone number to: " + form.getPhoneNumber());
+            logger.debug(client.getEmail() + " has changed his address to: " + form.getAddress() + " and phone number to: " + form.getPhoneNumber());
 
         } else if (!form.getAddress().equals("")) {
 
             sqlQuery = "UPDATE client SET address=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getAddress(), client.getId());
-            logger.info(client.getEmail() + " has changed his address to: " + form.getAddress());
+            logger.debug(client.getEmail() + " has changed his address to: " + form.getAddress());
 
         } else if (!form.getPhoneNumber().equals("")) {
 
             sqlQuery = "UPDATE client SET phone_nr=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getPhoneNumber(), client.getId());
 
-            logger.info(client.getEmail() + " has changed his phone number to: " + form.getPhoneNumber());
+            logger.debug(client.getEmail() + " has changed his phone number to: " + form.getPhoneNumber());
         }
 
         return 0;

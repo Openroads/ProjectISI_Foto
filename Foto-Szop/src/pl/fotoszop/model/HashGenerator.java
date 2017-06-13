@@ -1,13 +1,13 @@
 package pl.fotoszop.model;
 
 
+import org.slf4j.Logger;import org.slf4j.LoggerFactory;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class HashGenerator {
-
+    private static final Logger logger = LoggerFactory.getLogger(HashGenerator.class.getName());
     private HashGenerator() {
 
     }
@@ -29,7 +29,7 @@ public final class HashGenerator {
             wynik = hasz.toString();
 
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(HashGenerator.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("There is no supported hash algorithm: " + ex.getMessage());
         }
 
         return wynik;
