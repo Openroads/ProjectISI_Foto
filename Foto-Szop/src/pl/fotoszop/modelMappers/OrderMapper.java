@@ -1,4 +1,4 @@
-package pl.fotoszop.DAODbImpl;
+package pl.fotoszop.modelMappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

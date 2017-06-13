@@ -21,6 +21,7 @@ import org.springframework.stereotype.Repository;
 import pl.fotoszop.dao.OrderDAO;
 import pl.fotoszop.model.Order;
 import pl.fotoszop.model.Term;
+import pl.fotoszop.modelMappers.OrderMapper;
 import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;

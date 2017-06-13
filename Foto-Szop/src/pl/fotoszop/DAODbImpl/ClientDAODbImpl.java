@@ -8,6 +8,7 @@ import pl.fotoszop.dao.ClientDAO;
 import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.dto.Form;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.modelMappers.ClientMapper;
 import pl.fotoszop.modelinterfaces.IClient;
 
 import javax.sql.DataSource;

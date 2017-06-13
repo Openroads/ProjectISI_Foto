@@ -16,6 +16,8 @@ import pl.fotoszop.dto.AddEmpDTO;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.model.Employee;
 import pl.fotoszop.model.Manager;
+import pl.fotoszop.modelMappers.EmployeeMapper;
+import pl.fotoszop.modelMappers.ManagerMapper;
 import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.modelinterfaces.IEmployee;
 

@@ -1,9 +1,9 @@
 package pl.fotoszop.dao;
 
-import pl.fotoszop.DAODbImpl.ClientMapper;
 import pl.fotoszop.dto.TermFormtDTO;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.model.Term;
+import pl.fotoszop.modelMappers.ClientMapper;
 import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.ITerm;

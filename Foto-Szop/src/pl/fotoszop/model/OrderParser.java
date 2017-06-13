@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
-import pl.fotoszop.DAODbImpl.TermMapper;
 import pl.fotoszop.constants.Constants;
+import pl.fotoszop.modelMappers.TermMapper;
 import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;
 
@@ -62,7 +62,7 @@ public class OrderParser extends Order {
 			}
 			else if(serviceId == Constants.SERVICE_OBROBKA)
 			{
-				service = "OBRÓBKA";
+				service = "OBRï¿½BKA";
 			}
 			
 		}
