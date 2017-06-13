@@ -6,6 +6,7 @@ import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
 import pl.fotoszop.model.Order;
 import pl.fotoszop.model.Term;
+import pl.fotoszop.modelMappers.TermMapper;
 import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;

@@ -87,19 +87,8 @@
             <div class="col-lg-12">
                 <h2 class="client-part-haead wow fadeInDown delay-05">Historia zamówień<br>
                 </h2>
-            </div>
-        </div>
-
-    </div>
-    
-
-    
-    
-    
-    
-</section><!--main-section client-part-end-->
-
-    <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
+                
+                 <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
                 <table class="table table-hover table-hovered" style="text-align: center;">
                     <thead>
                     <tr>
@@ -109,6 +98,11 @@
                         <th style="text-align:center;">Data modyfikacji</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:center;">Usługa</th>
+                        <th style="text-align:center;">Temat</th>
+                        <th style="text-align:center;">Adres</th>
+                        <th style="text-align:center;">Miejsce</th>
+                        
+                        
                     </tr>
                     <thead>
                     <tbody>
@@ -138,6 +132,18 @@
                             
                             <td id="idService">
                             	<c:out value="${order.service}"/>
+                            </td>
+                            
+                            <td id="Subject">
+                            	<c:out value="${order.orderTitle}"/>
+                            </td>
+                            
+                            <td id="Address">
+                            	<c:out value="${order.orderAddress}"/>
+                            </td>
+                            
+                            <td id="orderPlace">
+                            	<c:out value="${order.orderPlace}"/>
                             </td>              
                             <td id="operacja">
                                 <form action="deleteOrder" method="post">
@@ -152,7 +158,26 @@
                 </table>
 
             </div>
+                
+            </div>
+        </div>
 
+    </div>
+    
+
+    
+    
+    
+    
+</section><!--main-section client-part-end-->
+
+   
+   
+   
+   
+   
+   
+   
 
 <br><br>
 

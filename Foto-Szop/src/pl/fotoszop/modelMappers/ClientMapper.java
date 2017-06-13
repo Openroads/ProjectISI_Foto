@@ -1,4 +1,4 @@
-package pl.fotoszop.DAODbImpl;
+package pl.fotoszop.modelMappers;
 
 import org.springframework.jdbc.core.RowMapper;
 import pl.fotoszop.model.Client;
