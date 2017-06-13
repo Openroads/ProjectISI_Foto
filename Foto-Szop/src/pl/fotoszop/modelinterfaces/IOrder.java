@@ -11,6 +11,9 @@ public interface IOrder {
 	public void setOrderStatus(String orderStatus);
 	public void setIdService(int serviceId);
 	public void setClientId(int clientId);
+	public void setRealizationDate(Date realizationDate);
+	public void setService(String service);
+	
 
 	
 	public int getIdOrder();
@@ -20,4 +23,6 @@ public interface IOrder {
 	public String getOrderStatus();
 	public int getIdService();
 	public int getClientId();	
+	public Date getRealizationDate();
+	public String getService();
 }

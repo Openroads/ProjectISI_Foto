@@ -37,6 +37,7 @@ public class TermDAODbImpl implements TermDAO {
     
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @Override
@@ -255,7 +256,6 @@ public class TermDAODbImpl implements TermDAO {
 
 	@Override
 	public Term getTermById(int id) {
-				System.out.println("buuuu");
 		        String sqlQuery = "select * from term where term.id_term = " + id;
 		        List<Term> termL = this.jdbcTemplate.query(sqlQuery, new TermMapper());
 		        System.out.println(termL);

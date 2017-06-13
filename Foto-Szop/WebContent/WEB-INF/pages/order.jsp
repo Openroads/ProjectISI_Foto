@@ -125,7 +125,7 @@
                             </td>  
                             
                              <td id="idOfRealization">
-                            	<c:out value="${order.RealizationDate}"/>
+                            	<c:out value="${order.realizationDate}"/>
                             </td>       
                             
                             <td id="dateOfModification">

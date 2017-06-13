@@ -14,6 +14,8 @@ public class Order implements IOrder{
 	private String orderStatus;
 	private int idService;
 	private int idClient;
+	private Date realizationDate;
+	private String service;
 
 	public Order()
 	{
@@ -46,6 +48,36 @@ public class Order implements IOrder{
 			   ", orderStatus=" + orderStatus +
 			   ", idService=" + idService +
 			   ", idClient=" + idClient + "]";
+	}
+
+	
+	
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
+	public Date getRealizationDate() {
+		return realizationDate;
+	}
+
+	public void setRealizationDate(Date realizationDate) {
+		this.realizationDate = realizationDate;
+	}
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
+	}
+
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
 	}
 
 	@Override

@@ -5,18 +5,27 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
+import pl.fotoszop.DAODbImpl.TermMapper;
 import pl.fotoszop.constants.Constants;
 import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;
 
+
+
+@Component
 public class OrderParser extends Order {
+	
 	
 	private Date realizationDate;
 	private String service;
-	
+    private JdbcTemplate jdbcTemplate;
 
     public Date getRealizationDate() {
 		return realizationDate;
@@ -34,8 +43,7 @@ public class OrderParser extends Order {
 		this.service = service;
 	}
 
-	@Autowired
-    private TermDAODbImpl termDAO;
+
 	
 	public List<IOrder> getTermDates(List<IOrder> orderList){
 		
@@ -45,7 +53,7 @@ public class OrderParser extends Order {
 			int termId = item.getIdOfRealizationTerm();
 			int serviceId = item.getIdService();
 			
-			Term term =  termDAO.getTermById(termId);
+			Term term =  getTermByIdParser(termId);
 			realizationDate = term.getDate();
 			
 			if(serviceId == Constants.SERVICE_SESJA)
@@ -61,4 +69,14 @@ public class OrderParser extends Order {
 		
 		return orderList;
 	}
+	
+	
+	public Term getTermByIdParser(int id) {
+		
+        String sqlQuery = "select * from term where term.id_term = " + id;
+        Term term = this.jdbcTemplate.queryForObject(sqlQuery, new TermMapper());
+        System.out.println(term);
+        return term;	    
+}
+	
 }
