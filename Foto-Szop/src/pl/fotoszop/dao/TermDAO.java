@@ -1,10 +1,7 @@
 package pl.fotoszop.dao;
 
 import pl.fotoszop.dto.TermFormtDTO;
-import pl.fotoszop.model.Client;
 import pl.fotoszop.model.Term;
-import pl.fotoszop.modelMappers.ClientMapper;
-import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.modelinterfaces.IEmployee;
 import pl.fotoszop.modelinterfaces.ITerm;
 
@@ -27,7 +24,7 @@ public interface TermDAO {
      * @return
      */
     List<ITerm> getFreeTermsForWeek(LocalDate date);
-    
+
     public Term getTermById(int id);
-  
+
 }
