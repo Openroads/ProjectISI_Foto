@@ -18,7 +18,7 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
-<spring:url value="resources/js/validation.js" var="validation"/>
+
 
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
@@ -72,7 +72,7 @@
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        	<li><a href="${contextPath}/index">Powrót</a></li>
+        	<li><a href="${contextPath}/managerReturn">Powrót</a></li>
             <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>		
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
@@ -92,16 +92,13 @@
                     </div>
                 	<div class="service-list-col2">
                 	 <div class="form">
-                        <form:form method="post"  modelAttribute="AddEmpDTO" id="add-emp-form"  action="employeeAdding" >							
+                        <form:form method="post"  modelAttribute="AddEmpDTO" id="add-emp-form"  action="addEmployee" >							
                         	Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
 							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="name" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iname"></div><br>
 							Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
 							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="surname" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="isurname"></div><br>
-							Adres: <form:input class="input-text" path="address" id="address-form" />
-							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="address" 	 cssStyle="color: #ff0000;"/></c:if>
-							<div id="iaddress"></div><br>
 							PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
 							<c:if test="${pageContext.request.method=='POST'}"><form:errors path="identityNumber" 	 cssStyle="color: #ff0000;"/></c:if>
 							<div id="iidentity-number"></div><br>
@@ -118,9 +115,7 @@
                                <c:if test="${pageContext.request.method=='POST'}"><form:errors path="phoneNumber" 	 cssStyle="color: #ff0000;"/></c:if>
                                 <div id="iphone"></div><br>
                                 <div style="text-align:center;">
-                     		<label><input type="checkbox" class="input-text"  required id="rules"/>Akceptuję regulamin</label>
-                     		<label><input type="checkbox" class="input-text"  value="adv" id="adv"/>Chcę otrzymywać reklamy.</label>
-                     		<label><input type="checkbox" class="input-text"  value="promo" id="promo"/>Chcę otrzymywać rabaty.</label>
+                     		
                      		<input type="submit" id="submit" class="input-btn" value="Rejestruj">         
                			       </div>
 				</form:form>

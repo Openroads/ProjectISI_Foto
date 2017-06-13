@@ -5,23 +5,31 @@ import java.util.Date;
 import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.modelinterfaces.IOrder;
 
-public class Order implements IOrder{
+public class Order extends OrderBase implements IOrder{
 
 	private int idOrder;
 	private Date dateOfOrder;
-	private String idOfRealizationTerm;
+	private int idOfRealizationTerm;
 	private Date dateOfModification;
 	private String orderStatus;
 	private int idService;
 	private int idClient;
+	private Date realizationDate;
+	private String service;
 
 	public Order()
 	{
 	}
+	public Order(OrderSessionFormDTO form)
+	{
+		setOrderAddress(form.getSessionAddress());
+		super.setOrderPlace(form.getSessionPlace());
+		this.setOrderTitle(form.getSubject());
+	}
 
 	public Order(int idOrder,
 			     Date dateOfOrder,
-			     String idOfRealizationTerm,
+			     int idOfRealizationTerm,
 			     Date dateOfModification,
 			     String orderStatus,
 			     int idService,
@@ -48,6 +56,36 @@ public class Order implements IOrder{
 			   ", idClient=" + idClient + "]";
 	}
 
+	
+	
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
+	public Date getRealizationDate() {
+		return realizationDate;
+	}
+
+	public void setRealizationDate(Date realizationDate) {
+		this.realizationDate = realizationDate;
+	}
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
+	}
+
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
+	}
+
 	@Override
 	public void setOrderId(int id) {
 		this.idOrder = id;
@@ -59,7 +97,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setIdOfRealizationTerm(String termId) {
+	public void setIdOfRealizationTerm(int termId) {
 		this.idOfRealizationTerm = termId;
 	}
 
@@ -74,7 +112,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public void setServiceId(int serviceId) {
+	public void setIdService(int serviceId) {
 		this.idService = serviceId;
 	}
 
@@ -84,7 +122,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public int getOrderId() {
+	public int getIdOrder() {
 		return this.idOrder;
 	}
 
@@ -94,7 +132,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public String getIdOfRealizationTerm() {
+	public int getIdOfRealizationTerm() {
 	return this.idOfRealizationTerm;
 	}
 
@@ -109,7 +147,7 @@ public class Order implements IOrder{
 	}
 
 	@Override
-	public int getServiceId() {
+	public int getIdService() {
 	return this.idService;
 	}
 
@@ -117,4 +155,6 @@ public class Order implements IOrder{
 	public int getClientId() {
 	return this.idClient;
 	}
+	
+	
 }

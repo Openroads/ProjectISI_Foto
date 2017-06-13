@@ -10,7 +10,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.slf4j.Logger;import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
@@ -33,7 +34,7 @@ import pl.fotoszop.modelinterfaces.ITerm;
 @Repository
 public class OrderDAODbImpl implements OrderDAO{
 	
-
+	private static final String GET_NEXT_ID = "select max(id_order) + 1 from  order_ps";
 	private JdbcTemplate jdbcTemplate;
 
 	private static final Logger logger = LoggerFactory.getLogger(OrderDAODbImpl.class.getName());
@@ -46,14 +47,24 @@ public class OrderDAODbImpl implements OrderDAO{
 	
 	@Override
 	public int saveOrUpdate(IOrder order) {
-		String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,id_service,id_client) "
-				+ "values (?,?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlQuery,order.getOrderId(),
+
+		if(order.getIdOrder() == 0)
+		{
+			order.setOrderId(jdbcTemplate.queryForObject(GET_NEXT_ID, Integer.class));
+		}
+
+
+		String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,subject,sessionAddress,sessionPlace,id_service,id_client) "
+				+ "values (?,?,?,?,?,?,?,?,?,?)";
+		jdbcTemplate.update(sqlQuery,order.getIdOrder(),
 									 order.getDateOfOrder(),
 									 order.getIdOfRealizationTerm(),
-									 Date.valueOf(LocalDate.now()),
+									 null,
 									 order.getOrderStatus(),
-									 order.getServiceId(),
+									 order.getOrderTitle(),
+									 order.getOrderAddress(),
+									 order.getOrderPlace(),
+									 order.getIdService(),
 									 order.getClientId());
 
 		logger.debug("Order has been saved or updated successfully");

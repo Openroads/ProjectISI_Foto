@@ -10,7 +10,8 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.slf4j.Logger;import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AccountDAODbImpl implements AccountDAO {
 
@@ -34,13 +35,14 @@ public class AccountDAODbImpl implements AccountDAO {
             connection = dataSource.getConnection();
             logger.debug("Save or Update - Connection to database");
             String sqlQuery = "insert into account(id_account,login,password,date_of_creation,id_employee,id_client) "
-                    + "values (?,?,?,?,NULL,?)";
+                    + "values (?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, account.getAccountId());
             statement.setString(2, account.getLogin());
             statement.setString(3, account.getPassword());
             statement.setDate(4, account.getCreationDate());
-            statement.setInt(5, account.getClientId());
+            statement.setInt(5,(int) account.getEmployeeId());
+            statement.setInt(6, account.getClientId());
             statement.executeUpdate();
 
             logger.debug("Save or update has been successfully made");

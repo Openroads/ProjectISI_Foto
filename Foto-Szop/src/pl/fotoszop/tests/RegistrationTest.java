@@ -43,7 +43,7 @@ public class RegistrationTest {
 
         when(acc.saveOrUpdate(account)).thenReturn(0);
         when(acc.getAccountByLogin(account.getLogin())).thenReturn(account);
-        when(acc.getAllAccounts(1)).thenReturn(accounts);
+        when(acc.getAllAccounts()).thenReturn(accounts);
 
 
     }
@@ -57,7 +57,7 @@ public class RegistrationTest {
         accounts.add(account);
         accounts.add(account);
 
-        Assert.assertEquals(accounts, acc.getAllAccounts(1));
+        Assert.assertEquals(accounts, acc.getAllAccounts());
 
     }
 

@@ -9,15 +9,16 @@ import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.OrderDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
+import pl.fotoszop.constants.Constants;
 import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.model.Client;
 import pl.fotoszop.model.Order;
 import pl.fotoszop.modelinterfaces.ITerm;
-
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import org.slf4j.Logger;import org.slf4j.LoggerFactory;
 
@@ -33,10 +34,6 @@ public class OrderSessionController {
     @Autowired
     private OrderDAODbImpl orderDatabaseDAO;
     
-    @Autowired
-    private ClientDAODbImpl clientDatabaseDAO;
-    @Autowired
-    private AccountDAODbImpl aclientDatabaseDAO;
 
     @RequestMapping(value = "/orderSession", method = RequestMethod.POST)
     public ModelAndView processForm(@SessionAttribute("client") Client client,@ModelAttribute("form") @Valid OrderSessionFormDTO form, BindingResult result) {
@@ -50,12 +47,15 @@ public class OrderSessionController {
             model.addObject("termList", termList);
         } else {
         	
-        	System.out.println(form);
-        	
-        	Order order = new Order();
+            	
+        	Order order = new Order( form	);
         	order.setClientId(client.getId());
-        	/*order.setDateOfOrder();
-        	order.setIdOfRealizationTerm(termId);*/
+        	order.setDateOfOrder(new Date());
+        	order.setIdService(Constants.SERVICE_SESJA);
+        	order.setOrderStatus(Constants.PENDING);
+        	order.setIdOfRealizationTerm(form.getTermId());
+        	
+        	orderDatabaseDAO.saveOrUpdate(order);
         	
             model = new ModelAndView("sessionOrderSuccess");
         }

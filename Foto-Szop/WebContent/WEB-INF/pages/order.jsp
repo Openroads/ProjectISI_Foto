@@ -91,7 +91,68 @@
         </div>
 
     </div>
+    
+
+    
+    
+    
+    
 </section><!--main-section client-part-end-->
+
+    <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
+                <table class="table table-hover table-hovered" style="text-align: center;">
+                    <thead>
+                    <tr>
+                        <th style="text-align:center;">ID</th>
+                        <th style="text-align:center;">Data zamówienia</th>
+                        <th style="text-align:center;">Termin realizacji</th>
+                        <th style="text-align:center;">Data modyfikacji</th>
+                        <th style="text-align:center;">Status</th>
+                        <th style="text-align:center;">Usługa</th>
+                    </tr>
+                    <thead>
+                    <tbody>
+                  
+                    <c:forEach items="${orderList}" var="order" varStatus="status">
+                        <tr class="success">
+                        
+                            <td id="id">
+                                <c:out value="${order.idOrder}"/>
+                            </td>
+                            
+                            <td id="dateOfOrder">
+                            	<c:out value="${order.dateOfOrder}"/>
+                            </td>  
+                            
+                             <td id="idOfRealization">
+                            	<c:out value="${order.realizationDate}"/>
+                            </td>       
+                            
+                            <td id="dateOfModification">
+                            	<c:out value="${order.dateOfModification}"/>
+                            </td>
+                            
+                            <td id="orderStatus">
+                            	<c:out value="${order.orderStatus}"/>
+                            </td>
+                            
+                            <td id="idService">
+                            	<c:out value="${order.service}"/>
+                            </td>              
+                            <td id="operacja">
+                                <form action="deleteOrder" method="post">
+                                    <input type="hidden" name="orderToDelete" value="${order.idOrder}"/>
+                                    <input class="btn btn-danger " type="submit" value="Usuń"
+                                           name="remove"/>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+            </div>
+
 
 <br><br>
 
@@ -101,7 +162,11 @@
     <div class="container">
         <h2>Zespół wykwalifikowanych szopów już zajmuje się tą sprawą!</h2>
     </div>
+    
+    
 </section><!--business-talking-end-->
+
+
 <div class="container">
     <section class="main-section contact" id="kontakt">
         <h2>Zespół</h2>
