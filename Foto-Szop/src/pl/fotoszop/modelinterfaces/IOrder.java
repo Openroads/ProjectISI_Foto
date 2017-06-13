@@ -25,4 +25,10 @@ public interface IOrder {
 	public int getClientId();	
 	public Date getRealizationDate();
 	public String getService();
+	public String getOrderTitle();
+	public void setOrderTitle(String orderTitle);
+    public String getOrderAddress();
+	public void setOrderAddress(String orderAddress);
+	public String getOrderPlace();
+	public void setOrderPlace(String orderPlace);
 }

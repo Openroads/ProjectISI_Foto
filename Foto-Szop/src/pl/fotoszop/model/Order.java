@@ -5,7 +5,7 @@ import java.util.Date;
 import pl.fotoszop.dto.OrderSessionFormDTO;
 import pl.fotoszop.modelinterfaces.IOrder;
 
-public class Order implements IOrder{
+public class Order extends OrderBase implements IOrder{
 
 	private int idOrder;
 	private Date dateOfOrder;
@@ -19,6 +19,12 @@ public class Order implements IOrder{
 
 	public Order()
 	{
+	}
+	public Order(OrderSessionFormDTO form)
+	{
+		setOrderAddress(form.getSessionAddress());
+		super.setOrderPlace(form.getSessionPlace());
+		this.setOrderTitle(form.getSubject());
 	}
 
 	public Order(int idOrder,
@@ -149,4 +155,6 @@ public class Order implements IOrder{
 	public int getClientId() {
 	return this.idClient;
 	}
+	
+	
 }

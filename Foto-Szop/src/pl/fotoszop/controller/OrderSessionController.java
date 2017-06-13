@@ -34,10 +34,6 @@ public class OrderSessionController {
     @Autowired
     private OrderDAODbImpl orderDatabaseDAO;
     
-    @Autowired
-    private ClientDAODbImpl clientDatabaseDAO;
-    @Autowired
-    private AccountDAODbImpl aclientDatabaseDAO;
 
     @RequestMapping(value = "/orderSession", method = RequestMethod.POST)
     public ModelAndView processForm(@SessionAttribute("client") Client client,@ModelAttribute("form") @Valid OrderSessionFormDTO form, BindingResult result) {
@@ -51,14 +47,15 @@ public class OrderSessionController {
             model.addObject("termList", termList);
         } else {
         	
-        	System.out.println(form);
-        	
-        	Order order = new Order();
+            	
+        	Order order = new Order( form	);
         	order.setClientId(client.getId());
         	order.setDateOfOrder(new Date());
         	order.setIdService(Constants.SERVICE_SESJA);
         	order.setOrderStatus(Constants.PENDING);
         	order.setIdOfRealizationTerm(form.getTermId());
+        	
+        	orderDatabaseDAO.saveOrUpdate(order);
         	
             model = new ModelAndView("sessionOrderSuccess");
         }
