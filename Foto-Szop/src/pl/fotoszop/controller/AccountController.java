@@ -92,22 +92,22 @@ public class AccountController {
                     model.addObject("client", client);
                     logger.debug(client.getEmail() + "has been logged");
                 } else if (account.getEmployeeId() != 0 && account.getClientId() == 0) {
-                	
-                	Manager manager = null;
-                	manager = employeeDatabaseDAO.getManagerById(account.getEmployeeId());
-                	if(manager == null){
-                    IEmployee employee = employeeDatabaseDAO.getEmployeeById(account.getEmployeeId());
-                    model = new ModelAndView("employeeAccount");
-                    model.addObject("account", account);
-                    model.addObject("employee", employee);
-                    logger.debug(employee.getEmail() + "has been logged");
-                	}else{
-                		 model = new ModelAndView("managerAccount");
-                         model.addObject("account", account);
-                         model.addObject("manager", manager);
-                         logger.debug(manager.getEmail() + "has been logged");
-                	}
-                    
+
+                    Manager manager = null;
+                    manager = employeeDatabaseDAO.getManagerById(account.getEmployeeId());
+                    if (manager == null) {
+                        IEmployee employee = employeeDatabaseDAO.getEmployeeById(account.getEmployeeId());
+                        model = new ModelAndView("employeeAccount");
+                        model.addObject("account", account);
+                        model.addObject("employee", employee);
+                        logger.debug(employee.getEmail() + "has been logged");
+                    } else {
+                        model = new ModelAndView("managerAccount");
+                        model.addObject("account", account);
+                        model.addObject("manager", manager);
+                        logger.debug(manager.getEmail() + "has been logged");
+                    }
+
                 } else {
                     model = new ModelAndView("redirect:/index");
                 }

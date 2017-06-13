@@ -21,7 +21,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
-
 @Controller
 public class HelloController {
 
