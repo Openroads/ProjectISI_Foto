@@ -5,10 +5,10 @@ import java.util.Date;
 
 public abstract class OrderBase {
 
-	public String orderTitle;
+	private  String orderTitle;
 
-	public String orderAddress;
-    public String orderPlace;
+	private  String orderAddress;
+    private  String orderPlace;
     
     public String getOrderTitle() {
 		return orderTitle;

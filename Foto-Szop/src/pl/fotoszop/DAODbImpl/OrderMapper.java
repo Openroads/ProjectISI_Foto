@@ -20,6 +20,9 @@ public class OrderMapper implements RowMapper<Order>{
 		order.setOrderStatus(rs.getString("order_status")); // breakpoint here <=
 		order.setIdService(rs.getInt("id_service"));
 		order.setClientId( rs.getInt("id_client"));
+		order.setOrderAddress(rs.getString("sessionAddress"));
+		order.setOrderTitle(rs.getString("subject"));
+		order.setOrderPlace(rs.getString("sessionPlace"));
 		return order;
 	}
 
