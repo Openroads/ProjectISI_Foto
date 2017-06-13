@@ -10,10 +10,10 @@ public interface AccountDAO {
      * @param account
      */
 
-    public IAccount getAccountByLogin(String login);
+    IAccount getAccountByLogin(String login);
 
-    public int saveOrUpdate(IAccount account);
+    int saveOrUpdate(IAccount account);
 
-    public Collection<IAccount> getAllAccounts();
+    Collection<IAccount> getAllAccounts();
 
 }

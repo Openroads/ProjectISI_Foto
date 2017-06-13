@@ -66,7 +66,7 @@ public class AccountDAODbImpl implements AccountDAO {
         return 0;
     }
 
-    public Collection<IAccount> getAllAccounts(int id) {
+    public Collection<IAccount> getAllAccounts() {
 
         Connection connection = null;
         Collection<IAccount> accounts = null;
