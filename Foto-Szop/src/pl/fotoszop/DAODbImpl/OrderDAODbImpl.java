@@ -55,7 +55,7 @@ public class OrderDAODbImpl implements OrderDAO {
                 order.getIdService(),
                 order.getClientId());
 
-        logger.debug("Order has been saved or updated successfully");
+        logger.info("Order has been saved or updated successfully");
         return 0;
     }
 
@@ -64,7 +64,7 @@ public class OrderDAODbImpl implements OrderDAO {
         String sqlQuery = "delete order_ps where id_order = " + orderId;
         jdbcTemplate.execute(sqlQuery);
 
-        logger.debug("Order has been deleted successfully");
+        logger.info("Order has been deleted successfully");
         return true;
     }
 
@@ -73,7 +73,7 @@ public class OrderDAODbImpl implements OrderDAO {
         System.out.println(clientId);
         String sqlQuery = "select * from order_ps where order_ps.id_client = " + clientId;
         Collection<Order> OrderL = this.jdbcTemplate.query(sqlQuery, new OrderMapper());
-        logger.debug("All orders has been taken");
+        logger.info("All orders has been taken");
         return OrderL.stream().map(x -> (IOrder) x).collect(Collectors.toList());
     }
 }

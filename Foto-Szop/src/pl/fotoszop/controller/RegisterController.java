@@ -60,7 +60,7 @@ public class RegisterController {
                 model.addObject("client", newClient);
                 model.addObject("account", newAccount);
 
-                logger.debug(newClient.getEmail() + " has been registered successfully");
+                logger.info(newClient.getEmail() + " has been registered successfully");
                 return model;
             } else {
 
@@ -82,7 +82,7 @@ public class RegisterController {
         model = new ModelAndView("register");
         model.addObject("form", new Form());
 
-        logger.debug("Register form has been initialized");
+        logger.info("Register form has been initialized");
         return model;
     }
 

@@ -47,7 +47,7 @@ public class EmployeeController {
         } else {
             termForm.setEmployeeId((int) employee.getId());
             termDAO.addNewTerm(termForm);
-            logger.debug(employee.getEmail() + " has inserted term");
+            logger.info(employee.getEmail() + " has inserted term");
         }
         return new ModelAndView("redirect:/termList");
     }
@@ -57,7 +57,7 @@ public class EmployeeController {
 
         int idTermToDelete = Integer.valueOf(termToDelete);
         if (idTermToDelete > 0 && termDAO.deleteTerm(idTermToDelete)) {
-            logger.debug("Redirecting to term list for deleting");
+            logger.info("Redirecting to term list for deleting");
             return new ModelAndView("redirect:/termList");
 
         } else {

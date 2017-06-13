@@ -48,7 +48,7 @@ public class HelloController {
         }
 
 
-        logger.debug("Index page has been loaded");
+        logger.info("Index page has been loaded");
         return model;
     }
 
@@ -72,7 +72,7 @@ public class HelloController {
             System.out.println(form.getPassword());
             model.addObject("loginForm", new LoginFormDTO());
         }
-        logger.debug("Login form has been initialized");
+        logger.info("Login form has been initialized");
         return model;
     }
 

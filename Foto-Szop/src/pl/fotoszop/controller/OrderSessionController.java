@@ -80,7 +80,7 @@ public class OrderSessionController {
         Collections.sort(termList, Comparator.comparing(ITerm::getDate));
         model.addObject("termList", termList);
 
-        logger.debug("List of terms in session order page has been loaded succesfully");
+        logger.info("List of terms in session order page has been loaded succesfully");
         return model;
     }
 }

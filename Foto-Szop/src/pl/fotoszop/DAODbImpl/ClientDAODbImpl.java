@@ -43,7 +43,7 @@ public class ClientDAODbImpl implements ClientDAO {
         jdbcTemplate.update(sqlQuery, client.getId(), client.getName(), client.getSurname(), client.getAddress(),
                 client.getIdentityNumber(), client.getPhoneNumber(), client.getEmail());
 
-        logger.debug(client.getEmail() + "has been added or updated");
+        logger.info(client.getEmail() + "has been added or updated");
         return 0;
     }
 
@@ -58,7 +58,7 @@ public class ClientDAODbImpl implements ClientDAO {
         String sqlQuery = "select * from client where client.id_client = " + clientId;
         List<Client> clientL = this.jdbcTemplate.query(sqlQuery, new ClientMapper());
 
-        logger.debug("Client id: " + clientId + "is searching in the database");
+        logger.info("Client id: " + clientId + "is searching in the database");
         return clientL.get(0);
     }
 
@@ -67,7 +67,7 @@ public class ClientDAODbImpl implements ClientDAO {
         String sqlQuery = "select * from client";
         Collection<Client> clientL = this.jdbcTemplate.query(sqlQuery, new ClientMapper());
 
-        logger.debug("All contact has been taken from the database");
+        logger.info("All contact has been taken from the database");
         return clientL.stream().map(x -> (IClient) x).collect(Collectors.toList());
     }
 
@@ -108,20 +108,20 @@ public class ClientDAODbImpl implements ClientDAO {
 
             sqlQuery = "UPDATE client SET address=?, phone_nr=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getAddress(), form.getPhoneNumber(), client.getId());
-            logger.debug(client.getEmail() + " has changed his address to: " + form.getAddress() + " and phone number to: " + form.getPhoneNumber());
+            logger.info(client.getEmail() + " has changed his address to: " + form.getAddress() + " and phone number to: " + form.getPhoneNumber());
 
         } else if (!form.getAddress().equals("")) {
 
             sqlQuery = "UPDATE client SET address=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getAddress(), client.getId());
-            logger.debug(client.getEmail() + " has changed his address to: " + form.getAddress());
+            logger.info(client.getEmail() + " has changed his address to: " + form.getAddress());
 
         } else if (!form.getPhoneNumber().equals("")) {
 
             sqlQuery = "UPDATE client SET phone_nr=? WHERE id_client=?";
             jdbcTemplate.update(sqlQuery, form.getPhoneNumber(), client.getId());
 
-            logger.debug(client.getEmail() + " has changed his phone number to: " + form.getPhoneNumber());
+            logger.info(client.getEmail() + " has changed his phone number to: " + form.getPhoneNumber());
         }
 
         return 0;

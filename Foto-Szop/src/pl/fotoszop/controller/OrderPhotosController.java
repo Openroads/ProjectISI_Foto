@@ -63,7 +63,7 @@ public class OrderPhotosController {
 
             }
         }
-        logger.debug("Photo has been uploaded successfully");
+        logger.info("Photo has been uploaded successfully");
         return "File has been successfully uploaded";
     }
 

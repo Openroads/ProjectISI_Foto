@@ -18,7 +18,7 @@ public class SuccessController {
     public ModelAndView helloworld() {
 
         ModelAndView model = new ModelAndView("account");
-        logger.debug("Something went successfully from success controller");
+        logger.info("Something went successfully from success controller");
         return model;
     }
 

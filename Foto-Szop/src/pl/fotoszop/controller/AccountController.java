@@ -43,7 +43,7 @@ public class AccountController {
         status.setComplete();
         model = new ModelAndView("redirect:/index");
 
-        logger.debug(clientDatabaseDAO.toString() + "has been logged out");
+        logger.info(clientDatabaseDAO.toString() + "has been logged out");
 
         return model;
     }
@@ -90,7 +90,7 @@ public class AccountController {
                     model = new ModelAndView("account");
                     model.addObject("account", account);
                     model.addObject("client", client);
-                    logger.debug(client.getEmail() + "has been logged");
+                    logger.info(client.getEmail() + "has been logged");
                 } else if (account.getEmployeeId() != 0 && account.getClientId() == 0) {
 
                     Manager manager = null;
@@ -100,12 +100,12 @@ public class AccountController {
                         model = new ModelAndView("employeeAccount");
                         model.addObject("account", account);
                         model.addObject("employee", employee);
-                        logger.debug(employee.getEmail() + "has been logged");
+                        logger.info(employee.getEmail() + "has been logged");
                     } else {
                         model = new ModelAndView("managerAccount");
                         model.addObject("account", account);
                         model.addObject("manager", manager);
-                        logger.debug(manager.getEmail() + "has been logged");
+                        logger.info(manager.getEmail() + "has been logged");
                     }
 
                 } else {

@@ -32,7 +32,7 @@ public class ClientController {
 
         ModelAndView model = new ModelAndView("edit");
         model.addObject("editForm", new EditFormDTO());
-        logger.debug(client.getEmail() + "entered edit page");
+        logger.info(client.getEmail() + "entered edit page");
         return model;
     }
 
@@ -61,7 +61,7 @@ public class ClientController {
                     if (!editForm.getPasswordNew().equals("") && editForm.getPasswordNew().equals(editForm.getPasswordNew2()))
                         aclientDAO.update(account, editForm);
 
-                    logger.debug(client.getEmail() + " has changed his account data info");
+                    logger.info(client.getEmail() + " has changed his account data info");
                     model = new ModelAndView("account");
 
                 } else {

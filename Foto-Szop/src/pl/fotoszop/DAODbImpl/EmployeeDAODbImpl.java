@@ -28,7 +28,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
     public void setDataSource(DataSource dataSource) {
 
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-        logger.debug("Connected with database");
+        logger.info("Connected with database");
     }
 
     public int save(Employee emp) {
@@ -37,7 +37,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         jdbcTemplate.update(sqlQuery, emp.getId(), emp.getName(), emp.getSurname(), emp.getIdentityNumber(),
                 emp.getPhoneNumber(), emp.getEmail());
 
-        logger.debug(emp.getEmail() + "has been added or updated");
+        logger.info(emp.getEmail() + "has been added or updated");
         return 0;
     }
 
@@ -47,7 +47,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         String sqlQuery = "select * from employee where employee.id_employee = ? ";
 
         Employee employee = this.jdbcTemplate.queryForObject(sqlQuery, new Object[]{employeeId}, new EmployeeMapper());
-        logger.debug("Getting employeee with id: " + employeeId);
+        logger.info("Getting employeee with id: " + employeeId);
         return employee;
 
     }
@@ -61,7 +61,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
                 + "where employee_type_employee.id_employee = ? and employee_type_employee.id_type=1";
         try {
             manager = this.jdbcTemplate.queryForObject(sqlQuery, new Object[]{employeeId}, new ManagerMapper());
-            logger.debug("Manager with id: " + employeeId + " has been taken");
+            logger.info("Manager with id: " + employeeId + " has been taken");
         } catch (EmptyResultDataAccessException erdae) {
             logger.error("Cannot take manager with id: " + employeeId);
             manager = null;
@@ -75,7 +75,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         String sqlQuery = "select * from employee";
         Collection<Employee> employees = this.jdbcTemplate.query(sqlQuery, new EmployeeMapper());
 
-        logger.debug("All contact has been taken from the database");
+        logger.info("All contact has been taken from the database");
         return employees.stream().map(x -> (IEmployee) x).collect(Collectors.toList());
     }
 
