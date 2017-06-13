@@ -1,14 +1,14 @@
 package pl.fotoszop.DAODbImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import pl.fotoszop.dao.TermDAO;
 import pl.fotoszop.dto.TermFormtDTO;
-import pl.fotoszop.model.Order;
 import pl.fotoszop.model.Term;
 import pl.fotoszop.modelMappers.TermMapper;
 import pl.fotoszop.modelinterfaces.IEmployee;
-import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;
 
 import javax.sql.DataSource;
@@ -16,10 +16,7 @@ import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Component
 public class TermDAODbImpl implements TermDAO {
@@ -255,12 +252,12 @@ public class TermDAODbImpl implements TermDAO {
 
     }
 
-	@Override
-	public Term getTermById(int id) {
-		        String sqlQuery = "select * from term where term.id_term = " + id;
-		        List<Term> termL = this.jdbcTemplate.query(sqlQuery, new TermMapper());
-		        System.out.println(termL);
-		        logger.info("Client id: " + id + "is searching in the database");
-		        return termL.get(0);
-	}
+    @Override
+    public Term getTermById(int id) {
+        String sqlQuery = "select * from term where term.id_term = " + id;
+        List<Term> termL = this.jdbcTemplate.query(sqlQuery, new TermMapper());
+        System.out.println(termL);
+        logger.info("Client id: " + id + "is searching in the database");
+        return termL.get(0);
+    }
 }

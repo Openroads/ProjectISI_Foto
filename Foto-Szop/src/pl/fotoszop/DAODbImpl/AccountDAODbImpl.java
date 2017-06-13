@@ -1,5 +1,7 @@
 package pl.fotoszop.DAODbImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.fotoszop.dao.AccountDAO;
 import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.dto.LoginFormDTO;
@@ -10,8 +12,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AccountDAODbImpl implements AccountDAO {
 
@@ -41,7 +41,7 @@ public class AccountDAODbImpl implements AccountDAO {
             statement.setString(2, account.getLogin());
             statement.setString(3, account.getPassword());
             statement.setDate(4, account.getCreationDate());
-            statement.setInt(5,(int) account.getEmployeeId());
+            statement.setInt(5, (int) account.getEmployeeId());
             statement.setInt(6, account.getClientId());
             statement.executeUpdate();
 

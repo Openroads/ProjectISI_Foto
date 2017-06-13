@@ -1,8 +1,8 @@
 package pl.fotoszop.DAODbImpl;
 
 
-import pl.fotoszop.modelinterfaces.IFileUpload;
 import pl.fotoszop.model.UploadFile;
+import pl.fotoszop.modelinterfaces.IFileUpload;
 
 public class FileUploadImpl implements IFileUpload {
 
