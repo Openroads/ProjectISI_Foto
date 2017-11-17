@@ -155,6 +155,20 @@
                                     <option>BRAK</option>
                                 </optgroup>
                             </select>
+                                <br>                
+                                <div id ="ipayments"></div>
+                                <br>
+                                
+                                Płatność: <select class="selectpicker" title="Forma płatności">
+                                <optgroup label="Internetowo">
+                                    <option>Karta kredytowa</option>
+                                    <option>Przelew internetowy</option>
+                                    <option>PayPal</option>
+                                </optgroup>
+                                <optgroup label="Tradycyjnie">
+                                    <option>Przelew bankowy</option>
+                                </optgroup>
+                            </select>
                                 <br>
                                 <div id="igraphics"></div>
                                 <br>
