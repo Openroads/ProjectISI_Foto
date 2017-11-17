@@ -34,6 +34,22 @@ public class EmployeeController {
         return model;
 
     }
+    
+    @RequestMapping("/receiveOrders")
+    public ModelAndView showNotReceivedOrders(@SessionAttribute Employee employee) {   
+        ModelAndView model = new ModelAndView("employeeReceiveOrder");
+
+        return model;
+
+    }
+    @RequestMapping("/receivedOrders")
+    public ModelAndView showReceivedOrders(@SessionAttribute Employee employee) {
+        ModelAndView model = new ModelAndView("employeeReceivedOrders");
+      
+
+        return model;
+
+    }
 
     @RequestMapping("/addTerm")
     public ModelAndView showList(@SessionAttribute Employee employee, @ModelAttribute("termForm") @Valid TermFormtDTO termForm, BindingResult result) {

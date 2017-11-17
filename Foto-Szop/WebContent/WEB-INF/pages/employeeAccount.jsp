@@ -73,8 +73,8 @@
 
             <li class="dropdown"><a href="#" data-toggle="dropdown">Zamówienia <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Odbierz</a></li>
-                    <li><a href="#">Przyjęte</a></li>
+                    <li><a href="${contextPath}/receiveOrders">Odbierz</a></li>
+                    <li><a href="${contextPath}/receivedOrders">Przyjęte</a></li>
                 </ul>
             </li>
             <li><a href="${contextPath}/termList">Ustal Terminy</a></li>
