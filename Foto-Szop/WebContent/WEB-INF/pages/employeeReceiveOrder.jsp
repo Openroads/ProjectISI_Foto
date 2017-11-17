@@ -167,8 +167,6 @@
                     </tr>
                     <thead>
                     <tbody>
-                    <c:forEach items="" var="term" varStatus="status">
-                    </c:forEach>
                     </tbody>
                 </table>
 
