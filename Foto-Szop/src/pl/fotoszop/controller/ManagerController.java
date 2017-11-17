@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
 import pl.fotoszop.dto.AddEmpDTO;
+import pl.fotoszop.dto.ManagerEditFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Employee;
 import pl.fotoszop.model.Manager;
@@ -32,6 +33,19 @@ public class ManagerController {
     @Autowired
     AccountDAODbImpl accDAO;
 
+    
+    @RequestMapping("/accountManaging")
+    public ModelAndView showEditPage(@SessionAttribute Manager manager){
+    	
+    	ModelAndView model = new ModelAndView("accountManaging");
+    	ManagerEditFormDTO dto = new ManagerEditFormDTO();
+    	
+    	model.addObject("ManagerEditFormDTO", dto);
+    	
+    	return model;
+    }
+    
+    
     @RequestMapping("/employeeAdding")
     public ModelAndView showList(@SessionAttribute Manager manager) {
 

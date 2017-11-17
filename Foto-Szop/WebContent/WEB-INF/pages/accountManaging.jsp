@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
@@ -19,6 +19,7 @@
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
 
+
 <spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
 <spring:url value="resources/index/js/html5element.js" var="html5element"/>
@@ -28,14 +29,13 @@
 
 <spring:url value="resources/favicon.png" var="favicon"/>
 
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop | Konto</title>
+<title>Foto-Szop | Dodawanie pracownika</title>
 <link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
@@ -54,6 +54,7 @@
 <script src="${isotope}"></script>
 <script src="${wow}"></script>
 <script src="${classie}"></script>
+<script src="${validation}"></script>
 
 <!--[if lt IE 9]>
     <script src="${respond}"></script>
@@ -64,17 +65,15 @@
 
 </head>
 <body>
+<header><!--header-start-->
+</header><!--header-end-->
+
 
 <nav class="main-nav-outer" id="test"><!--main-nav-start-->
 	<div class="container">
         <ul class="main-nav">
-        
-   			<li><a href="${contextPath}/#" >Edycja Strony</a></li>
-   			<li><a href="${contextPath}/employeeAdding" >Dodaj Pracownika</a></li>
-            
-            <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
-			<li><a href="${contextPath}/accountManaging">Zarządzanie kontami</a></li>
-			<li><a href="logout">Wyloguj</a></li>	
+        	<li><a href="${contextPath}/managerReturn">Powrót</a></li>
+            <li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>		
         </ul>
         <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
     </div>
@@ -82,101 +81,84 @@
 
 
 
-
-<section class="main-section" id="konto"><!--main-section-start-->
+<section class="main-section" id="oferta"><!--main-section-start-->
 	<div class="container">
-    	<h2>Witamy w panelu managera</h2>
-    	<h6>Tutaj znajdziesz informacje o swoim koncie</h6>
+    	<h2>Zarządzanie kontami</h2>
         <div class="row">
-        	   <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
-        	   <br>
-        	   <br>
-        	   <br>
-            	<img src="<c:url value="/resources/img/photographer.png"/>">
-            </figure>
+        <h3 style="text-align: center;" class="wow animated fadeInDown delay-07s">Konta możliwe do edycji:</h3>
+                	 	<div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
+			                <table class="table table-hover table-hovered" style="text-align: center;">
+			                    <thead>
+			                    <tr>
+			                        <th style="text-align:center;">Email</th>
+			                    </tr>
+			                    <thead>
+			                    <tbody>
+			                    <c:forEach items="${accList}" var="acc" varStatus="status">
+			                        <tr class="success">
+			                            <td id="email">
+			                                <c:out value="${acc.email}"/>
+			                            </td>
+			
+			                            <td id="operacja">
+			                                <form action="manageAccount" method="post">
+			                                    <input type="hidden" name="accToEdit" value="${acc.id}"/>
+			                                    <input class="btn btn-danger " type="submit" value="Edytuj"
+			                                           name="remove"/>
+			                                </form>
+			                            </td>
+			                        </tr>
+			                    </c:forEach>
+			                    </tbody>
+			                </table>
+			
+			          	</div>
+			          	<br/><br/><br/><br/><br/>
         	<div class="col-lg-4 col-sm-6 wow fadeInLeft delay-05s">
             	<div class="service-list">
                 	<div class="service-list-col1">
                     	<i class="fa-user"></i>
                     </div>
                 	<div class="service-list-col2">
-                	
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${manager.getName()}</p>
-                        <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${manager.getSurname()}</p>
-                        
+                	 <div class="form">
+                        <form:form method="post"  modelAttribute="ManagerEditFormDTO" id="edit-acc-form"  action="editAccManager" >	
+                        <br/><br/>						
+                        	 Adres: <form:input class="input-text" path="address" id="address-form"/>
+                                <div id="iaddress"></div>
+                                <br>
+                                Obecne Hasło: <form:input class="input-text" type="password" path="password"
+                                                          id="password"/>
+                                <div id="ipassword"></div>
+                                <br>
+                                Nowe Hasło: <form:input class="input-text" type="password" id="passwordNew"
+                                                        path="passwordNew"/>
+                                <div id="ipasswordNew"></div>
+                                <br>
+                                Powtórz Nowe Hasło: <form:input class="input-text" type="password" id="passwordNew2"
+                                                                path="passwordNew2"/>
+                                <div id="ipasswordNew2"></div>
+                                <br>
+                                Numer Telefonu Komórkowego: <form:input class="input-text" path="phoneNumber"
+                                                                        id="phone-number"/>
+                                <div id="iphone"></div> 
+                                <br>
+                                <div style="text-align:center;">
+                                    <input type="submit" id="submit" class="input-btn" value="edit">
+                                </div>                       
+						</form:form>
+                    </div>
                     </div>
                 </div>
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-info"></i>
-                    </div>
-                	<div class="service-list-col2">
-                	
-                     <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${manager.getIdentityNumber()}</p>
-                 
-                    </div>
-                </div>
-                
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-phone"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05" style="color : black;">${manager.getPhoneNumber()}</p>
-                   
-                    </div>
-                </div>
-                
-                <div class="service-list">
-                	<div class="service-list-col1">
-                    	<i class="fa-envelope"></i>
-                    </div>
-                	<div class="service-list-col2">
-                        
-                       <p class="client-part-haead wow fadeInDown delay-05 caption" style="color : black;">${manager.getEmail()}</p>
-                   
-                    </div>
-                </div>
-                
-                
             </div>
-         
+            <figure class="col-lg-8 col-sm-6  text-right wow fadeInUp delay-02s">
+            	<img src="<c:url value="/resources/img/edit.png"/>">
+            </figure>
         
         </div>
 	</div>
 </section><!--main-section-end-->
 
-
-<section class="main-section client-part" id="zamowienia"><!--main-section client-part-start-->
-	<div class="container">
-		<b class="user wow fadeInDown delay-03"><i class="fa-camera"></i></b>
-    	<div class="row">
-        	<div class="col-lg-12">
-            	<p class="client-part-haead wow fadeInDown delay-05">Historia płatnosci</p>
-            </div>
-        </div>
-    	  <a class="link animated fadeInUp delay-1s" href="${contextPath}/#">Wejdź</a>
-    </div>
-</section><!--main-section client-part-end-->
-<br>
-
-
-
-<div class="c-logo-part" ><!--c-logo-part-start-->
-	<div class="container" >
-    	<ul>
-        	<li><a href="#"><img src="<c:url value="/resources/img/c-liogo1.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo2.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo3.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo4.png"/>"></a></li>
-            <li><a href="#"><img src="<c:url value="/resources/img/c-liogo5.png"/>"></a></li>
-    	</ul>
-	</div>
-</div><!--c-logo-part-end-->
-
-
+</div>
 <footer class="footer">
     <div class="container">
         <div class="footer-logo"><a href="#"><img src="<c:url value="/resources/img/footer-logo.png"/>"></a></div>
