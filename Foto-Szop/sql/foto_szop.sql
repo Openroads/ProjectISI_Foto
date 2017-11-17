@@ -1,7 +1,6 @@
 -- Projekt Inżynieria Systemów Informatycznych --
 
 -- Mariusz Grochowski		--
--- Piotr Makowiec
 -- Szymon Matysik 		--
 -- Tomasz Mazur			--
 -- Dariusz Szyszlak		--

@@ -251,22 +251,6 @@
                 <p class="wow fadeInDown delay-09s">Wspiera nasze morale. Składa zamówienia, robi zdjęcia, obrabia
                     obrazy, pobiera opłaty... Niezastąpiony członek zespołu.</p>
             </div>
-            <div class="team-leader-box">
-                <div class="team-leader wow fadeInDown delay-09s">
-                    <div class="team-leader-shadow"><a href="#"></a></div>
-                    <img src="<c:url value="/resources/img/team-leader-pic5.jpg"/>">
-                    <ul>
-                        <li><a href="#" class="fa-twitter"></a></li>
-                        <li><a href="#" class="fa-facebook"></a></li>
-                        <li><a href="#" class="fa-pinterest"></a></li>
-                        <li><a href="#" class="fa-google-plus"></a></li>
-                    </ul>
-                </div>
-                <h3 class="wow fadeInDown delay-09s">Piotr Makowiec</h3>
-                <span class="wow fadeInDown delay-09s">Programmer</span>
-                <p class="wow fadeInDown delay-09s">Spec od Windowsa, zna całą platformę. Od jakiegoś czasu zastanawiamy
-                    się skąd w naszym projekcie zamiast normalnych błędów zaczęły się pojawiać blue screeny...</p>
-            </div>
         </div>
         <br/>
         <br/>
