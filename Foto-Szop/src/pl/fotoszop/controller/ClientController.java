@@ -16,6 +16,7 @@ import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Client;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -34,6 +35,14 @@ public class ClientController {
         model.addObject("editForm", new EditFormDTO());
         logger.info(client.getEmail() + "entered edit page");
         return model;
+    }
+    
+    @RequestMapping(value = "/opinion")
+    public ModelAndView getOpinionPage(){
+    	
+    	ModelAndView model = new ModelAndView("opinion");
+    	
+    	return model;
     }
 
 
