@@ -41,7 +41,10 @@ public class AccountDAODbImpl implements AccountDAO {
             statement.setString(2, account.getLogin());
             statement.setString(3, account.getPassword());
             statement.setDate(4, account.getCreationDate());
-            statement.setInt(5, (int) account.getEmployeeId());
+            if((int) account.getEmployeeId() != 0)
+            	statement.setInt(5,(int) account.getEmployeeId());
+            else
+            	statement.setNull(5,java.sql.Types.INTEGER);
             statement.setInt(6, account.getClientId());
             statement.executeUpdate();
 

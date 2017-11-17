@@ -70,6 +70,7 @@ CREATE TABLE order_ps(
 	
 	id_service int(4) NOT NULL,
 	id_client int(4) NOT NULL,
+	id_employee int(4) NOT NULL,
 	
 	CONSTRAINT fk_order_id_employee FOREIGN KEY (id_employee) REFERENCES employee(id_employee) ON UPDATE CASCADE ON DELETE NO ACTION,
 	CONSTRAINT fk_order_id_service FOREIGN KEY (id_service) REFERENCES service(id_service) ON UPDATE CASCADE ON DELETE NO ACTION,
