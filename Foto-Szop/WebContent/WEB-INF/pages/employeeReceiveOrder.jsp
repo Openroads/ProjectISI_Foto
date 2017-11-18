@@ -123,8 +123,6 @@
         <br>
         <h3 style="text-align: center;" class="wow animated fadeInDown delay-07s">Zlecenia sesji:</h3>
         <div class="bootstrap-iso text-center ">
-
-
             <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
                 <table class="table table-hover table-hovered" style="text-align: center;">
                     <thead>
@@ -144,15 +142,13 @@
                     </tbody>
                 </table>
             </div>   
+        <br>
+        <br>
         </div>
         <br>
         <br>
-       <h3 style="text-align: center;" class="center-block wow animated fadeInDown delay-07s">Zlecenia obróbki zdjęć:</h3>
-      
-        
-        <div class="bootstrap-iso text-center ">
-
-
+        <h3 style="text-align: center;" class="wow animated fadeInDown delay-07s">Zlecenia obróbki zdjęć:</h3>
+   		<div class="bootstrap-iso text-center ">
             <div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
                 <table class="table table-hover table-hovered" style="text-align: center;">
                     <thead>
@@ -169,12 +165,7 @@
                     <tbody>
                     </tbody>
                 </table>
-
             </div>
-
-
-
-
         </div>
     </div>
 </section>
