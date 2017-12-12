@@ -119,44 +119,6 @@
                                     </form:select>
                                     <br/><br/><br/>
 
-
-                                    <button type="button" class="btn btn-success"><</button>
-                                    <button type="button" class="btn btn-success">></button>
-
-
-                                    <!--   w zależności od tego kiedy będzie wolny termin
-                                     tam będzie zmieniał typ z hidden na checkbox, wtedy
-                                      checkbox będzie wysyłał zaznaczone elementy do kontrolera,
-                                      kontrolki w lewo i w prawo będą poruszały się po przesłanej liście terminów zmieniając p element na kolejny przedział
-                                      tygodnia.
-                                      -->
-
-
-                                    <p id="kalendarz">2017-05-22/28</p>
-                                    <table class="table table-hover table-hovered table-inverse">
-                                        <thead>
-                                        <tr>
-                                            <th>Pon</th>
-                                            <th>Wt</th>
-                                            <th>Sr</th>
-                                            <th>Czw</th>
-                                            <th>Pt</th>
-                                            <th>Sob</th>
-                                            <th>Nd</th>
-                                        </tr>
-                                        <thead>
-                                        <tbody>
-                                        <td id="monday"><input type="checkbox"/></td>
-                                        <td id="tuesday"><input type="hidden"/></td>
-                                        <td id="wednesday"><input type="checkbox"/></td>
-                                        <td id="thursday"><input type="checkbox"/></td>
-                                        <td id="friday"><input type="hidden"/></td>
-                                        <td id="saturday"><input type="hidden"/></td>
-                                        <td id="sunday"><input type="checkbox"/></td>
-                                        </tbody>
-                                    </table>
-
-
                                     <input type="submit" id="submit" class="input-btn" value="Umów">
                                 </div>
                             </form:form>
