@@ -88,14 +88,53 @@
 <section class="main-section" id="oferta"><!--main-section-start-->
     <div class="container">
         <h2>Opinie</h2>
-        <h6>Oceń naszą pracę!</h6>
+        
+        <h3 style="text-align: center;" class="wow animated fadeInDown delay-07s">Opinie na nasz temat:</h3>
+        <div class="bootstrap-iso text-center ">
+
+
+            <div class="col-lg-11 col-lg-offset-1 wow animated fadeInDown delay-09s">
+                <table class="table table-hover table-hovered" style="text-align: center;">
+                    <thead>
+                    <tr>
+                        <th style="text-align:center; width: 15%">Data</th>
+						<th style="text-align: center; width: 85%">Opinia</th>
+                    </tr>
+                    <thead>
+                    <tbody>
+                    <c:forEach items="${opinionsList}" var="opinion" varStatus="status">
+                        <tr class="success">
+                            <td id="data">
+                                <c:out value="${opinion.creationDate}"/>
+                            </td>
+
+                            <td id="operacja">
+                                <c:out value="${opinion.text}"/>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+        <div style="clear: both;"></div>
+        <br /><br /><br />
+        
+        <h6 style="margin-bottom: 10px;">Oceń naszą pracę!</h6>
         <div class="row">
+        <form:form id="opinionForm" acton="addOpinion" method="post" modelAttribute="opinion">
             <div class="form">    
-                    <textarea class="input-text text-area" cols="0" rows="0"
+                    <form:textarea class="input-text text-area" cols="0" rows="0" path="text"
                               onfocus="if(this.value==this.defaultValue)this.value='';"
-                              onblur="if(this.value=='')this.value=this.defaultValue;">Twoja wiadomość *</textarea>
+                              onblur="if(this.value=='')this.value=this.defaultValue;">Twoja wiadomość *
+                              
+                    </form:textarea>
                     <input class="input-btn" type="submit" value="Wyślij">
                 </div>
+                </form:form>
         </div>
     </div>
 </section><!--main-section-end-->
