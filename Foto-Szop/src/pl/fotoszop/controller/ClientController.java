@@ -12,9 +12,15 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
+import pl.fotoszop.DAODbImpl.CommentDAODbImpl;
 import pl.fotoszop.dto.EditFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Client;
+import pl.fotoszop.model.Comment;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -27,6 +33,8 @@ public class ClientController {
     private ClientDAODbImpl clientDAO;
     @Autowired
     private AccountDAODbImpl aclientDAO;
+    @Autowired
+    private CommentDAODbImpl commentDAO;
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView getEditForm(@SessionAttribute Client client) {
@@ -41,11 +49,29 @@ public class ClientController {
     public ModelAndView getOpinionPage(){
     	
     	ModelAndView model = new ModelAndView("opinion");
-    	
+    	List<Comment> comments = commentDAO.getAllComments();
+    	model.addObject("opinionsList", comments);
+    	model.addObject("opinion", new Comment());
     	return model;
     }
 
 
+    @RequestMapping(value="/addOpinion")
+    public ModelAndView addOpinion(@SessionAttribute Client client, @ModelAttribute("opinion") Comment comment){
+    	
+    	
+    	ModelAndView model = new ModelAndView("opinion");
+    	comment.setCreationDate(Date.valueOf(LocalDate.now()));
+    	comment.setIdClient(client.getId());
+    	comment.setIdService(1);
+    	List<Comment> allComments = commentDAO.getAllComments();
+    	int maxId = allComments.size();
+    	maxId++;
+    	comment.setId(maxId);
+    	List<Comment> comments = commentDAO.getAllComments();
+    	model.addObject("opinionsList", comments);
+    	return model;
+    }
     @RequestMapping(value = "/editClient", method = RequestMethod.POST)
     public ModelAndView editClient(@SessionAttribute Account account, @SessionAttribute Client client, @ModelAttribute("editForm") @Valid EditFormDTO editForm, BindingResult result) {
 

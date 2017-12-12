@@ -38,6 +38,9 @@
     <bean id="orderDAODbImpl" class="pl.fotoszop.DAODbImpl.OrderDAODbImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean id="commentDAODbImpl" class="pl.fotoszop.DAODbImpl.CommentDAODbImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <import resource="Spring-Account.xml"/>
     <!-- declare datasource bean -->
     <import resource="Spring-DataSource.xml"/>
