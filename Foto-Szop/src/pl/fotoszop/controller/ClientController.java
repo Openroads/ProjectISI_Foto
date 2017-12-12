@@ -61,22 +61,22 @@ public class ClientController {
 
     @RequestMapping(value="/addOpinion")
     public ModelAndView addOpinion(@SessionAttribute Client client, @ModelAttribute("opinion") Comment comment){    	
-    	
-    	ModelAndView model = new ModelAndView("opinion");
-    	comment.setCreationDate(Date.valueOf(LocalDate.now()));
-    	comment.setIdClient(client.getId());
-    	comment.setIdService(1);
-    	List<Comment> allComments = commentDAO.getAllComments();
-    	int maxId = allComments.size();
-    	maxId++;
-    	comment.setId(maxId);
-    	commentDAO.saveOrUpdate(comment);
-    	List<Comment> comments = commentDAO.getAllComments();
-    	System.out.println("Test123");
-    	model.addObject("opinionsList", comments);
-    	model.addObject("client", client);
-    	return model;
+    		ModelAndView model = new ModelAndView("opinion");
+    		comment.setCreationDate(Date.valueOf(LocalDate.now()));
+    		comment.setIdClient(client.getId());
+    		comment.setIdService(1);
+    		List<Comment> allComments = commentDAO.getAllComments();
+    		int maxId = allComments.size();
+    		maxId++;
+    		comment.setId(maxId);
+    		commentDAO.saveOrUpdate(comment);
+    		List<Comment> comments = commentDAO.getAllComments();
+    		model.addObject("opinionsList", comments);
+    		model.addObject("client", client);
+    		return model;
     }
+    
+    
     @RequestMapping(value = "/editClient", method = RequestMethod.POST)
     public ModelAndView editClient(@SessionAttribute Account account, @SessionAttribute Client client, @ModelAttribute("editForm") @Valid EditFormDTO editForm, BindingResult result) {
 
