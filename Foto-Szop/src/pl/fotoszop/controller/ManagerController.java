@@ -43,7 +43,8 @@ public class ManagerController {
     	ManagerEditFormDTO dto = new ManagerEditFormDTO();
     	
     	model.addObject("ManagerEditFormDTO", dto);
-    	
+    	 Collection<IAccount> accList = accDAO.getAllAccounts();
+        model.addObject("accList", accList);
     	return model;
     }
     
@@ -124,6 +125,8 @@ public class ManagerController {
                 accDAO.saveOrUpdate(newAcc);
 
                 System.out.println("Dodano konto" + newAcc.getEmployeeId());
+                accList = accDAO.getAllAccounts();
+                model.addObject("accList", accList);
 
             }
 
