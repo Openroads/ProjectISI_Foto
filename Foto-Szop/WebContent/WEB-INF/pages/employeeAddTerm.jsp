@@ -97,7 +97,7 @@
                                         <i class="fa fa-calendar"> </i>
                                     </div>
                                     <form:input path="date" cssClass="form-control" id="datepicker"
-                                                placeholder="DD/MM/YYYY" type="text" required="required"></form:input>   
+                                                placeholder="YYYY/MM/DD" type="text" required="required"></form:input>   
                                 </div>
                             </div>
                             <div class="form-group">
@@ -193,8 +193,7 @@
  
  <script>
  $(document).ready(function () {
-    $("#datepicker").datepicker();
-    $("#datepicker").val($.datepicker.formatDate('dd/mm/yyyy', new Date()));
+    $("#datepicker").datepicker({ dateFormat: "yy/mm/dd"}).val();
  });
  </script>
 

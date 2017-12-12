@@ -11,7 +11,7 @@ public class TermFormtDTO {
     private int employeeId;
 
     @Future
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date date;
 
 

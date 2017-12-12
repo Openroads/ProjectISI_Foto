@@ -54,6 +54,8 @@ public class EmployeeController {
     @RequestMapping("/addTerm")
     public ModelAndView showList(@SessionAttribute Employee employee, @ModelAttribute("termForm") @Valid TermFormtDTO termForm, BindingResult result) {
         ModelAndView model = new ModelAndView("employeeAddTerm");
+        System.out.println(termForm.getDate());
+        
         if (result.hasErrors()) {
             logger.error(employee.getEmail() + " couldn't load terms");
             List<ITerm> termList = termDAO.getCurrentTermsForEmployee(employee);
