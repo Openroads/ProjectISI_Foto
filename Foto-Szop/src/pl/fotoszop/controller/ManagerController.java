@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.SocketUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -71,22 +73,35 @@ public class ManagerController {
 
 
         ModelAndView model = null;
-
+        
+        //result.getAllErrors().stream().forEach(e->e.getDefaultMessage());
+        
+        for(ObjectError err: result.getAllErrors()) {
+        	System.out.println(err.getObjectName());
+        	System.out.println(err.getCode());
+        	System.out.println(err.getDefaultMessage());
+        }
         if (result.hasErrors()) {
             model = new ModelAndView("employeeAdding");
-            model.addObject("AddEmpDTO", new AddEmpDTO());
+            model.addObject("AddEmpDTO", empForm);
 
         } else {
 
             empForm.doHash();
             if (empDAO.checkToAddEmp(empForm)) {
-
                 model = new ModelAndView("employeeAdding");
-                model.addObject("AddEmpDTO", new AddEmpDTO());
+                model.addObject("AddEmpDTO", empForm);
+                empForm.setPassword("");
+                empForm.setPassword2("");
+                result.rejectValue("phoneNumber","error.user", "Użytkownik o wprowadzonym numerze PESEL lub adresie email już istnieje.");
 
+                
             } else {
 
-                model = new ModelAndView("managerAccount");
+                model = new ModelAndView("accountManaging");
+            	ManagerEditFormDTO dto = new ManagerEditFormDTO();
+            	
+            	model.addObject("ManagerEditFormDTO", dto);
                 Employee newEmp = new Employee();
                 System.out.println("EmpId: " + empForm.getId());
                 newEmp.setFromForm(empForm);
@@ -101,6 +116,7 @@ public class ManagerController {
                     if (object.getAccountId() >= newAcc.getAccountId()) newAcc.setAccountId(object.getAccountId() + 1);
                 }
 
+                newAcc.setClientId(0);
                 newAcc.setEmployeeId((int) newEmp.getId());
                 newAcc.setCreationDate(Date.valueOf(LocalDate.now()));
                 newAcc.setLogin(newEmp.getEmail());
@@ -109,7 +125,6 @@ public class ManagerController {
 
                 System.out.println("Dodano konto" + newAcc.getEmployeeId());
 
-                return model;
             }
 
         }
