@@ -7,10 +7,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import pl.fotoszop.dao.EmployeeDAO;
 import pl.fotoszop.dto.AddEmpDTO;
+import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Employee;
 import pl.fotoszop.model.Manager;
+import pl.fotoszop.modelMappers.AccountMapper;
 import pl.fotoszop.modelMappers.EmployeeMapper;
 import pl.fotoszop.modelMappers.ManagerMapper;
+import pl.fotoszop.modelinterfaces.IAccount;
 import pl.fotoszop.modelinterfaces.IEmployee;
 
 import javax.sql.DataSource;
@@ -78,20 +81,34 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         logger.info("All contact has been taken from the database");
         return employees.stream().map(x -> (IEmployee) x).collect(Collectors.toList());
     }
+    public Collection<IAccount> getAllAccounts() {
+        String sqlQuery = "select * from account";
+        Collection<Account> accounts = this.jdbcTemplate.query(sqlQuery, new AccountMapper());
+
+        logger.info("All contact has been taken from the database");
+        return accounts.stream().map(x -> (IAccount) x).collect(Collectors.toList());
+    }
 
     public boolean checkToAddEmp(AddEmpDTO empForm) {
 
-        Collection<IEmployee> emps = new ArrayList<>();
-        emps = getAllEmployee();
+        Collection<IEmployee> emps = getAllEmployee();
+        Collection<IAccount> accs = getAllAccounts();
         boolean isTaken = false;
 
         long id = 0;
 
         for (IEmployee object : emps) {
-            if (object.getEmail().equals(empForm.getEmail()))
+            if (object.getEmail().equals(empForm.getEmail()) || object.getIdentityNumber().equals(empForm.getIdentityNumber()))
                 isTaken = true;
             if (object.getId() > empForm.getId()) id = object.getId();
         }
+        if(isTaken) return isTaken;
+        
+        for (IAccount object : accs) {
+            if (object.getLogin().equals(empForm.getEmail()))
+                isTaken = true;
+        }
+
 
         id++;
         empForm.setId(id);

@@ -45,7 +45,10 @@ public class AccountDAODbImpl implements AccountDAO {
             	statement.setInt(5,(int) account.getEmployeeId());
             else
             	statement.setNull(5,java.sql.Types.INTEGER);
-            statement.setInt(6, account.getClientId());
+            if(account.getClientId() != 0)
+            	statement.setInt(6,account.getClientId());
+            else
+            	statement.setNull(6,java.sql.Types.INTEGER);
             statement.executeUpdate();
 
             logger.info("Save or update has been successfully made");
@@ -77,7 +80,7 @@ public class AccountDAODbImpl implements AccountDAO {
         try {
             connection = dataSource.getConnection();
             logger.info("Get all Accounts - connected with database");
-            String sqlQuery = "SELECT * from Account";
+            String sqlQuery = "SELECT * from account";
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sqlQuery);
             accounts = new ArrayList<>();

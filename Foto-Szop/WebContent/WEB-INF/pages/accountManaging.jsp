@@ -35,7 +35,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-<title>Foto-Szop | Dodawanie pracownika</title>
+<title>Foto-Szop | Zarzadzanie kontami</title>
 <link rel="icon" href="${favicon}">
 
 <link href="${font1}" rel="stylesheet">
