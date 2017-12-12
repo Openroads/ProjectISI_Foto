@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
+@SessionAttributes({"client"})
 public class ClientController {
     private static final Logger logger = LoggerFactory.getLogger(ClientController.class.getName());
 
@@ -46,19 +48,19 @@ public class ClientController {
     }
     
     @RequestMapping(value = "/opinion")
-    public ModelAndView getOpinionPage(){
+    public ModelAndView getOpinionPage(@SessionAttribute Client client){
     	
     	ModelAndView model = new ModelAndView("opinion");
     	List<Comment> comments = commentDAO.getAllComments();
     	model.addObject("opinionsList", comments);
     	model.addObject("opinion", new Comment());
+    	model.addObject("client", client);
     	return model;
     }
 
 
     @RequestMapping(value="/addOpinion")
-    public ModelAndView addOpinion(@SessionAttribute Client client, @ModelAttribute("opinion") Comment comment){
-    	
+    public ModelAndView addOpinion(@SessionAttribute Client client, @ModelAttribute("opinion") Comment comment){    	
     	
     	ModelAndView model = new ModelAndView("opinion");
     	comment.setCreationDate(Date.valueOf(LocalDate.now()));
@@ -68,8 +70,11 @@ public class ClientController {
     	int maxId = allComments.size();
     	maxId++;
     	comment.setId(maxId);
+    	commentDAO.saveOrUpdate(comment);
     	List<Comment> comments = commentDAO.getAllComments();
+    	System.out.println("Test123");
     	model.addObject("opinionsList", comments);
+    	model.addObject("client", client);
     	return model;
     }
     @RequestMapping(value = "/editClient", method = RequestMethod.POST)

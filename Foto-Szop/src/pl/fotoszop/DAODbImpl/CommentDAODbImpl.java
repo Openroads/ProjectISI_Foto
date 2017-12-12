@@ -61,6 +61,7 @@ public class CommentDAODbImpl implements CommentDAO{
 			
 			Connection connection = null;
 			List<Comment> comments = new ArrayList<>();
+			int rs = 0;
 			
 			try {
 				connection = dataSource.getConnection();
@@ -69,23 +70,14 @@ public class CommentDAODbImpl implements CommentDAO{
 				statement.setInt(1, comment.getId()); statement.setString(2, comment.getText());
 				statement.setDate(3, comment.getCreationDate()); statement.setDate(4, comment.getCreationDate());
 				statement.setInt(5, 1); statement.setInt(6, comment.getIdClient());
-	            ResultSet rs = statement.executeQuery(SQL_GET_ALL_COMMENTS);
-	            
-	            while(rs.next()){
-	            	 comment = new Comment();
-	            	comment.setId(rs.getInt("id_comment"));
-	            	comment.setText(rs.getString("text"));
-	            	comment.setCreationDate(rs.getDate("date_of_creation"));
-	            	comment.setIdClient(rs.getInt("id_client"));
-	            	comments.add(comment);
-	            }
-	            
+	            rs = statement.executeUpdate();
+	       	    System.out.println(rs);  
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
 			}
 			
-			return 0;
+			return rs;
 		}
 	    
 

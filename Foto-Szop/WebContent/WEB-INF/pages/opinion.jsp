@@ -103,12 +103,12 @@
                     <thead>
                     <tbody>
                     <c:forEach items="${opinionsList}" var="opinion" varStatus="status">
-                        <tr class="success">
-                            <td id="data">
+                        <tr class="success" >
+                            <td id="data" style="width: 15%; text-align: center;">
                                 <c:out value="${opinion.creationDate}"/>
                             </td>
 
-                            <td id="operacja">
+                            <td id="operacja" style="width: 85%; text-align: center;">
                                 <c:out value="${opinion.text}"/>
                             </td>
                         </tr>
@@ -125,13 +125,11 @@
         
         <h6 style="margin-bottom: 10px;">Oceń naszą pracę!</h6>
         <div class="row">
-        <form:form id="opinionForm" acton="addOpinion" method="post" modelAttribute="opinion">
+        <form:form id="opinionForm" action="addOpinion" method="post" modelAttribute="opinion">
             <div class="form">    
                     <form:textarea class="input-text text-area" cols="0" rows="0" path="text"
                               onfocus="if(this.value==this.defaultValue)this.value='';"
-                              onblur="if(this.value=='')this.value=this.defaultValue;">Twoja wiadomość *
-                              
-                    </form:textarea>
+                              onblur="if(this.value=='')this.value=this.defaultValue;" />
                     <input class="input-btn" type="submit" value="Wyślij">
                 </div>
                 </form:form>
