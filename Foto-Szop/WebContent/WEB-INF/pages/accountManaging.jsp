@@ -90,22 +90,24 @@
 			                <table class="table table-hover table-hovered" style="text-align: center;">
 			                    <thead>
 			                    <tr>
-			                        <th style="text-align:center;">Email</th>
+			                        <th style="text-align:center;">ID</th>
+			                        <th style="text-align:center;">Login</th>
+			                        <th style="text-align:center;">Data modyfikacji</th>
 			                    </tr>
 			                    <thead>
 			                    <tbody>
 			                    <c:forEach items="${accList}" var="acc" varStatus="status">
 			                        <tr class="success">
 			                            <td id="email">
-			                                <c:out value="${acc.email}"/>
+			                                <c:out value="${acc.accountId}"/>
 			                            </td>
 			
-			                            <td id="operacja">
-			                                <form action="manageAccount" method="post">
-			                                    <input type="hidden" name="accToEdit" value="${acc.id}"/>
-			                                    <input class="btn btn-danger " type="submit" value="Edytuj"
-			                                           name="remove"/>
-			                                </form>
+			                            <td id="name">
+			                       			<c:out value="${acc.login}"/>
+			                            </td>
+			                            
+			                             <td id="surname">
+			                       			<c:out value="${acc.creationDate}"/>
 			                            </td>
 			                        </tr>
 			                    </c:forEach>
