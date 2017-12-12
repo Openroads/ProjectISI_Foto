@@ -21,6 +21,7 @@
 <spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
 <spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
 <spring:url value="resources/favicon.png" var="favicon"/>
+
 <!doctype html>
 <html>
 	<head>
@@ -286,7 +287,7 @@
 	    </div> 
 	</footer>
 	
-	<script type="text/javascript">
+	<script>
 	    $(document).ready(function (e) {
 	        $('#test').scrollToFixed();
 	        $('.res-nav_click').click(function () {
@@ -306,7 +307,7 @@
 	    wow.init();
 	</script>
 	
-	<script type="text/javascript">
+	<script>
 	    $(window).load(function () {
 	
 	        $('.main-nav li a').bind('click', function (event) {
@@ -318,40 +319,6 @@
 	            event.preventDefault();
 	        });
 	    })
-	</script>
-	
-	<script type="text/javascript">
-	    $(window).load(function () {
-	        var $container = $('.portfolioContainer'),
-	            $body = $('body'),
-	            colW = 375,
-	            columns = null;
-	        $container.isotope({
-	            resizable: true,
-	            masonry: {
-	                columnWidth: colW
-	            }
-	        });
-		        $(window).smartresize(function () {
-	            var currentColumns = Math.floor(( $body.width() - 30 ) / colW);
-	            if (currentColumns !== columns) {
-	                columns = currentColumns;
-	                $container.width(columns * colW)
-	                    .isotope('reLayout');
-	            }
-	        }).smartresize();
-	        $('.portfolioFilter a').click(function () {
-	            $('.portfolioFilter .current').removeClass('current');
-	            $(this).addClass('current');
-	
-	            var selector = $(this).attr('data-filter');
-	            $container.isotope({
-	
-	                filter: selector,
-	            });
-	            return false;
-	        });
-	    });
 	</script>
 	
 	</body>

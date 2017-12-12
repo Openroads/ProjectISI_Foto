@@ -15,17 +15,12 @@
 <spring:url value="resources/js/jquery.isotope.js" var="isotope"/>
 <spring:url value="resources/js/wow.js" var="wow"/>
 <spring:url value="resources/js/classie.js" var="classie"/>
-<spring:url value="resources/index/js/respond-1.1.0.min.js"
-            var="respond"/>
+<spring:url value="resources/index/js/respond-1.1.0.min.js" var="respond"/>
 <spring:url value="resources/index/js/html5shiv.js" var="html5shiv"/>
-<spring:url value="resources/index/js/html5element.js"
-            var="html5element"/>
-<spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700"
-            var="font1"/>
-<spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600"
-            var="font2"/>
-<spring:url value="resources/favicon.png"
-            var="favicon"/>
+<spring:url value="resources/index/js/html5element.js" var="html5element"/>
+<spring:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" var="font1"/>
+<spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600" var="font2"/>
+<spring:url value="resources/favicon.png" var="favicon"/>
             
 <!doctype html>
 <html>
@@ -220,7 +215,6 @@
 	</section>
 	<!--register-section-end-->
     <!--c-logo-part-start-->
-    
 	<div class="c-logo-part">
 	    <div class="container">
 	        <ul>
@@ -381,6 +375,15 @@
 	            </div>
 	        </div>
 	        	<!--team-talk-end-->
+	        	<!--c-logo-part-start-->
+	<div style="height: 75px;">
+	    <div class="container">
+	        <ul>
+
+	        </ul>
+	    </div>
+	</div>
+	<!--c-logo-part-end-->
 	        	<!--address-start-->
 	        <div class="row">
 	            <div class="col-lg-6 col-sm-7 wow fadeInLeft">
@@ -451,7 +454,7 @@
 	
 <!-- SCRIPTS  -->
 
-	<script type="text/javascript">
+	<script>
 	    $(document).ready(function (e) {
 	        $('#test').scrollToFixed();
 	        $('.res-nav_click').click(function () {
@@ -471,7 +474,7 @@
 	    wow.init();
 	</script>
 	
-	<script type="text/javascript">
+	<script>
 	    $(document).ready(function () {
 	        $('.main-nav li a ').bind('click', function (event) {
 	            var $anchor = $(this);

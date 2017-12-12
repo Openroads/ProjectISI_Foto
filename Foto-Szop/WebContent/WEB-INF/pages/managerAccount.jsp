@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <spring:url value="resources/css/bootstrap.css" var="bootstrap"/>
 <spring:url value="resources/css/style.css" var="style"/>
@@ -27,19 +26,15 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, maximum-scale=1">
-	
-	<title>Foto-Szop | Konto</title>
+	<title>Foto-Szop | Manager</title>
 	<link rel="icon" href="${favicon}">
-	
 	<link href="${font1}" rel="stylesheet">
 	<link href="${font2}" rel="stylesheet">
-	
 	<link href="${bootstrap}" rel="stylesheet"/>
 	<link href="${style}" rel="stylesheet"/>
 	<link href="${font}" rel="stylesheet"/>
 	<link href="${responsive}" rel="stylesheet"/>
 	<link href="${animate}" rel="stylesheet"/>
-	
 	<script src="${jquery}"></script>
 	<script src="${boot}"></script>
 	<script src="${scroll}"></script>
@@ -47,7 +42,6 @@
 	<script src="${isotope}"></script>
 	<script src="${wow}"></script>
 	<script src="${classie}"></script>
-	
 	<!--[if lt IE 9]>
 	<script src="${respond}"></script>
 	<script src="${html5shiv}"></script>
@@ -55,7 +49,8 @@
     <![endif]-->
 	</head>
 	<body>
-		<nav class="main-nav-outer" id="test"><!--main-nav-start-->
+		<!--main-nav-start-->
+		<nav class="main-nav-outer" id="test">
 			<div class="container">
 		        <ul class="main-nav">
 		        		<li class="small-logo"><a href="#header"><img src="<c:url value="/resources/img/small-logo.png"/>"></a></li>
@@ -137,8 +132,10 @@
 		        <span class="copyright">Copyright © 2017 | <a href="#">Foto-szop</a></span>
 		    </div>
 		</footer>
-		
-		<script type="text/javascript">
+
+		<!-- Scripts -->
+
+		<script>
 		    $(document).ready(function(e) {
 		        $('#test').scrollToFixed();
 		        $('.res-nav_click').click(function(){
@@ -158,7 +155,7 @@
 		    wow.init();
 		</script>
 		
-		<script type="text/javascript">
+		<script>
 			$(window).load(function(){
 				
 				$('.main-nav li a').bind('click',function(event){

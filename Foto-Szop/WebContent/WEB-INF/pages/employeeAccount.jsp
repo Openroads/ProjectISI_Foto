@@ -154,10 +154,9 @@
 	    </div>
 	</footer>
 	
-	
 	<!-- SCRIPTS -->
 	
-	<script type="text/javascript">
+	<script>
 	    $(document).ready(function (e) {
 	        $('#test').scrollToFixed();
 	        $('.res-nav_click').click(function () {
@@ -179,7 +178,7 @@
 	    wow.init();
 	</script>
 	
-	<script type="text/javascript">
+	<script>
 	    $(window).load(function () {
 	
 	        $('.main-nav li a').bind('click', function (event) {

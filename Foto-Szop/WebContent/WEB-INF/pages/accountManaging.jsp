@@ -51,8 +51,8 @@
 		<![endif]-->
 	</head>
 	<body>
-	
-	<nav class="main-nav-outer" id="test"><!--main-nav-start-->
+	<!--main-nav-start-->
+	<nav class="main-nav-outer" id="test">
 		<div class="container">
 	        <ul class="main-nav">
 	        	<li><a href="${contextPath}/managerReturn">Powrót</a></li>
@@ -60,9 +60,8 @@
 	        </ul>
 	        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
 	    </div>
-	</nav><!--main-nav-end-->
-	
-	
+	</nav>
+	<!--main-nav-end-->
 	<div class="col-lg-4 col-lg-offset-4 wow animated fadeInDown delay-09s">
 		<br><br>
 	    <h2>Zarządzanie kontami</h2>
@@ -141,7 +140,6 @@
 		</div>
 	</section>
 	<!--main-section-end-->
-	
 	<footer class="footer">
 	    <div class="container">
 	        <div class="footer-logo"><a href="#"><img src="<c:url value="/resources/img/footer-logo.png"/>"></a></div>
@@ -149,7 +147,9 @@
 	    </div>
 	</footer>
 	
-	<script type="text/javascript">
+	<!-- Scripts -->
+
+	<script>
 	    $(document).ready(function(e) {
 	        $('#test').scrollToFixed();
 	        $('.res-nav_click').click(function(){
@@ -172,7 +172,7 @@
 	 
 	</script>
 	
-	<script type="text/javascript">
+	<script>
 		$(window).load(function(){
 			
 			$('.main-nav li a').bind('click',function(event){

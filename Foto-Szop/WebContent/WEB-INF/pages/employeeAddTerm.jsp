@@ -122,8 +122,7 @@
 	                            <td id="operacja">
 	                                <form action="deleteTerm" method="post">
 	                                    <input type="hidden" name="termToDelete" value="${term.id}"/>
-	                                    <input class="btn btn-danger " type="submit" value="Usuń"
-	                                           name="remove"/>
+	                                    <input class="btn btn-danger " type="submit" value="Usuń" name="remove"/>
 	                                </form>
 	                            </td>
 	                        </tr>
@@ -183,7 +182,7 @@
 	 });
 	 </script>
 	
-	<script type="text/javascript">
+	<script>
 	    $(window).load(function () {
 	        $('.main-nav li a').bind('click', function (event) {
 	            var $anchor = $(this);

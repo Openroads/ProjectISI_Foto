@@ -281,8 +281,7 @@
 	                <h3 class="wow fadeInDown delay-09s">Szymon Matysik</h3>
 	                <span class="wow fadeInDown delay-09s">Programmer</span>
 	                <p class="wow fadeInDown delay-09s">Ten to tylko by na frontendzie siedział, czasem coś skodzi ale to
-	                    tak żeby strona wyświetlała się w postaci błędów, najczęściej 404. Wie że dzwoni ale w którym
-	                    pliku?</p>
+	                    tak żeby strona wyświetlała się w postaci błędów, najczęściej 404. Wie że dzwoni ale w którym pliku?</p>
 	            </div>
 	            <div class="team-leader-box">
 	                <div class="team-leader wow fadeInDown delay-09s">
@@ -370,18 +369,15 @@
 	    </div>
 	</footer>
 	
-	
 	<!-- SCRIPTS -->
 	
-	<script type="text/javascript">
+	<script>
 	    $(document).ready(function (e) {
 	        $('#test').scrollToFixed();
 	        $('.res-nav_click').click(function () {
 	            $('.main-nav').slideToggle();
 	            return false
-	
 	        });
-	
 	    });
 	</script>
 	
@@ -393,11 +389,9 @@
 	        }
 	    );
 	    wow.init();
-	
 	</script>
 	
-	
-	<script type="text/javascript">
+	<script>
 	    $(window).load(function () {
 	
 	        $('.main-nav li a').bind('click', function (event) {
@@ -409,38 +403,6 @@
 	            event.preventDefault();
 	        });
 	    })
-	</script>
-	
-	<script type="text/javascript">
-	    $(window).load(function () {
-	        var $container = $('.portfolioContainer'),
-	            $body = $('body'),
-	            colW = 375,
-	            columns = null;
-	        $container.isotope({
-	            resizable: true,
-	            masonry: {
-	                columnWidth: colW
-	            }
-	        });
-	        $(window).smartresize(function () {
-	            var currentColumns = Math.floor(( $body.width() - 30 ) / colW);
-	            if (currentColumns !== columns) {
-	                columns = currentColumns;
-	                $container.width(columns * colW)
-	                    .isotope('reLayout');
-	            }
-	        }).smartresize();
-	        $('.portfolioFilter a').click(function () {
-	            $('.portfolioFilter .current').removeClass('current');
-	            $(this).addClass('current');
-	            var selector = $(this).attr('data-filter');
-	            $container.isotope({
-	                filter: selector,
-	            });
-	            return false;
-	        });
-	    });
 	</script>
 	
 	</body>
