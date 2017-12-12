@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Repository
 public class OrderDAODbImpl implements OrderDAO {
 
-    private static final String GET_NEXT_ID = "select max(id_order) + 1 from  order_ps";
+    private static final String GET_NEXT_ID = "select max(id_order)from  order_ps";
     private static final Logger logger = LoggerFactory.getLogger(OrderDAODbImpl.class.getName());
     private JdbcTemplate jdbcTemplate;
 
@@ -38,12 +38,19 @@ public class OrderDAODbImpl implements OrderDAO {
     public int saveOrUpdate(IOrder order) {
 
         if (order.getIdOrder() == 0) {
-            order.setOrderId(jdbcTemplate.queryForObject(GET_NEXT_ID, Integer.class));
+        	
+        	Integer i = jdbcTemplate.queryForObject(GET_NEXT_ID, Integer.class);
+        	
+        	if(i==null) {
+        		order.setOrderId(1);
+        	}else {
+        		order.setOrderId(i+1);
+        	}
         }
 
 
-        String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,subject,sessionAddress,sessionPlace,id_service,id_client) "
-                + "values (?,?,?,?,?,?,?,?,?,?)";
+        String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,subject,sessionAddress,sessionPlace,id_service,id_client,id_employee) "
+                + "values (?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sqlQuery, order.getIdOrder(),
                 order.getDateOfOrder(),
                 order.getIdOfRealizationTerm(),
@@ -53,7 +60,9 @@ public class OrderDAODbImpl implements OrderDAO {
                 order.getOrderAddress(),
                 order.getOrderPlace(),
                 order.getIdService(),
-                order.getClientId());
+                order.getClientId(),
+        		order.getEmployeeId())
+        ;
 
         logger.info("Order has been saved or updated successfully");
         return 0;

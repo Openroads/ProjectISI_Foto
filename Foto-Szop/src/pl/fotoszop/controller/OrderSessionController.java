@@ -54,7 +54,7 @@ public class OrderSessionController {
             order.setIdService(Constants.SERVICE_SESJA);
             order.setOrderStatus(Constants.PENDING);
             order.setIdOfRealizationTerm(form.getTermId());
-
+            order.setEmployeeId(termDAO.getTermById(form.getTermId()).getIdEmployee());
             orderDatabaseDAO.saveOrUpdate(order);
 
             model = new ModelAndView("sessionOrderSuccess");

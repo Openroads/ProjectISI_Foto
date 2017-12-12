@@ -14,6 +14,7 @@ public class Order extends OrderBase implements IOrder{
 	private String orderStatus;
 	private int idService;
 	private int idClient;
+	private int employeeId;
 	private Date realizationDate;
 	private String service;
 
@@ -155,6 +156,13 @@ public class Order extends OrderBase implements IOrder{
 	public int getClientId() {
 	return this.idClient;
 	}
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	
 	
 	
 }

@@ -31,4 +31,5 @@ public interface IOrder {
 	public void setOrderAddress(String orderAddress);
 	public String getOrderPlace();
 	public void setOrderPlace(String orderPlace);
+	public int getEmployeeId();
 }
