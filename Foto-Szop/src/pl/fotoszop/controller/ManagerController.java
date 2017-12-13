@@ -158,11 +158,7 @@ public class ManagerController {
                 Account newAcc = new Account();
                 Collection<IAccount> accList = new ArrayList<>();
                 accList = accDAO.getAllAccounts();
-                newAcc.setAccountId(0);
-
-                for (IAccount object : accList) {
-                    if (object.getAccountId() >= newAcc.getAccountId()) newAcc.setAccountId(object.getAccountId() + 1);
-                }
+                newAcc.setAccountId(0);//means new account 
 
                 newAcc.setClientId(0);
                 newAcc.setEmployeeId((int) newEmp.getId());
