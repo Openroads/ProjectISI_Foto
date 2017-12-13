@@ -127,7 +127,7 @@
 									<form:errors path="identityNumber" cssStyle="color: #ff0000;"/></c:if>
 									<div id="iidentity-number"></div><br>
 									
-									E-mail:<form:input class="input-text" type="email" path="email" id="email-form" />
+									E-mail:<form:input class="input-text" disabled="true" type="email" path="email" id="email-form" />
 									<c:if test="${pageContext.request.method=='POST'}">
 									<form:errors path="email" cssStyle="color: #ff0000;"/></c:if>
 									<div id="iemail"></div><br>
@@ -148,7 +148,9 @@
 									<form:errors path="phoneNumber" cssStyle="color: #ff0000;"/></c:if>
 	                                <div style="text-align:center;">
 	                                    <input type="submit" id="submit" class="input-btn" value="edit">
-	                                </div>                          
+	                                </div>  
+	                                
+	                                 <form:input type="hidden" id="personType" path="personType" />                     
 							</form:form>
 	                    </div>
 	                    </div>
@@ -235,6 +237,8 @@
 		        document.getElementById("identity-number").value=accountAndPerson.person.identityNumber;
 		        document.getElementById("email-form").value=accountAndPerson.person.email;
 		        document.getElementById("phone-number").value=accountAndPerson.person.phoneNumber;
+		        document.getElementById("personType").value=accountAndPerson.person.type;
+		        
 		     }        
 			
 		}
