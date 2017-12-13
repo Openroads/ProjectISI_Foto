@@ -127,7 +127,7 @@
 									<form:errors path="identityNumber" cssStyle="color: #ff0000;"/></c:if>
 									<div id="iidentity-number"></div><br>
 									
-									E-mail:<form:input class="input-text" disabled="true" type="email" path="email" id="email-form" />
+									E-mail:<form:input class="input-text" readonly="true" type="email" path="email" id="email-form" />
 									<c:if test="${pageContext.request.method=='POST'}">
 									<form:errors path="email" cssStyle="color: #ff0000;"/></c:if>
 									<div id="iemail"></div><br>
@@ -228,6 +228,7 @@
 		        console.log(accountAndPerson);
 		        if(accountAndPerson.person.type==='EMP'){
 		       		document.getElementById("addressDiv").style.visibility = 'hidden';
+		       		document.getElementById("address-form").value='123456';//6chars
 		        }else if(accountAndPerson.person.type==='CLIENT'){
 		        	document.getElementById("addressDiv").style.visibility = 'visible';
 		        	document.getElementById("address-form").value=accountAndPerson.person.address;

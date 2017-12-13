@@ -36,9 +36,25 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
 
     public int save(IEmployee emp) {
 
-        String sqlQuery = "insert into employee (id_employee,name,surname,personal_id,phone_nr,email) values (?,?,?,?,?,?)";
-        jdbcTemplate.update(sqlQuery, emp.getId(), emp.getName(), emp.getSurname(), emp.getIdentityNumber(),
-                emp.getPhoneNumber(), emp.getEmail());
+        String sqlQuery;// = "insert into employee (id_employee,name,surname,personal_id,phone_nr,email) values (?,?,?,?,?,?)";
+        
+        sqlQuery = "insert into employee (name,surname,personal_id,phone_nr,email,id_employee) values (?,?,?,?,?,?)";
+  
+        jdbcTemplate.update(sqlQuery, emp.getName(), emp.getSurname(), emp.getIdentityNumber(),
+                emp.getPhoneNumber(), emp.getEmail(),emp.getId());
+
+        logger.info(emp.getEmail() + "has been added or updated");
+        return 0;
+    }
+    public int update(IEmployee emp) {
+
+        String sqlQuery;// = "insert into employee (id_employee,name,surname,personal_id,phone_nr,email) values (?,?,?,?,?,?)";
+        
+
+        sqlQuery = "update employee set name = ?,surname = ?,personal_id = ?,phone_nr = ?, email = ? where id_employee = ?";
+        
+        jdbcTemplate.update(sqlQuery, emp.getName(), emp.getSurname(), emp.getIdentityNumber(),
+                emp.getPhoneNumber(), emp.getEmail(),emp.getId());
 
         logger.info(emp.getEmail() + "has been added or updated");
         return 0;

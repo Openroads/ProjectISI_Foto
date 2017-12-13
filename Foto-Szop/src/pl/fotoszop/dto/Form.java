@@ -131,6 +131,10 @@ public class Form {
         password = HashGenerator.doHash(password);
         password2 = HashGenerator.doHash(password2);
     }
+    public void clearPasswordFiels() {
+    	this.password=null;
+    	this.password2=null;
+    }
 
 
 }

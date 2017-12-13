@@ -9,6 +9,8 @@ import pl.fotoszop.model.Account;
 import pl.fotoszop.modelinterfaces.IAccount;
 
 import javax.sql.DataSource;
+
+import java.security.AccessControlContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +21,7 @@ public class AccountDAODbImpl implements AccountDAO {
 
     private static final String SQL_GET_ACCOUNT_BY_LOGIN = "SELECT * from account where login = ? ";
     private static final String SQL_GET_ACCOUNT_BY_ID = "SELECT * from account where id_account = ? ";
+    private static final String SQL_GET_LAST_ID = "select max(id_account) from account";
     private DataSource dataSource;
 
     private IAccount account;
@@ -34,21 +37,34 @@ public class AccountDAODbImpl implements AccountDAO {
         try {
             connection = dataSource.getConnection();
             logger.info("Save or Update - Connection to database");
-            String sqlQuery = "insert into account(id_account,login,password,date_of_creation,id_employee,id_client) "
+            String sqlQuery;
+            if(account.getAccountId() ==0) {
+            	sqlQuery = "insert into account(login,password,date_of_creation,id_employee,id_client,id_account) "
                     + "values (?,?,?,?,?,?)";
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery(SQL_GET_LAST_ID);
+                int id = 0;
+                if (rs.next()) {
+                    id = rs.getInt(1) + 1;
+                }
+                account.setAccountId(id);
+            }
+            else {
+            	sqlQuery = "update account set login = ?,password = ?,date_of_creation = ?,id_employee = ?,id_client = ? where id_account=? ";
+            }
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
-            statement.setInt(1, account.getAccountId());
-            statement.setString(2, account.getLogin());
-            statement.setString(3, account.getPassword());
-            statement.setDate(4, account.getCreationDate());
+            statement.setInt(6, account.getAccountId());
+            statement.setString(1, account.getLogin());
+            statement.setString(2, account.getPassword());
+            statement.setDate(3, account.getCreationDate());
             if((int) account.getEmployeeId() != 0)
-            	statement.setInt(5,(int) account.getEmployeeId());
+            	statement.setInt(4,(int) account.getEmployeeId());
+            else
+            	statement.setNull(4,java.sql.Types.INTEGER);
+            if(account.getClientId() != 0)
+            	statement.setInt(5,account.getClientId());
             else
             	statement.setNull(5,java.sql.Types.INTEGER);
-            if(account.getClientId() != 0)
-            	statement.setInt(6,account.getClientId());
-            else
-            	statement.setNull(6,java.sql.Types.INTEGER);
             statement.executeUpdate();
 
             logger.info("Save or update has been successfully made");

@@ -14,6 +14,9 @@ import pl.fotoszop.modelMappers.ClientMapper;
 import pl.fotoszop.modelinterfaces.IClient;
 
 import javax.sql.DataSource;
+
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -38,10 +41,19 @@ public class ClientDAODbImpl implements ClientDAO {
 
     @Override
     public int saveOrUpdate(IClient client) {
-        String sqlQuery = "insert into client(id_client,name,surname,address,personal_id,phone_nr,email) "
+    	String sqlQuery;
+    	if(client.getId()==0) {
+    		sqlQuery = "insert into client(name,surname,address,personal_id,phone_nr,email,id_client) "
                 + "values (?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sqlQuery, client.getId(), client.getName(), client.getSurname(), client.getAddress(),
-                client.getIdentityNumber(), client.getPhoneNumber(), client.getEmail());
+    		
+    		
+    		Integer id = jdbcTemplate.queryForObject("select max(id_client) from client;", Integer.class);          
+            client.setId(id+1);
+    	}else {
+    		sqlQuery = "update client set name = ?, surname=?,address=?,personal_id=?,phone_nr=?,email=? where id_client = ?;";
+    	}
+        jdbcTemplate.update(sqlQuery, client.getName(), client.getSurname(), client.getAddress(),
+                client.getIdentityNumber(), client.getPhoneNumber(), client.getEmail(), client.getId());
 
         logger.info(client.getEmail() + "has been added or updated");
         return 0;
@@ -77,7 +89,7 @@ public class ClientDAODbImpl implements ClientDAO {
      * @param - registration form
      * @return true - if such Client already exists in database, false - if such Client doesn't exist in database
      */
-    public boolean checkToRegister(Form form) {
+    public boolean checkIdentityNumberIfExist(Form form) {
 
         Collection<IClient> clients = new ArrayList<>();
         clients = getAllContacts();
@@ -86,7 +98,7 @@ public class ClientDAODbImpl implements ClientDAO {
         int id = 0;
 
         for (IClient object : clients) {
-            if (object.getEmail().equals(form.getEmail()))
+            if (object.getIdentityNumber().equals(form.getIdentityNumber()))
                 isTaken = true;
             if (object.getId() > form.getId()) id = object.getId();
         }

@@ -40,19 +40,23 @@ public class RegisterController {
             logger.error("Error in registration, binding result");
             model = new ModelAndView("register");
             model.addObject("form", form);
+            form.clearPasswordFiels();
             return model;
         } else {
 
             form.doHash();
 
-            boolean flag = clientDatabaseDAO.checkToRegister(form);
+            boolean flag = clientDatabaseDAO.checkIdentityNumberIfExist(form);
+            if(aclientDatabaseDAO.getAccountByLogin(form.getEmail())!=null) flag = true;//email exist-cannot make account
             boolean flag2 = form.checkPasswords();
 
             if ((!flag) && flag2) {
 
                 //Client newClient = new Client(1,form.getName(),form.getSurname(),form.getAddress(),form.getIdentityNumber(),form.getPhoneNumber(),form.getEmail());
                 Client newClient = new Client(form);
+                newClient.setId(0);
                 Account newAccount = new Account(form);
+                newAccount.setAccountId(0);
                 clientDatabaseDAO.saveOrUpdate(newClient);
                 aclientDatabaseDAO.saveOrUpdate(newAccount);
 
@@ -66,7 +70,10 @@ public class RegisterController {
 
                 logger.error("Registration error, two flags don't match");
                 model = new ModelAndView("register");
-                model.addObject("form", new Form());
+                result.rejectValue("email", "errorCodeLogin", "Konto o podanym E-mail lub użytkownik o podanym peselu już istnieje.");
+                result.rejectValue("identityNumber", "errorCodeLogin", "Konto o podanym E-mail lub użytkownik o podanym peselu już istnieje.");
+                form.clearPasswordFiels();
+                model.addObject("form", form);
                 return model;
             }
         }

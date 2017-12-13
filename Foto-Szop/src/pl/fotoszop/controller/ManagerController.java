@@ -103,7 +103,7 @@ public class ManagerController {
         		edited.setSurname(form.getSurname());
         		edited.setIdentityNumber(form.getIdentityNumber());
         		edited.setPhoneNumber(form.getPhoneNumber());
-        		empDAO.save(edited);
+        		empDAO.update(edited);
         		break;
         	case CLIENT:
         		IClient editedClient = clientDatabaseDAO.getClientById(account.getClientId());
