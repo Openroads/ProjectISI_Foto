@@ -88,6 +88,9 @@
 				      <td id="surname">
 				           <c:out value="${acc.creationDate}"/>
 				       </td>
+					<td id="operacja">
+				           <button onClick="getDetailsAboutAccount(${acc.accountId})" >Edytuj</button>
+				     </td>
 				  </tr>
 			</c:forEach>
 			</tbody>
@@ -184,6 +187,25 @@
 				event.preventDefault();
 			});
 		})
+		
+		function getDetailsAboutAccount(accountId){
+			console.log(accountId);
+		     /*   if (window.XMLHttpRequest) {
+		            requester = new XMLHttpRequest();
+		       } else if (window.ActiveXObject) {
+		            requester = new ActiveXObject("Microsoft.XMLHTTP");
+		       }
+		  
+		        requester.onreadystatechange = getAccountDetailsHandler;
+		        requester.open("GET","");
+		        requester.send(null); */
+		    }
+		function getAccountDetailsHandler(){
+			if(this.readyState == 4 && this.status == 200){
+		        
+		     }        
+			
+		}
 	</script>
 
 	</body>
