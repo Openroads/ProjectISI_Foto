@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
+import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
 import pl.fotoszop.dto.AddEmpDTO;
 import pl.fotoszop.dto.Form;
@@ -19,9 +20,13 @@ import pl.fotoszop.dto.ManagerEditFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Employee;
 import pl.fotoszop.model.Manager;
+import pl.fotoszop.model.PersonType;
 import pl.fotoszop.modelinterfaces.IAccount;
+import pl.fotoszop.modelinterfaces.IClient;
+import pl.fotoszop.modelinterfaces.IEmployee;
 
 import javax.validation.Valid;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,7 +40,9 @@ public class ManagerController {
     EmployeeDAODbImpl empDAO;
     @Autowired
     AccountDAODbImpl accDAO;
-
+    
+    @Autowired
+    private ClientDAODbImpl clientDatabaseDAO;
     
     @RequestMapping("/accountManaging")
     public ModelAndView showEditPage(@SessionAttribute Manager manager){
@@ -79,13 +86,38 @@ public class ManagerController {
             model.addObject("accList", accList);
             model.addObject("ManagerEditFormDTO", form);
         }else {
+        	PersonType personType = PersonType.valueOf(form.getPersonType());
         	
+        	IAccount account  = accDAO.getAccountByLogin(form.getEmail());
+        	account.setCreationDate(Date.valueOf(LocalDate.now()));
+        	if(form.getPassword() !=null && form.getPassword2() !=null)
+        	if(form.checkPasswords() && form.getPassword().trim().length()>2)
+        		account.setPassword(form.getHashPassword());
+        	
+        	accDAO.saveOrUpdate(account);
+        	switch(personType) {
+        
+        	case EMP:
+        		IEmployee edited = empDAO.getEmployeeById(account.getEmployeeId());
+        		edited.setName(form.getName());
+        		edited.setSurname(form.getSurname());
+        		edited.setIdentityNumber(form.getIdentityNumber());
+        		edited.setPhoneNumber(form.getPhoneNumber());
+        		empDAO.save(edited);
+        		break;
+        	case CLIENT:
+        		IClient editedClient = clientDatabaseDAO.getClientById(account.getClientId());
+        		editedClient.setAddress(form.getAddress());
+        		editedClient.setName(form.getName());
+        		editedClient.setSurname(form.getSurname());
+        		editedClient.setIdentityNumber(form.getIdentityNumber());
+        		editedClient.setPhoneNumber(form.getPhoneNumber());
+        		clientDatabaseDAO.saveOrUpdate(editedClient);
+        		break;
+        	}
         	
         	
         }
-    	
-    	
-    	
     	
     	return model;
     }

@@ -34,7 +34,7 @@ public class EmployeeDAODbImpl implements EmployeeDAO {
         logger.info("Connected with database");
     }
 
-    public int save(Employee emp) {
+    public int save(IEmployee emp) {
 
         String sqlQuery = "insert into employee (id_employee,name,surname,personal_id,phone_nr,email) values (?,?,?,?,?,?)";
         jdbcTemplate.update(sqlQuery, emp.getId(), emp.getName(), emp.getSurname(), emp.getIdentityNumber(),

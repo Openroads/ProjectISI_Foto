@@ -5,6 +5,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import pl.fotoszop.model.HashGenerator;
 import pl.fotoszop.model.PersonType;
 
 public class ManagerEditFormDTO{
@@ -119,5 +120,22 @@ public class ManagerEditFormDTO{
     
     
     
-	
+    public boolean checkPasswords() {
+
+        if (password.equals(password2))
+            return true;
+
+        return false;
+
+    }
+
+    /**
+     * Method to change plaintext password to hash
+     */
+    public String getHashPassword() {
+        return HashGenerator.doHash(password);
+
+      }
+
+
 }
