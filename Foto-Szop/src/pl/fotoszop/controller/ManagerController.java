@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
 import pl.fotoszop.dto.AddEmpDTO;
+import pl.fotoszop.dto.Form;
 import pl.fotoszop.dto.ManagerEditFormDTO;
 import pl.fotoszop.model.Account;
 import pl.fotoszop.model.Employee;
@@ -40,7 +41,7 @@ public class ManagerController {
     public ModelAndView showEditPage(@SessionAttribute Manager manager){
     	
     	ModelAndView model = new ModelAndView("accountManaging");
-    	ManagerEditFormDTO dto = new ManagerEditFormDTO();
+    	Form dto = new Form();
     	
     	model.addObject("ManagerEditFormDTO", dto);
     	 Collection<IAccount> accList = accDAO.getAllAccounts();
@@ -68,7 +69,10 @@ public class ManagerController {
 
         return new ModelAndView("managerAccount");
     }
-
+    @RequestMapping("/editAccount")
+    public ModelAndView editAccountAndAssociatedPerson(@SessionAttribute Manager manager, @ModelAttribute("EditdAccDTO") @Valid AddEmpDTO empForm, BindingResult result) {
+    	return null;
+    }
     @RequestMapping("/addEmployee")
     public ModelAndView addEmployee(@SessionAttribute Manager manager, @ModelAttribute("AddEmpDTO") @Valid AddEmpDTO empForm, BindingResult result) {
 
@@ -77,11 +81,6 @@ public class ManagerController {
         
         //result.getAllErrors().stream().forEach(e->e.getDefaultMessage());
         
-        for(ObjectError err: result.getAllErrors()) {
-        	System.out.println(err.getObjectName());
-        	System.out.println(err.getCode());
-        	System.out.println(err.getDefaultMessage());
-        }
         if (result.hasErrors()) {
             model = new ModelAndView("employeeAdding");
             model.addObject("AddEmpDTO", empForm);

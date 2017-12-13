@@ -1,6 +1,6 @@
 package pl.fotoszop.modelinterfaces;
 
-public interface IClient {
+public interface IClient extends IPerson{
 
     public int getId();
 

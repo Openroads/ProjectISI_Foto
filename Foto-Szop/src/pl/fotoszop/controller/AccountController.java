@@ -6,19 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import pl.fotoszop.DAODbImpl.AccountDAODbImpl;
 import pl.fotoszop.DAODbImpl.ClientDAODbImpl;
 import pl.fotoszop.DAODbImpl.EmployeeDAODbImpl;
+import pl.fotoszop.dto.AccountAndAssociatedPerson;
 import pl.fotoszop.dto.LoginFormDTO;
 import pl.fotoszop.model.Manager;
 import pl.fotoszop.modelinterfaces.IAccount;
 import pl.fotoszop.modelinterfaces.IClient;
 import pl.fotoszop.modelinterfaces.IEmployee;
+import pl.fotoszop.modelinterfaces.IPerson;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -116,6 +121,22 @@ public class AccountController {
         }
 
         return model;
+    }
+    
+    @RequestMapping(value = "/rest/account/{accountId}/withPerson",method = RequestMethod.GET)
+    public @ResponseBody AccountAndAssociatedPerson getAccountWithAssociatedClientOrEmployee(@PathVariable Long accountId) {
+    	AccountAndAssociatedPerson accountAndPerson = new AccountAndAssociatedPerson();
+    	IAccount account = aclientDatabaseDAO.getAccountById(accountId);
+    	if(account!=null) {
+    		accountAndPerson.setAccount(account);
+    		if(account.getClientId()!= 0) {
+    			accountAndPerson.setPerson(clientDatabaseDAO.getClientById(account.getClientId()));
+    		}else if (account.getEmployeeId()!= 0){
+    			accountAndPerson.setPerson(employeeDatabaseDAO.getEmployeeById(account.getEmployeeId()));
+    		}
+    	}
+    	
+    	return accountAndPerson; 
     }
 
 

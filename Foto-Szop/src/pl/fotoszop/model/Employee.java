@@ -2,8 +2,9 @@ package pl.fotoszop.model;
 
 import pl.fotoszop.dto.AddEmpDTO;
 import pl.fotoszop.modelinterfaces.IEmployee;
+import pl.fotoszop.modelinterfaces.IPerson;
 
-public class Employee implements IEmployee {
+public class Employee implements IEmployee,IPerson {
 
     protected long id;
     protected String name;
@@ -69,5 +70,32 @@ public class Employee implements IEmployee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	@Override
+	public long getPersonId() {
+		return getId();
+	}
+
+	@Override
+	public void setPersonId(long id) {
+		setId(id);
+		
+	}
+
+	@Override
+	public void setAddress(String address) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getAddress() {
+		return null;
+	}
+
+	@Override
+	public PersonType getType() {
+		return PersonType.EMP;
+	}
 
 }

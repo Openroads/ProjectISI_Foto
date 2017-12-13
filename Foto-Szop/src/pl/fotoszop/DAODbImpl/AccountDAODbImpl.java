@@ -18,7 +18,7 @@ public class AccountDAODbImpl implements AccountDAO {
     private static final Logger logger = LoggerFactory.getLogger(AccountDAODbImpl.class.getName());
 
     private static final String SQL_GET_ACCOUNT_BY_LOGIN = "SELECT * from account where login = ? ";
-
+    private static final String SQL_GET_ACCOUNT_BY_ID = "SELECT * from account where id_account = ? ";
     private DataSource dataSource;
 
     private IAccount account;
@@ -242,5 +242,47 @@ public class AccountDAODbImpl implements AccountDAO {
 
         return this.account;
     }
+
+	public IAccount getAccountById(Long accountId) {
+        Connection connection = null;
+        try {
+
+            connection = dataSource.getConnection();
+            logger.info("Get account by login - connected with database");
+            PreparedStatement statement = connection.prepareStatement(SQL_GET_ACCOUNT_BY_ID);
+            statement.setLong(1, accountId);
+            ResultSet rs = statement.executeQuery();
+            Account account = null;
+
+            if (rs.next()) {
+                account = new Account();
+                account.setAccountId(rs.getInt("id_account"));
+                account.setLogin(rs.getString("login"));
+                account.setPassword(rs.getString("password"));
+                account.setCreationDate(rs.getDate("date_of_creation"));
+                account.setClientId(rs.getInt("id_client"));
+                account.setEmployeeId(rs.getInt("id_employee"));
+            }
+            statement.close();
+            rs.close();
+            return account;
+
+        } catch (SQLException e) {
+            logger.info("Get account by Id - cannot connect with database or gets account by login");
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                    logger.info("Get account by login - disconnect with database");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return null;
+    }
+	
 
 }

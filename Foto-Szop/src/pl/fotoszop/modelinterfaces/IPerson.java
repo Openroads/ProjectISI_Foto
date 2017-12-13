@@ -1,10 +1,13 @@
 package pl.fotoszop.modelinterfaces;
 
-public interface IEmployee extends IPerson {
+import pl.fotoszop.model.PersonType;
 
-    long getId();
+public interface IPerson {
+	PersonType getType();
+	
+    long getPersonId();
 
-    void setId(long id);
+    void setPersonId(long id);
 
     String getName();
 
@@ -25,4 +28,8 @@ public interface IEmployee extends IPerson {
     String getEmail();
 
     void setEmail(String email);
+    
+    void setAddress(String address);
+
+    String getAddress();
 }

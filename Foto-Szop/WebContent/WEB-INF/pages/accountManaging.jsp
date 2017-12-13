@@ -107,30 +107,47 @@
 	                    </div>
 	                	<div class="service-list-col2">
 	                	 <div class="form">
-	                        <form:form method="post"  modelAttribute="ManagerEditFormDTO" id="edit-acc-form"  action="editAccManager" >	
-	                        <br/><br/>						
-	                        	 Adres: <form:input class="input-text" path="address" id="address-form"/>
-	                                <div id="iaddress"></div>
-	                                <br>
-	                                Obecne Hasło: <form:input class="input-text" type="password" path="password"
-	                                                          id="password"/>
-	                                <div id="ipassword"></div>
-	                                <br>
-	                                Nowe Hasło: <form:input class="input-text" type="password" id="passwordNew"
-	                                                        path="passwordNew"/>
-	                                <div id="ipasswordNew"></div>
-	                                <br>
-	                                Powtórz Nowe Hasło: <form:input class="input-text" type="password" id="passwordNew2"
-	                                                                path="passwordNew2"/>
-	                                <div id="ipasswordNew2"></div>
-	                                <br>
-	                                Numer Telefonu Komórkowego: <form:input class="input-text" path="phoneNumber"
-	                                                                        id="phone-number"/>
-	                                <div id="iphone"></div> 
-	                                <br>
+	                        <form:form method="post"  modelAttribute="ManagerEditFormDTO" id="edit-acc-form"  action="editAccount" >	
+	                        <br/><br/>	
+	                        		<div id="addressDiv"> Adres: <form:input class="input-text" path="address" id="address-form"/>
+	                                <div id="iaddress"></div> </div>
+
+	                                Imię: <form:input class="input-text" path="name" id="name-form" ></form:input>
+									<c:if test="${pageContext.request.method=='POST'}">
+									<form:errors path="name" cssStyle="color: #ff0000;"/></c:if>
+									<div id="iname"></div><br>
+									
+									Nazwisko: <form:input class="input-text" path="surname" id="surname-form" ></form:input>		
+									<c:if test="${pageContext.request.method=='POST'}">
+									<form:errors path="surname" cssStyle="color: #ff0000;"/></c:if>
+									<div id="isurname"></div><br>
+									
+									PESEL: <form:input class="input-text"  path="identityNumber" id="identity-number"/>
+									<c:if test="${pageContext.request.method=='POST'}">
+									<form:errors path="identityNumber" cssStyle="color: #ff0000;"/></c:if>
+									<div id="iidentity-number"></div><br>
+									
+									E-mail:<form:input class="input-text" type="email" path="email" id="email-form" />
+									<c:if test="${pageContext.request.method=='POST'}">
+									<form:errors path="email" cssStyle="color: #ff0000;"/></c:if>
+									<div id="iemail"></div><br>
+									
+									Hasło: <form:input class="input-text" type="password" path="password" id="password" autocomplete="on"/>
+			                     	<c:if test="${pageContext.request.method=='POST'}">
+			                     	<form:errors path="password" cssStyle="color: #ff0000;"/></c:if>
+			                     	<div id="ipassword"></div><br>
+			                     	
+			                     	Powtorz hasło: <form:input class="input-text" autocomplete="on" type="password" id="password2" path="password2" />
+		                           <c:if test="${pageContext.request.method=='POST'}"> 
+		                           <form:errors path="password2" cssStyle="color: #ff0000;" /></c:if>
+		                           <div id="ipassword2"></div><br>
+		                            
+	                                Numer Telefonu Komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number"/>
+	                                <div id="iphone"></div> <br>
+
 	                                <div style="text-align:center;">
 	                                    <input type="submit" id="submit" class="input-btn" value="edit">
-	                                </div>                       
+	                                </div>                          
 							</form:form>
 	                    </div>
 	                    </div>
@@ -188,21 +205,35 @@
 			});
 		})
 		
+		
+		/************* AJAX FUNCTIONS **********/
 		function getDetailsAboutAccount(accountId){
-			console.log(accountId);
-		     /*   if (window.XMLHttpRequest) {
+		        if (window.XMLHttpRequest) {
 		            requester = new XMLHttpRequest();
 		       } else if (window.ActiveXObject) {
 		            requester = new ActiveXObject("Microsoft.XMLHTTP");
 		       }
 		  
 		        requester.onreadystatechange = getAccountDetailsHandler;
-		        requester.open("GET","");
-		        requester.send(null); */
+		        requester.open("GET","http://localhost:8080/Foto-Szop/rest/account/"+accountId+"/withPerson");
+		        requester.send(null); 
 		    }
+		
 		function getAccountDetailsHandler(){
 			if(this.readyState == 4 && this.status == 200){
-		        
+		        var accountAndPerson = JSON.parse(this.responseText);
+		        console.log(accountAndPerson);
+		        if(accountAndPerson.person.type==='EMP'){
+		       		document.getElementById("addressDiv").style.visibility = 'hidden';
+		        }else if(accountAndPerson.person.type==='CLIENT'){
+		        	document.getElementById("addressDiv").style.visibility = 'visible';
+		        	document.getElementById("address-form").value=accountAndPerson.person.address;
+		        }
+		        document.getElementById("name-form").value=accountAndPerson.person.name;
+		        document.getElementById("surname-form").value=accountAndPerson.person.surname;
+		        document.getElementById("identity-number").value=accountAndPerson.person.identityNumber;
+		        document.getElementById("email-form").value=accountAndPerson.person.email;
+		        document.getElementById("phone-number").value=accountAndPerson.person.phoneNumber;
 		     }        
 			
 		}

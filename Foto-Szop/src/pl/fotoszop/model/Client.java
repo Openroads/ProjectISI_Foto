@@ -2,6 +2,7 @@ package pl.fotoszop.model;
 
 import pl.fotoszop.dto.Form;
 import pl.fotoszop.modelinterfaces.IClient;
+import pl.fotoszop.modelinterfaces.IPerson;
 
 public class Client implements IClient {
 
@@ -106,6 +107,22 @@ public class Client implements IClient {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	@Override
+	public long getPersonId() {
+		return getId();
+	}
+
+	@Override
+	public void setPersonId(long id) {
+		setId((int) id);
+	}
+
+	@Override
+	public PersonType getType() {
+		// TODO Auto-generated method stub
+		return PersonType.CLIENT;
+	}
 
 
 }
