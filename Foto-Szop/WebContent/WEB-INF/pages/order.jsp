@@ -124,13 +124,7 @@
 	                            <td id="orderPlace">
 	                            	<c:out value="${order.orderPlace}"/>
 	                            </td>              
-	                            <td id="operacja">
-	                                <form action="deleteOrder" method="post">
-	                                    <input type="hidden" name="orderToDelete" value="${order.idOrder}"/>
-	                                    <input class="btn btn-danger " type="submit" value="Usuń"
-	                                           name="remove"/>
-	                                </form>
-	                            </td>
+	                            
 	                        </tr>
 	                    </c:forEach>
 	                    </tbody>
