@@ -17,7 +17,9 @@ public class Order extends OrderBase implements IOrder{
 	private int employeeId;
 	private Date realizationDate;
 	private String service;
+	private int bonus;
 
+	
 	public Order()
 	{
 	}
@@ -59,6 +61,13 @@ public class Order extends OrderBase implements IOrder{
 
 	
 	
+	
+	public int getBonus() {
+		return bonus;
+	}
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
+	}
 	public int getIdClient() {
 		return idClient;
 	}

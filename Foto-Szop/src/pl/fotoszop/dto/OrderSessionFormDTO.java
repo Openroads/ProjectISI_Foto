@@ -22,9 +22,29 @@ public class OrderSessionFormDTO {
     @NotEmpty
     @Size(min = 4, max = 256)
     private String sessionPlace;
+    
+    private int bonus;
+    private int countOrder;
+    
 
+    
+    public int getCountOrder() {
+		return countOrder;
+	}
 
-    //@Future
+	public void setCountOrder(int countOrder) {
+		this.countOrder = countOrder;
+	}
+
+	public int getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
+	}
+
+	//@Future
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private String date;
 

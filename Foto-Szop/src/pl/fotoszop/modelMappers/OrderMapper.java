@@ -23,6 +23,7 @@ public class OrderMapper implements RowMapper<Order>{
 		order.setOrderAddress(rs.getString("sessionAddress"));
 		order.setOrderTitle(rs.getString("subject"));
 		order.setOrderPlace(rs.getString("sessionPlace"));
+		order.setBonus(rs.getInt("bonus"));
 		return order;
 	}
 

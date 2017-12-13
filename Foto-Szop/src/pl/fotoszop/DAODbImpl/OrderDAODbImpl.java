@@ -49,8 +49,8 @@ public class OrderDAODbImpl implements OrderDAO {
         }
 
 
-        String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,subject,sessionAddress,sessionPlace,id_service,id_client,id_employee) "
-                + "values (?,?,?,?,?,?,?,?,?,?,?)";
+        String sqlQuery = "insert into order_ps(id_order,date_of_order,id_of_realization_term,date_of_modification,order_status,subject,sessionAddress,sessionPlace,id_service,id_client,id_employee,bonus) "
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sqlQuery, order.getIdOrder(),
                 order.getDateOfOrder(),
                 order.getIdOfRealizationTerm(),
@@ -61,7 +61,8 @@ public class OrderDAODbImpl implements OrderDAO {
                 order.getOrderPlace(),
                 order.getIdService(),
                 order.getClientId(),
-        		order.getEmployeeId())
+        		order.getEmployeeId(),
+        		order.getBonus());
         ;
 
         logger.info("Order has been saved or updated successfully");
@@ -81,6 +82,14 @@ public class OrderDAODbImpl implements OrderDAO {
     public List<IOrder> getAllOrders(int clientId) {
         System.out.println(clientId);
         String sqlQuery = "select * from order_ps where order_ps.id_client = " + clientId;
+        Collection<Order> OrderL = this.jdbcTemplate.query(sqlQuery, new OrderMapper());
+        logger.info("All orders has been taken");
+        return OrderL.stream().map(x -> (IOrder) x).collect(Collectors.toList());
+    }
+    
+    public List<IOrder> getAllOrders() {
+
+        String sqlQuery = "select * from order_ps";
         Collection<Order> OrderL = this.jdbcTemplate.query(sqlQuery, new OrderMapper());
         logger.info("All orders has been taken");
         return OrderL.stream().map(x -> (IOrder) x).collect(Collectors.toList());

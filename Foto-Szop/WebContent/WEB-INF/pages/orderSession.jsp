@@ -94,6 +94,12 @@
 	                                        <form:options items="${termList}" itemValue="id"
 	                                                      itemLabel="date"></form:options>                                
 	                                    </form:select>
+	                                    <br/><br/>
+	                                    <p>To twoje: ${form.countOrder} zamówienie. </p>
+	                                    <c:choose>
+	                                    <c:when test="${form.countOrder >0}"><p> Otrzymujesz: ${form.bonus} % rabatu!</p></c:when>
+	                                    <c:otherwise><p> Nie przysługuje Ci jeszcze rabat</p></c:otherwise>
+	                                    </c:choose>     
 	                                    <br/><br/><br/>
 	                                    <input type="submit" id="submit" class="input-btn" value="Umów">
 	                                </div>

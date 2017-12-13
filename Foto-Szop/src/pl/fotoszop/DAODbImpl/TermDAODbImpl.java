@@ -24,7 +24,7 @@ public class TermDAODbImpl implements TermDAO {
     private static final Logger logger = LoggerFactory.getLogger(TermDAODbImpl.class.getName());
 
     private static final String SQL_GET_TERMS_EMPLOYEE = "Select id_term,date_of_term from term where id_employee = ? and date_of_term >= ?";
-    private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term where date_of_term >= ?";
+    private static final String SQL_GET_TERMS_FROM_DATE = "Select * from term  where date_of_term >= ? AND id_term NOT IN (SELECT id_of_realization_term FROM order_ps)";
     private static final String SQL_GET_LAST_ID = "select max(id_term) from term";
     private static final String INSERT_NEW_TERM = "insert into term(id_term, id_employee,date_of_term) VALUES(?,?,?)";
     private static final String SQL_DELETE_TERM_FOR_ID = "delete from term where term.id_term = ?";

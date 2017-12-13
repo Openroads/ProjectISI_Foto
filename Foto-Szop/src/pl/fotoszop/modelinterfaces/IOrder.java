@@ -32,4 +32,6 @@ public interface IOrder {
 	public String getOrderPlace();
 	public void setOrderPlace(String orderPlace);
 	public int getEmployeeId();
+	public int getBonus();
+	public void setBonus(int bonus);
 }
