@@ -144,7 +144,8 @@
 		                            
 	                                Numer Telefonu Komórkowego: <form:input class="input-text" path="phoneNumber" id="phone-number"/>
 	                                <div id="iphone"></div> <br>
-
+	                                <c:if test="${pageContext.request.method=='POST'}">
+									<form:errors path="phoneNumber" cssStyle="color: #ff0000;"/></c:if>
 	                                <div style="text-align:center;">
 	                                    <input type="submit" id="submit" class="input-btn" value="edit">
 	                                </div>                          

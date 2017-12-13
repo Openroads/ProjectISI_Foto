@@ -41,7 +41,7 @@ public class ManagerController {
     public ModelAndView showEditPage(@SessionAttribute Manager manager){
     	
     	ModelAndView model = new ModelAndView("accountManaging");
-    	Form dto = new Form();
+    	ManagerEditFormDTO dto = new ManagerEditFormDTO();
     	
     	model.addObject("ManagerEditFormDTO", dto);
     	 Collection<IAccount> accList = accDAO.getAllAccounts();
@@ -70,8 +70,24 @@ public class ManagerController {
         return new ModelAndView("managerAccount");
     }
     @RequestMapping("/editAccount")
-    public ModelAndView editAccountAndAssociatedPerson(@SessionAttribute Manager manager, @ModelAttribute("EditdAccDTO") @Valid AddEmpDTO empForm, BindingResult result) {
-    	return null;
+    public ModelAndView editAccountAndAssociatedPerson(@SessionAttribute Manager manager, @ModelAttribute("ManagerEditFormDTO") @Valid ManagerEditFormDTO form, BindingResult result) {
+    	
+    	ModelAndView model = new ModelAndView("redirect:/accountManaging");
+    	if (result.hasErrors()) {
+            model = new ModelAndView("accountManaging");
+          	Collection<IAccount> accList = accDAO.getAllAccounts();
+            model.addObject("accList", accList);
+            model.addObject("ManagerEditFormDTO", form);
+        }else {
+        	
+        	
+        	
+        }
+    	
+    	
+    	
+    	
+    	return model;
     }
     @RequestMapping("/addEmployee")
     public ModelAndView addEmployee(@SessionAttribute Manager manager, @ModelAttribute("AddEmpDTO") @Valid AddEmpDTO empForm, BindingResult result) {
