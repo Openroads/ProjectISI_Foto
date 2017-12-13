@@ -19,6 +19,7 @@ public class Order extends OrderBase implements IOrder{
 	private String service;
 	private int bonus;
 
+
 	
 	public Order()
 	{

@@ -88,11 +88,40 @@
 	                        <th style="text-align:center;">Miejsce</th>
 	                        <th style="text-align:center;">Adres</th>
 	                        <th style="text-align:center;">Klient</th>
+	                        <th style="text-align:center;">Bonus</th>
 	                    </tr>
 	                    <thead>
 	                    <tbody>
-	                    <c:forEach items="" var="term" varStatus="status">
-	          
+	                    <c:forEach items="${orderSessionList}" var="session" varStatus="status">
+	          				<tr class="success">
+	                            <td id="data">
+	                                <c:out value="${session.dateOfOrder}"/>
+	                            </td>
+								 <td id="data">
+	                                <c:out value="${session.realizationDate}"/>
+	                            </td>
+	                             <td id="tematyka">
+	                                <c:out value="${session.orderTitle}"/>
+	                            </td>
+	                             <td id="miejsce">
+	                                <c:out value="${session.orderPlace}"/>
+	                            </td>
+	                             <td id="adres">
+	                                <c:out value="${session.orderAddress}"/>
+	                            </td>
+	                             <td id="klient">
+	                                <c:out value="${session.idClient}"/>
+	                            </td>
+	                             <td id="bonus">
+	                                <c:out value="${session.bonus}"/> %
+	                            </td>
+	                            <td id="operacja">
+	                                <form action="acceptOrder" method="post">
+	                                    <input type="hidden" name="orderId" value="${session.idOrder}"/>
+	                                    <input class="btn btn-danger " type="submit" value="Przyjmij" name="add"/>
+	                                </form>
+	                            </td>
+	                        </tr>
 	                    </c:forEach>
 	                    </tbody>
 	                </table>
@@ -109,14 +138,43 @@
 	                    <thead>
 	                    <tr>
 	                        <th style="text-align:center;">Data</th>
-	                        <th style="text-align:center;">Format</th>
+	                        <th style="text-align:center;">Data realizacji</th>
 	                        <th style="text-align:center;">Rodzaj</th>
-	                        <th style="text-align:center;">Grafik</th>
 	                        <th style="text-align:center;">Adres dostawy</th>
-	                        <th style="text-align:center;">Zdjęcia</th>
+	                        <th style="text-align:center;">Klient</th>
+	                        <th style="text-align:center;">Bonus</th>
+	                        
 	                    </tr>
 	                    <thead>
 	                    <tbody>
+	                    <c:forEach items="${orderPhotoList}" var="photo" varStatus="status">
+	          				<tr class="success">
+	                            <td id="data">
+	                                <c:out value="${photo.dateOfOrder}"/>
+	                            </td>
+								 <td id="data">
+	                                <c:out value="${photo.realizationDate}"/>
+	                            </td>
+	                             <td id="tematyka">
+	                                <c:out value="${photo.orderTitle}"/>
+	                            </td>
+	                             <td id="adres">
+	                                <c:out value="${photo.orderAddress}"/>
+	                            </td>
+	                             <td id="klient">
+	                                <c:out value="${photo.idClient}"/>
+	                            </td>
+	                             <td id="bonus">
+	                                <c:out value="${photo.bonus}"/> %
+	                            </td>
+	                            <td id="operacja">
+	                                <form action="acceptOrder" method="post">
+	                                    <input type="hidden" name="orderId" value="${photo.idOrder}"/>
+	                                    <input class="btn btn-danger " type="submit" value="Przyjmij" name="add"/>
+	                                </form>
+	                            </td>
+	                        </tr>
+	                    </c:forEach>
 	                    </tbody>
 	                </table>
 	            </div>

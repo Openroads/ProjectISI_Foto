@@ -7,12 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import pl.fotoszop.DAODbImpl.OrderDAODbImpl;
 import pl.fotoszop.DAODbImpl.TermDAODbImpl;
 import pl.fotoszop.dto.TermFormtDTO;
 import pl.fotoszop.model.Employee;
+import pl.fotoszop.modelinterfaces.IOrder;
 import pl.fotoszop.modelinterfaces.ITerm;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,6 +27,9 @@ public class EmployeeController {
 
     @Autowired
     TermDAODbImpl termDAO;
+    
+    @Autowired
+    OrderDAODbImpl orderDAO;
 
     @RequestMapping("/termList")
     public ModelAndView showList(@SessionAttribute Employee employee) {
@@ -35,17 +44,79 @@ public class EmployeeController {
 
     }
     
+    @RequestMapping("/acceptOrder")
+    public ModelAndView acceptOrder(@SessionAttribute Employee employee, HttpServletRequest request){
+    	
+    	int orderId = Integer.parseInt(request.getParameter("orderId"));
+    	orderDAO.update(orderId, "IN_REALIZTION"); 
+    	ModelAndView model = new ModelAndView("employeeReceiveOrder");
+        List<IOrder> orderList = orderDAO.getAllOrders(employee);
+        List<IOrder> orderSessionList = new ArrayList<>();
+        List <IOrder> orderPhotoList = new ArrayList<>();
+        orderList.stream().filter(o -> o.getOrderStatus().equals("PENDING"))
+         				.filter(o -> o.getIdService() == 1).forEach(orderSessionList::add);
+         
+        orderList.stream().filter(o -> o.getOrderStatus().equals("PENDING"))
+         					.filter(o -> o.getIdService() == 2).forEach(orderPhotoList::add);
+         
+        model.addObject("orderSessionList", orderSessionList);
+        model.addObject("orderPhotoList",orderPhotoList);
+        return model;
+    }
+    
+    
+    @RequestMapping("/finish")
+    public ModelAndView finishOrder(@SessionAttribute Employee employee, HttpServletRequest request){
+    	
+    	int orderId = Integer.parseInt(request.getParameter("orderId"));
+    	orderDAO.update(orderId, "FINISHED"); 
+    	ModelAndView model = new ModelAndView("employeeReceivedOrders");
+        List<IOrder> orderList = orderDAO.getAllOrders(employee);
+        List<IOrder> orderSessionList = new ArrayList<>();
+        List <IOrder> orderPhotoList = new ArrayList<>();
+        orderList.stream().filter(o -> o.getOrderStatus().equals("IN_REALIZTION"))
+         				.filter(o -> o.getIdService() == 1).forEach(orderSessionList::add);
+         
+        orderList.stream().filter(o -> o.getOrderStatus().equals("IN_REALIZTION"))
+         					.filter(o -> o.getIdService() == 2).forEach(orderPhotoList::add);
+         
+        model.addObject("orderSessionList", orderSessionList);
+        model.addObject("orderPhotoList",orderPhotoList);
+        return model;
+    }
+    
+    
     @RequestMapping("/receiveOrders")
     public ModelAndView showNotReceivedOrders(@SessionAttribute Employee employee) {   
         ModelAndView model = new ModelAndView("employeeReceiveOrder");
-
+        List<IOrder> orderList = orderDAO.getAllOrders(employee);
+        List<IOrder> orderSessionList = new ArrayList<>();
+        List <IOrder> orderPhotoList = new ArrayList<>();
+        orderList.stream().filter(o -> o.getOrderStatus().equals("PENDING"))
+        				.filter(o -> o.getIdService() == 1).forEach(orderSessionList::add);
+        
+        orderList.stream().filter(o -> o.getOrderStatus().equals("PENDING"))
+        					.filter(o -> o.getIdService() == 2).forEach(orderPhotoList::add);
+        
+        model.addObject("orderSessionList", orderSessionList);
+        model.addObject("orderPhotoList",orderPhotoList);
         return model;
 
     }
     @RequestMapping("/receivedOrders")
     public ModelAndView showReceivedOrders(@SessionAttribute Employee employee) {
         ModelAndView model = new ModelAndView("employeeReceivedOrders");
-      
+        List<IOrder> orderList = orderDAO.getAllOrders(employee);
+        List<IOrder> orderSessionList = new ArrayList<>();
+        List <IOrder> orderPhotoList = new ArrayList<>();
+        orderList.stream().filter(o -> o.getOrderStatus().equals("IN_REALIZTION"))
+        				.filter(o -> o.getIdService() == 1).forEach(orderSessionList::add);
+        
+        orderList.stream().filter(o -> o.getOrderStatus().equals("IN_REALIZTION"))
+        					.filter(o -> o.getIdService() == 2).forEach(orderPhotoList::add);
+        
+        model.addObject("orderSessionList", orderSessionList);
+        model.addObject("orderPhotoList",orderPhotoList);
 
         return model;
 
