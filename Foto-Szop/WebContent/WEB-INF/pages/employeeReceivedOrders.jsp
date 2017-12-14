@@ -125,7 +125,7 @@
 	                            <td id="operacja">
 	                                <form action="finish" method="post">
 	                                    <input type="hidden" name="orderId" value="${session.idOrder}"/>
-	                                    <input class="btn btn-danger " type="submit" value="ZAKONCZ" name="finish"/>
+	                                    <input class="btn btn-danger " type="submit" value="Zakończ" name="finish"/>
 	                                </form>
 	                            </td>
 	                        </tr>
@@ -174,7 +174,7 @@
 	                            <td id="operacja">
 	                                <form action="finish" method="post">
 	                                    <input type="hidden" name="orderId" value="${photo.idOrder}"/>
-	                                    <input class="btn btn-danger " type="submit" value="ZAKONCZ" name="finish"/>
+	                                    <input class="btn btn-danger " type="submit" value="Zakończ" name="finish"/>
 	                                </form>
 	                            </td>
 	                        </tr>

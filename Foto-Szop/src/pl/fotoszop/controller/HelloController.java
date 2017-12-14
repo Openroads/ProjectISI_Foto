@@ -62,10 +62,7 @@ public class HelloController {
         } else {
             String login = form.getLogin();
             String password = form.getPassword();
-            //TODO NIE ZNAJDUJE PLIKU XML
-            //ApplicationContext context = new ClassPathXmlApplicationContext("spring-dispatcher-servlet.xml");
 
-            //AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAODbImpl");
             System.out.println(clientDatabaseDAO);
             model = new ModelAndView("index");
             System.out.println("no errors");

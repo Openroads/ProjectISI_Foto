@@ -48,6 +48,15 @@ public class Order extends OrderBase implements IOrder{
 		this.idClient = idClient;
 	}
 
+	public String getStatusPl(){
+		
+		if(orderStatus.equals("IN_REALIZTION"))
+			return "W REALIZACJI";
+		else if(orderStatus.equals("PENDING"))
+			return "OCZEKUJĄCE";
+		else
+			return "ZAKOŃCZONE";
+	}
 	
 	@Override
 	public String toString() {

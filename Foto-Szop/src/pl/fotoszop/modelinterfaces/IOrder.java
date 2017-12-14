@@ -34,4 +34,5 @@ public interface IOrder {
 	public int getEmployeeId();
 	public int getBonus();
 	public void setBonus(int bonus);
+	public String getStatusPl();
 }

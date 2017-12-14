@@ -106,7 +106,7 @@
 	                            </td>
 	                            
 	                            <td id="orderStatus">
-	                            	<c:out value="${order.orderStatus}"/>
+	                            	<c:out value="${order.statusPl}"/>
 	                            </td>
 	                            
 	                            <td id="idService">
