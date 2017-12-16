@@ -84,7 +84,7 @@ public class ClientController {
         editForm.doHash();
 
         if (result.hasErrors()) {
-            model = new ModelAndView("/editForm");
+            model = new ModelAndView("edit");
             model.addObject("editForm", editForm);
 
         } else {

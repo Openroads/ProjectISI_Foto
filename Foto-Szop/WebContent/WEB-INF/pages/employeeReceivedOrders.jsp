@@ -96,8 +96,9 @@
 	                        <th style="text-align:center;">Adres</th>
 	                        <th style="text-align:center;">Klient</th>
 	                        <th style="text-align:center;">Bonus</th>
+	                        <th style="text-align:center;"></th>
 	                    </tr>
-	                    <thead>
+	                    </thead>
 	                    <tbody>
 	                    <c:forEach items="${orderSessionList}" var="session" varStatus="status">
 	          				<tr class="success">

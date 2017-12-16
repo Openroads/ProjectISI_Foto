@@ -79,7 +79,7 @@
 	                                Adres: <form:input class="input-text" path="address" id="address-form"/>
 	                                <div id="iaddress"></div>
 	                                <br>
-	                                Obecne Hasło: <form:input class="input-text" type="password" path="password"
+	                                Obecne Hasło: <form:input required="true" class="input-text" type="password" path="password"
 	                                                          id="password" autocomplete="on"/>
 	                                <div id="ipassword"></div>
 	                                <br>

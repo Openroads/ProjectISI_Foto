@@ -152,7 +152,7 @@
 	                                <br>
 	                                <div style="text-align:center;">
 	                                <p class="client-part-haead wow fadeInDown delay-05"style="color : black;font-size: 19px;">Data dostawy zamówienia nie powinna przekroczyć dwóch tygodni roboczych.</p>
-	                                    <label><input type="checkbox" class="input-text" required id="rules"/>Akceptuję regulamin</label>
+	                                    <label><input type="checkbox" class="input-text" id="rules"/>Akceptuję regulamin</label>
 	                                    <br><br><br>
 	                                    <input type="submit" id="submit" class="input-btn" value="Zamów">
 	                                </div>
